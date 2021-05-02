@@ -336,6 +336,7 @@ void pickandplace_sequence(void)
     //Tweezer open 5 units wide
     for(int i = 0; i<(X_Pick_1); i++){X_axis(clockwise);}
     for(int i = 0; i<(Y_Pick_1); i++){Y_axis(clockwise);}
+    //ultrasonic check while loop
     for(int i = 0;i<3; i++){Z_axis(clockwise);}  //down
     //Tweezer close 4 units wide
     for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
@@ -348,10 +349,11 @@ void pickandplace_sequence(void)
 
 
 
-    //// Component A //////////////////////////////////
+    //// Component A //chmod 600 ~/.ssh/id_rsa////////////////////////////////
     for(int i = 0; i<(X_Place_1-X_Pick_2); i++){X_axis(anti_clockwise);}
     for(int i = 0; i<(Y_Place_1-Y_Pick_2); i++){Y_axis(clockwise);}
     for(int i = 0; i<((Place_Angle_1-Pick_Angle_2)/3.6); i++){Twister(clockwise);}
+    //ultrasonic check while loop
     for(int i = 0;i<3; i++){Z_axis(clockwise);}  //down
     //Tweezer close 4 units wide
     for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
@@ -368,6 +370,7 @@ void pickandplace_sequence(void)
     for(int i = 0; i<(X_Place_2-X_Pick_3); i++){X_axis(anti_clockwise);}
     for(int i = 0; i<(Y_Place_2-Y_Pick_3); i++){Y_axis(clockwise);}
     for(int i = 0; i<((Place_Angle_2-Pick_Angle_3)/3.6); i++){Twister(anti_clockwise);}
+    //ultrasonic check while loop
     for( int i = 0;i<3; i++){Z_axis(clockwise);}  //down
     //Tweezer close 2 units wide
     for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
@@ -393,3 +396,5 @@ void __interrupt() Rx_char_USART(void)  // Interrupt function
             PIR1bits.RCIF = 0;          // clear this interrupt condition
         }                               // end IF
 }                                       // end function
+
+TestC
