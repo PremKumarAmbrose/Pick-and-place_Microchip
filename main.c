@@ -82,6 +82,7 @@
 
 // Serial & Timing Parameters
 static double const Fosc              = 4000000;// Oscillator Frequency in Hz
+
 static double       Tosc              = 1/Fosc; // Tosc in sec
 static double const desired_BaudRate  = 9600;    // Desired Baud Rate in bps
 static _Bool   New_char_RX = false;
@@ -210,7 +211,7 @@ void main(void)
  
 /* This method will drive the motor in half-drive mode using direction input */
  
-
+-
 void X_axis (char direction){
     if (direction == anti_clockwise){
         PORTB = 0b00000011;
@@ -331,47 +332,54 @@ void ms_delay(unsigned int val)
 
 void pickandplace_sequence(void)
 {
+    //// Component C //////////////////////////////////
+    //Tweezer open 5 units wide
     for(int i = 0; i<(X_Pick_1); i++){X_axis(clockwise);}
     for(int i = 0; i<(Y_Pick_1); i++){Y_axis(clockwise);}
-    //down code here 
-    //Tweezer close
-    //up code Z
-
+    for(int i = 0;i<3; i++){Z_axis(clockwise);}  //down
+    //Tweezer close 4 units wide
+    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
     for(int i = 0; i<(X_Place_1-X_Pick_1); i++){X_axis(clockwise);}
     for(int i = 0; i<(Y_Place_1-Y_Pick_1); i++){Y_axis(clockwise);}
     for(int i = 0; i<((360-Place_Angle_1)/3.6); i++){Twister(anti_clockwise);}
-    //down code
-    //tweezer open
-    //up
+    for( int i = 0;i<3; i++){Z_axis(clockwise);}  //down
+    //Tweezer open 5 units wide
+    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
 
+
+
+    //// Component A //////////////////////////////////
     for(int i = 0; i<(X_Place_1-X_Pick_2); i++){X_axis(anti_clockwise);}
     for(int i = 0; i<(Y_Place_1-Y_Pick_2); i++){Y_axis(clockwise);}
     for(int i = 0; i<((Place_Angle_1-Pick_Angle_2)/3.6); i++){Twister(clockwise);}
-    //down
-    //tweezer close
-    //up
-    
+    for(int i = 0;i<3; i++){Z_axis(clockwise);}  //down
+    //Tweezer close 4 units wide
+    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
     for(int i = 0; i<(X_Pick_2-X_Place_2); i++){X_axis(clockwise);}
     for(int i = 0; i<(Y_Pick_2-Y_Place_2); i++){Y_axis(anti_clockwise);}
     for(int i = 0; i<((Pick_Angle_2-Place_Angle_2)/3.6); i++){Twister(clockwise);}
-    //down
-    //tweezer open
-    //up
+    for(int i = 0;i<3; i++){Z_axis(clockwise);}  //down
+    //Tweezer open 5 units wide
+    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
     
+    
+
+    //// Component B //////////////////////////////////
     for(int i = 0; i<(X_Place_2-X_Pick_3); i++){X_axis(anti_clockwise);}
     for(int i = 0; i<(Y_Place_2-Y_Pick_3); i++){Y_axis(clockwise);}
     for(int i = 0; i<((Place_Angle_2-Pick_Angle_3)/3.6); i++){Twister(anti_clockwise);}
-    //down
-    //tweezer close
-    //up
-   
+    for( int i = 0;i<3; i++){Z_axis(clockwise);}  //down
+    //Tweezer close 2 units wide
+    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
     for(int i = 0; i<(X_Pick_3-X_Place_3); i++){X_axis(clockwise);}
     for(int i = 0; i<(Y_Pick_3-Y_Place_3); i++){Y_axis(anti_clockwise);}
     for(int i = 0; i<((Pick_Angle_3-Place_Angle_3)/3.6); i++){Twister(clockwise);}
-    //down
-    //Tweezer open
-    //up
-    
+    for(int i = 0;i<3; i++){Z_axis(clockwise);}  //down
+    //Tweezer open 3 units wide 
+    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
+     
+
+    ////Return to Initial position //////////////////////////////////
     for(int i = 0; i<(X_Place_3); i++){X_axis(anti_clockwise);}
     for(int i = 0; i<(Y_Place_3); i++){Y_axis(anti_clockwise);}
 
