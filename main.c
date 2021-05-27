@@ -88,8 +88,10 @@ static double const desired_BaudRate  = 9600;    // Desired Baud Rate in bps
 static _Bool   New_char_RX = false;
 int lenth_of_array = 30;
 char testarray [30];
-char testarray[] = "This is prem test case";
+char testarray[] = " ";
 
+int displacement_X, displacement_Y, rotation;
+char X_direction, Y_direction, rotation_direction;
 
 #define X_Pick_1 3  //Pick and Place (X,Y)position of C
 #define Y_Pick_1 4
@@ -144,6 +146,8 @@ void Tweezer (void);
 void ms_delay(unsigned int val);
 void pickandplace_sequence(void);
 void __interrupt() Rx_char_USART (void);
+void pickandplace(void);
+void Z_axis_and_Tweezer(void);
 
 
 /*
@@ -154,7 +158,7 @@ void __interrupt() Rx_char_USART (void);
 void main(void)
 {
     unsigned char RX_Char = ' ';  // used for echo of the received char
-    unsigned char test_C = ' ';remKumarAmbrose/Pick-and-place_Microchip
+    unsigned char test_C = ' ';
     
     init_PORTS();           // PORTS configuration
     init_USART();           // USART module configuration
@@ -211,7 +215,6 @@ void main(void)
  
 /* This method will drive the motor in half-drive mode using direction input */
  
--
 void X_axis (char direction){
     if (direction == anti_clockwise){
         PORTB = 0b00000011;
@@ -334,59 +337,94 @@ void pickandplace_sequence(void)
 {
     //// Component C //////////////////////////////////
     //Tweezer open 5 units wide
-    for(int i = 0; i<(X_Pick_1); i++){X_axis(clockwise);}
-    for(int i = 0; i<(Y_Pick_1); i++){Y_axis(clockwise);}
+    displacement_X = (X_Pick_1);
+    displacement_Y = (Y_Pick_1);
+    rotation  = 0;
+    X_direction = Y_direction = rotation_direction = clockwise;
+    pickandplace();
     //ultrasonic check while loop
-    for(int i = 0;i<3; i++){Z_axis(clockwise);}  //down
-    //Tweezer close 4 units wide
-    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
-    for(int i = 0; i<(X_Place_1-X_Pick_1); i++){X_axis(clockwise);}
-    for(int i = 0; i<(Y_Place_1-Y_Pick_1); i++){Y_axis(clockwise);}
-    for(int i = 0; i<((360-Place_Angle_1)/3.6); i++){Twister(anti_clockwise);}
-    for( int i = 0;i<3; i++){Z_axis(clockwise);}  //down
-    //Tweezer open 5 units wide
-    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
+        Z_axis_and_Tweezer();
+        //Tweezer close 4 units wide
+
+    displacement_X = (X_Place_1-X_Pick_1);
+    displacement_Y = (Y_Place_1-Y_Pick_1);
+    rotation = ((360-Place_Angle_1)/3.6);
+    rotation_direction= anti_clockwise;
+    pickandplace();
+        Z_axis_and_Tweezer();
+        //Tweezer open 5 units wide
 
 
 
-    //// Component A //chmod 600 ~/.ssh/id_rsa////////////////////////////////
-    for(int i = 0; i<(X_Place_1-X_Pick_2); i++){X_axis(anti_clockwise);}
-    for(int i = 0; i<(Y_Place_1-Y_Pick_2); i++){Y_axis(clockwise);}
-    for(int i = 0; i<((Place_Angle_1-Pick_Angle_2)/3.6); i++){Twister(clockwise);}
+
+    //// Component A //////////////////////////////////
+    displacement_X = (X_Place_1-X_Pick_2);
+    displacement_Y = (Y_Place_1-Y_Pick_2);
+    rotation = ((Place_Angle_1-Pick_Angle_2)/3.6);
+    X_direction = anti_clockwise;
+    rotation_direction= clockwise;
+    pickandplace();
     //ultrasonic check while loop
-    for(int i = 0;i<3; i++){Z_axis(clockwise);}  //down
-    //Tweezer close 4 units wide
-    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
-    for(int i = 0; i<(X_Pick_2-X_Place_2); i++){X_axis(clockwise);}
-    for(int i = 0; i<(Y_Pick_2-Y_Place_2); i++){Y_axis(anti_clockwise);}
-    for(int i = 0; i<((Pick_Angle_2-Place_Angle_2)/3.6); i++){Twister(clockwise);}
-    for(int i = 0;i<3; i++){Z_axis(clockwise);}  //down
-    //Tweezer open 5 units wide
-    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
+        Z_axis_and_Tweezer();
+        //Tweezer close 4 units wide
+
+    displacement_X = (X_Pick_2-X_Place_2);
+    displacement_Y = (Y_Pick_2-Y_Place_2);
+    rotation = ((Pick_Angle_2-Place_Angle_2)/3.6);
+    X_direction = clockwise;
+    Y_direction = anti_clockwise;
+    pickandplace();
+        Z_axis_and_Tweezer();
+        //Tweezer open 5 units wide
+
     
     
 
     //// Component B //////////////////////////////////
-    for(int i = 0; i<(X_Place_2-X_Pick_3); i++){X_axis(anti_clockwise);}
-    for(int i = 0; i<(Y_Place_2-Y_Pick_3); i++){Y_axis(clockwise);}
-    for(int i = 0; i<((Place_Angle_2-Pick_Angle_3)/3.6); i++){Twister(anti_clockwise);}
+    displacement_X = (X_Place_2-X_Pick_3);
+    displacement_Y = (Y_Place_2-Y_Pick_3);
+    rotation = ((Place_Angle_2-Pick_Angle_3)/3.6);
+    X_direction = rotation_direction= anti_clockwise;
+    Y_direction = clockwise;
+    pickandplace();
     //ultrasonic check while loop
-    for( int i = 0;i<3; i++){Z_axis(clockwise);}  //down
-    //Tweezer close 2 units wide
-    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
-    for(int i = 0; i<(X_Pick_3-X_Place_3); i++){X_axis(clockwise);}
-    for(int i = 0; i<(Y_Pick_3-Y_Place_3); i++){Y_axis(anti_clockwise);}
-    for(int i = 0; i<((Pick_Angle_3-Place_Angle_3)/3.6); i++){Twister(clockwise);}
-    for(int i = 0;i<3; i++){Z_axis(clockwise);}  //down
-    //Tweezer open 3 units wide 
-    for(int i = 0; i<3; i++){Z_axis(anti_clockwise);}  //up
+        Z_axis_and_Tweezer();
+        //Tweezer close 2 units wide
+
+    displacement_X = (X_Pick_3-X_Place_3);
+    displacement_Y = (Y_Pick_3-Y_Place_3);
+    rotation = ((Pick_Angle_3-Place_Angle_3)/3.6);
+    X_direction = rotation_direction= clockwise;
+    Y_direction = anti_clockwise;
+    pickandplace();
+        Z_axis_and_Tweezer();
+        //Tweezer open 3 units wide 
      
 
+
+    
     ////Return to Initial position //////////////////////////////////
-    for(int i = 0; i<(X_Place_3); i++){X_axis(anti_clockwise);}
-    for(int i = 0; i<(Y_Place_3); i++){Y_axis(anti_clockwise);}
+    displacement_X = (X_Place_3);
+    displacement_Y = (Y_Place_3);
+    rotation = 0;
+    X_direction = anti_clockwise;
+    pickandplace();
 
 }
+
+
+void pickandplace(){
+
+    for(int i = 0; i<displacement_X; i++){X_axis(X_direction);}
+    for(int i = 0; i<displacement_Y; i++){Y_axis(Y_direction);}
+    for(int i = 0; i<rotation; i++){Twister(rotation_direction);}
+
+}
+void Z_axis_and_Tweezer(){
+     for(int i = 0;i<15; i++){Z_axis(clockwise);}  //down
+     //Tweezer actions, units refer sequence
+     for(int i = 0; i<15; i++){Z_axis(anti_clockwise);}  //up
+ }
 
 void __interrupt() Rx_char_USART(void)  // Interrupt function
 {     
@@ -396,5 +434,3 @@ void __interrupt() Rx_char_USART(void)  // Interrupt function
             PIR1bits.RCIF = 0;          // clear this interrupt condition
         }                               // end IF
 }                                       // end function
-
-TestC

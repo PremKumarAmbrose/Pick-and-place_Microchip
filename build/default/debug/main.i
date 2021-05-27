@@ -4473,13 +4473,17 @@ void serial_tx_char(unsigned char val);
 
 
 static double const Fosc = 4000000;
+
 static double Tosc = 1/Fosc;
 static double const desired_BaudRate = 9600;
 static _Bool New_char_RX = 0;
 int lenth_of_array = 30;
 char testarray [30];
-char testarray[] = "This is prem test case";
-# 137 "main.c"
+char testarray[] = " ";
+
+int displacement_X, displacement_Y, rotation;
+char X_direction, Y_direction, rotation_direction;
+# 140 "main.c"
 void system_init (void);
 void X_axis (char direction);
 void Y_axis (char direction);
@@ -4489,6 +4493,8 @@ void Tweezer (void);
 void ms_delay(unsigned int val);
 void pickandplace_sequence(void);
 void __attribute__((picinterrupt(("")))) Rx_char_USART (void);
+void pickandplace(void);
+void Z_axis_and_Tweezer(void);
 
 
 
@@ -4547,7 +4553,7 @@ void main(void)
     }
 
 }
-# 214 "main.c"
+# 218 "main.c"
 void X_axis (char direction){
     if (direction == 1){
         PORTB = 0b00000011;
@@ -4668,51 +4674,96 @@ void ms_delay(unsigned int val)
 
 void pickandplace_sequence(void)
 {
-    for(int i = 0; i<(3); i++){X_axis(0);}
-    for(int i = 0; i<(4); i++){Y_axis(0);}
+
+
+    displacement_X = (3);
+    displacement_Y = (4);
+    rotation = 0;
+    X_direction = Y_direction = rotation_direction = 0;
+    pickandplace();
+
+        Z_axis_and_Tweezer();
+
+
+    displacement_X = (17 -3);
+    displacement_Y = (5 -4);
+    rotation = ((360-270)/3.6);
+    rotation_direction= 1;
+    pickandplace();
+        Z_axis_and_Tweezer();
 
 
 
 
-    for(int i = 0; i<(17 -3); i++){X_axis(0);}
-    for(int i = 0; i<(5 -4); i++){Y_axis(0);}
-    for(int i = 0; i<((360-270)/3.6); i++){Twister(1);}
+
+
+    displacement_X = (17 -3);
+    displacement_Y = (5 -10);
+    rotation = ((270 -90)/3.6);
+    X_direction = 1;
+    rotation_direction= 0;
+    pickandplace();
+
+        Z_axis_and_Tweezer();
+
+
+    displacement_X = (3 -10);
+    displacement_Y = (10 -5);
+    rotation = ((90 -180)/3.6);
+    X_direction = 0;
+    Y_direction = 1;
+    pickandplace();
+        Z_axis_and_Tweezer();
 
 
 
 
-    for(int i = 0; i<(17 -3); i++){X_axis(1);}
-    for(int i = 0; i<(5 -10); i++){Y_axis(0);}
-    for(int i = 0; i<((270 -90)/3.6); i++){Twister(0);}
+
+
+    displacement_X = (10 -3);
+    displacement_Y = (5 -15);
+    rotation = ((180 -90)/3.6);
+    X_direction = rotation_direction= 1;
+    Y_direction = 0;
+    pickandplace();
+
+        Z_axis_and_Tweezer();
+
+
+    displacement_X = (3 -16);
+    displacement_Y = (15 -14);
+    rotation = ((90 -270)/3.6);
+    X_direction = rotation_direction= 0;
+    Y_direction = 1;
+    pickandplace();
+        Z_axis_and_Tweezer();
 
 
 
 
-    for(int i = 0; i<(3 -10); i++){X_axis(0);}
-    for(int i = 0; i<(10 -5); i++){Y_axis(1);}
-    for(int i = 0; i<((90 -180)/3.6); i++){Twister(0);}
 
 
-
-
-    for(int i = 0; i<(10 -3); i++){X_axis(1);}
-    for(int i = 0; i<(5 -15); i++){Y_axis(0);}
-    for(int i = 0; i<((180 -90)/3.6); i++){Twister(1);}
-
-
-
-
-    for(int i = 0; i<(3 -16); i++){X_axis(0);}
-    for(int i = 0; i<(15 -14); i++){Y_axis(1);}
-    for(int i = 0; i<((90 -270)/3.6); i++){Twister(0);}
-
-
-
-
-    for(int i = 0; i<(16); i++){X_axis(1);}
-    for(int i = 0; i<(14); i++){Y_axis(1);}
+    displacement_X = (16);
+    displacement_Y = (14);
+    rotation = 0;
+    X_direction = 1;
+    pickandplace();
 
 }
+
+
+void pickandplace(){
+
+    for(int i = 0; i<displacement_X; i++){X_axis(X_direction);}
+    for(int i = 0; i<displacement_Y; i++){Y_axis(Y_direction);}
+    for(int i = 0; i<rotation; i++){Twister(rotation_direction);}
+
+}
+void Z_axis_and_Tweezer(){
+     for(int i = 0;i<15; i++){Z_axis(0);}
+
+     for(int i = 0; i<15; i++){Z_axis(1);}
+ }
 
 void __attribute__((picinterrupt(("")))) Rx_char_USART(void)
 {

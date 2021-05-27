@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>Prototype_1</name>
+            <name>Pick-and-place</name>
             <creation-uuid>9364a848-6117-48fb-81c3-b46164adc838</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>

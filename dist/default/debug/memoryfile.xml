@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/debug/Prototype_1.X.debug.hex">
+  <executable name="dist/default/debug/Pick-and-place_Microchip.debug.hex">
     <memory name="program">
       <units>bytes</units>
       <length>32768</length>
-      <used>7800</used>
-      <free>24968</free>
+      <used>6498</used>
+      <free>26270</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>1536</length>
-      <used>114</used>
-      <free>1422</free>
+      <used>122</used>
+      <free>1414</free>
     </memory>
   </executable>
 </project>

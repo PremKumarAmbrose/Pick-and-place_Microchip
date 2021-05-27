@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Prototype_1.X
+PROJECTNAME=Pick-and-place_Microchip
 
 # Active Configuration
 DEFAULTCONF=default

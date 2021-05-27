@@ -35,27 +35,31 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 /opt/microchip/xc8/v2.32/pic/sources/c99/common/Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"10 /opt/microchip/xc8/v2.32/pic/sources/c99/common/xxtofl.c
-[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
-"9 /home/legion/MPLABXProjects/Prototype_1.X/init_PIC.c
+"9 /home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
 [v _init_PORTS init_PORTS `(v  1 e 1 0 ]
 "27
 [v _init_interrupts init_interrupts `(v  1 e 1 0 ]
-"153 /home/legion/MPLABXProjects/Prototype_1.X/main.c
+"158 /home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _main main `(v  1 e 1 0 ]
-"214
+"218
 [v _X_axis X_axis `(v  1 e 1 0 ]
-"242
+"246
 [v _Y_axis Y_axis `(v  1 e 1 0 ]
-"298
+"274
+[v _Z_axis Z_axis `(v  1 e 1 0 ]
+"302
 [v _Twister Twister `(v  1 e 1 0 ]
-"323
+"327
 [v _ms_delay ms_delay `(v  1 e 1 0 ]
-"332
+"336
 [v _pickandplace_sequence pickandplace_sequence `(v  1 e 1 0 ]
-"380
+"416
+[v _pickandplace pickandplace `(v  1 e 1 0 ]
+"423
+[v _Z_axis_and_Tweezer Z_axis_and_Tweezer `(v  1 e 1 0 ]
+"429
 [v _Rx_char_USART Rx_char_USART `IIH(v  1 e 1 0 ]
-"17 /home/legion/MPLABXProjects/Prototype_1.X/serial_rs232.c
+"17 /home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
 [v _init_USART init_USART `(v  1 e 1 0 ]
 "44
 [v _serial_tx_char serial_tx_char `(v  1 e 1 0 ]
@@ -217,24 +221,32 @@
 ]
 [u S159 . 1 `S137 1 . 1 0 `S146 1 . 1 0 `S155 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES159  1 e 1 @4082 ]
-"87 /home/legion/MPLABXProjects/Prototype_1.X/main.c
+"88 /home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _New_char_RX New_char_RX `a  1 s 1 New_char_RX ]
-"90
+"91
 [v _testarray testarray `[30]uc  1 e 30 0 ]
-"153
+"93
+[v _displacement_X displacement_X `i  1 e 2 0 ]
+[v _displacement_Y displacement_Y `i  1 e 2 0 ]
+[v _rotation rotation `i  1 e 2 0 ]
+"94
+[v _X_direction X_direction `uc  1 e 1 0 ]
+[v _Y_direction Y_direction `uc  1 e 1 0 ]
+[v _rotation_direction rotation_direction `uc  1 e 1 0 ]
+"158
 [v _main main `(v  1 e 1 0 ]
 {
-"190
-[v main@i_466 i `i  1 a 2 66 ]
-"163
-[v main@i i `i  1 a 2 64 ]
-"156
-[v main@test_C test_C `uc  1 a 1 63 ]
-"155
-[v main@RX_Char RX_Char `uc  1 a 1 62 ]
-"203
+"195
+[v main@i_480 i `i  1 a 2 65 ]
+"168
+[v main@i i `i  1 a 2 63 ]
+"161
+[v main@test_C test_C `uc  1 a 1 62 ]
+"160
+[v main@RX_Char RX_Char `uc  1 a 1 61 ]
+"208
 } 0
-"44 /home/legion/MPLABXProjects/Prototype_1.X/serial_rs232.c
+"44 /home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
 [v _serial_tx_char serial_tx_char `(v  1 e 1 0 ]
 {
 [v serial_tx_char@val val `uc  1 a 1 wreg ]
@@ -243,100 +255,79 @@
 [v serial_tx_char@val val `uc  1 a 1 0 ]
 "48
 } 0
-"332 /home/legion/MPLABXProjects/Prototype_1.X/main.c
+"336 /home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _pickandplace_sequence pickandplace_sequence `(v  1 e 1 0 ]
 {
-"376
-[v pickandplace_sequence@i_501 i `i  1 a 2 58 ]
-"375
-[v pickandplace_sequence@i_500 i `i  1 a 2 56 ]
-"370
-[v pickandplace_sequence@i_499 i `i  1 a 2 54 ]
-"369
-[v pickandplace_sequence@i_498 i `i  1 a 2 52 ]
-"368
-[v pickandplace_sequence@i_497 i `i  1 a 2 50 ]
-"363
-[v pickandplace_sequence@i_496 i `i  1 a 2 48 ]
-"362
-[v pickandplace_sequence@i_495 i `i  1 a 2 46 ]
-"361
-[v pickandplace_sequence@i_494 i `i  1 a 2 44 ]
-"356
-[v pickandplace_sequence@i_493 i `i  1 a 2 42 ]
-"355
-[v pickandplace_sequence@i_492 i `i  1 a 2 40 ]
-"349
-[v pickandplace_sequence@i_490 i `i  1 a 2 38 ]
-"347
-[v pickandplace_sequence@i_488 i `i  1 a 2 36 ]
-"342
-[v pickandplace_sequence@i_486 i `i  1 a 2 34 ]
-"341
-[v pickandplace_sequence@i_485 i `i  1 a 2 32 ]
-"340
-[v pickandplace_sequence@i_484 i `i  1 a 2 30 ]
-"335
-[v pickandplace_sequence@i_482 i `i  1 a 2 28 ]
-"334
-[v pickandplace_sequence@i i `i  1 a 2 26 ]
-"378
+"413
 } 0
-"10 /opt/microchip/xc8/v2.32/pic/sources/c99/common/xxtofl.c
-[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+"416
+[v _pickandplace pickandplace `(v  1 e 1 0 ]
 {
-[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-"13
-[v ___xxtofl@arg arg `ul  1 a 4 10 ]
-"12
-[v ___xxtofl@exp exp `uc  1 a 1 9 ]
-"10
-[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
-[v ___xxtofl@val val `l  1 p 4 0 ]
-"15
-[v ___xxtofl@sign sign `uc  1 a 1 8 ]
-"44
+"420
+[v pickandplace@i_499 i `i  1 a 2 12 ]
+"419
+[v pickandplace@i_497 i `i  1 a 2 10 ]
+"418
+[v pickandplace@i i `i  1 a 2 8 ]
+"422
 } 0
-"242 /home/legion/MPLABXProjects/Prototype_1.X/main.c
+"246
 [v _Y_axis Y_axis `(v  1 e 1 0 ]
 {
 [v Y_axis@direction direction `uc  1 a 1 wreg ]
 [v Y_axis@direction direction `uc  1 a 1 wreg ]
 [v Y_axis@direction direction `uc  1 a 1 6 ]
-"268
+"272
 } 0
-"214
+"218
 [v _X_axis X_axis `(v  1 e 1 0 ]
 {
 [v X_axis@direction direction `uc  1 a 1 wreg ]
 [v X_axis@direction direction `uc  1 a 1 wreg ]
 [v X_axis@direction direction `uc  1 a 1 6 ]
-"240
+"244
 } 0
-"298
+"302
 [v _Twister Twister `(v  1 e 1 0 ]
 {
 [v Twister@direction direction `uc  1 a 1 wreg ]
 [v Twister@direction direction `uc  1 a 1 wreg ]
 [v Twister@direction direction `uc  1 a 1 6 ]
-"320
+"324
 } 0
-"323
+"423
+[v _Z_axis_and_Tweezer Z_axis_and_Tweezer `(v  1 e 1 0 ]
+{
+"426
+[v Z_axis_and_Tweezer@i_504 i `i  1 a 2 9 ]
+"424
+[v Z_axis_and_Tweezer@i i `i  1 a 2 7 ]
+"427
+} 0
+"274
+[v _Z_axis Z_axis `(v  1 e 1 0 ]
+{
+[v Z_axis@direction direction `uc  1 a 1 wreg ]
+[v Z_axis@direction direction `uc  1 a 1 wreg ]
+[v Z_axis@direction direction `uc  1 a 1 6 ]
+"300
+} 0
+"327
 [v _ms_delay ms_delay `(v  1 e 1 0 ]
 {
-"325
+"329
 [v ms_delay@j j `ui  1 a 2 4 ]
 [v ms_delay@i i `ui  1 a 2 2 ]
-"323
+"327
 [v ms_delay@val val `ui  1 p 2 0 ]
-"328
+"332
 } 0
-"27 /home/legion/MPLABXProjects/Prototype_1.X/init_PIC.c
+"27 /home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
 [v _init_interrupts init_interrupts `(v  1 e 1 0 ]
 {
 "34
 } 0
-"17 /home/legion/MPLABXProjects/Prototype_1.X/serial_rs232.c
+"17 /home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
 [v _init_USART init_USART `(v  1 e 1 0 ]
 {
 "42
@@ -345,16 +336,16 @@
 [v _roundf roundf `(f  1 e 4 0 ]
 {
 "16
-[v roundf@y y `f  1 a 4 48 ]
-[u S944 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
+[v roundf@y y `f  1 a 4 47 ]
+[u S947 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
 "14
-[v roundf@u u `S944  1 a 4 44 ]
+[v roundf@u u `S947  1 a 4 43 ]
 "15
-[v roundf@e e `i  1 a 2 38 ]
+[v roundf@e e `i  1 a 2 37 ]
 "12
-[v roundf@x x `f  1 p 4 26 ]
+[v roundf@x x `f  1 p 4 25 ]
 "13
-[v roundf@F528 F528 `S944  1 s 4 F528 ]
+[v roundf@F528 F528 `S947  1 s 4 F528 ]
 "36
 } 0
 "245 /opt/microchip/xc8/v2.32/pic/sources/c99/common/sprcadd.c
@@ -389,17 +380,17 @@
 "8 /opt/microchip/xc8/v2.32/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S809 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S812 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S814 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
-[u S817 . 4 `l 1 i 4 0 `d 1 f 4 0 `S809 1 fAsBytes 4 0 `S814 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S817  1 a 4 19 ]
+[s S817 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
+[u S820 . 4 `l 1 i 4 0 `d 1 f 4 0 `S812 1 fAsBytes 4 0 `S817 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S820  1 a 4 19 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 13 ]
-[s S885 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S888 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S888 . 2 `s 1 i 2 0 `us 1 n 2 0 `S885 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S888  1 a 2 23 ]
+[u S891 . 2 `s 1 i 2 0 `us 1 n 2 0 `S888 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S891  1 a 2 23 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 18 ]
 "11
@@ -414,27 +405,27 @@
 "4 /opt/microchip/xc8/v2.32/pic/sources/c99/common/flge.c
 [v ___flge __flge `(b  1 e 0 0 ]
 {
-[v ___flge@ff1 ff1 `d  1 p 4 14 ]
-[v ___flge@ff2 ff2 `d  1 p 4 18 ]
+[v ___flge@ff1 ff1 `d  1 p 4 0 ]
+[v ___flge@ff2 ff2 `d  1 p 4 4 ]
 "19
 } 0
 "43 /opt/microchip/xc8/v2.32/pic/sources/c99/common/fltol.c
 [v ___fltol __fltol `(l  1 e 4 0 ]
 {
 "45
-[v ___fltol@exp1 exp1 `uc  1 a 1 61 ]
-[v ___fltol@sign1 sign1 `uc  1 a 1 60 ]
+[v ___fltol@exp1 exp1 `uc  1 a 1 60 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 59 ]
 "43
-[v ___fltol@f1 f1 `d  1 p 4 52 ]
+[v ___fltol@f1 f1 `d  1 p 4 51 ]
 "70
 } 0
-"9 /home/legion/MPLABXProjects/Prototype_1.X/init_PIC.c
+"9 /home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
 [v _init_PORTS init_PORTS `(v  1 e 1 0 ]
 {
 "23
 } 0
-"380 /home/legion/MPLABXProjects/Prototype_1.X/main.c
+"429 /home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _Rx_char_USART Rx_char_USART `IIH(v  1 e 1 0 ]
 {
-"387
+"436
 } 0
