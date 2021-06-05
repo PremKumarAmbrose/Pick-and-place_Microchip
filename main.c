@@ -89,32 +89,73 @@ char testarray [30];
 char testarray[] = " ";
 
 int displacement_X, displacement_Y, rotation;
-char X_direction, Y_direction, rotation_direction;
 
-#define X_Pick_1 3  //Pick and Place (X,Y)position of C
-#define Y_Pick_1 4
-#define X_Place_1 17
-#define Y_Place_1 5
-
-#define X_Pick_2 3  //Pick and Place (X,Y)position of A
-#define Y_Pick_2 10
-#define X_Place_2 10
-#define Y_Place_2 5
-
-#define X_Pick_3 3  //Pick and Place (X,Y)position of B
-#define Y_Pick_3 15
-#define X_Place_3 16
-#define Y_Place_3 14
+int X_Pick, X_Place, Y_pick, Y_Place, Pick_Angle, Place_Angle, X_diff=0, Y_diff=0, Angle_diff=0;
+char X_Pick_dir,X_Place_dir, Y_Pick_dir, Y_Place_dir, Rot_Pick_dir, Rot_Place_dir,;
 
 
-#define Pick_Angle_1 0       //Pick angle of C
-#define Place_Angle_1 270    //Place angle of C
+///*******************Specific Parameters for each component*********************///
 
-#define Pick_Angle_2 90      //Pick angle of A   
-#define Place_Angle_2 180    //Place angle of A
+#define X_Pick_A 3  //Pick and Place Parameters of A
+#define Y_Pick_A 4
+#define Pick_Angle_A 0       
+char X_Pick_dir_A = clockwise;
+char Y_Pick_dir_A = clockwise;
+char Rot_Pick_dir_A = clockwise;
 
-#define Pick_Angle_3 90      //Pick angle of B
-#define Place_Angle_3 270    //Place angle of B
+#define X_Place_A 17
+#define Y_Place_A 5
+#define Place_Angle_A 270    
+char X_Place_dir_A = clockwise;
+char Y_Place_dir_A = clockwise;
+char Rot_Place_dir_A = anti_clockwise;
+
+#define X_Pick_B 3  //Pick and Place Parameters of B
+#define Y_Pick_B 10
+#define Pick_Angle_B 90 
+char X_Pick_dir_B = anti_clockwise;
+char Y_Pick_dir_B = clockwise;
+char Rot_Pick_dir_B = clockwise;
+
+#define X_Place_B 10
+#define Y_Place_B 5     
+#define Place_Angle_B 180
+char X_Place_dir_B = clockwise;
+char Y_Place_dir_B = anti_clockwise;
+char Rot_Place_dir_B = anti_clockwise;    
+
+
+
+
+#define X_Pick_C 3  //Pick and Place Parameters of C
+#define Y_Pick_C 15
+#define Pick_Angle_C 90 
+char X_Pick_dir_C = anti_clockwise;
+char Y_Pick_dir_C = clockwise;
+char Rot_Pick_dir_C = anti_clockwise;
+
+
+#define X_Place_C 16
+#define Y_Place_C 14     
+#define Place_Angle_C 270
+char X_Place_dir_C = clockwise;
+char Y_Place_dir_C = anti_clockwise;
+char Rot_Place_dir_C = clockwise;    
+
+#define X_Pick_D 0  //Pick and Place Parameters of D
+#define Y_Pick_D 0
+#define Pick_Angle_D 0
+char X_Pick_dir_D;
+char Y_Pick_dir_D;
+char Rot_Pick_dir_D;
+
+#define X_Place_D 0
+#define Y_Place_D 0
+#define Place_Angle_D 0
+char X_Place_dir_D;
+char Y_Place_dir_D;
+char Rot_Place_dir_D;    
+
 
 #define X_diff 0
 #define Y_diff 0
@@ -146,9 +187,9 @@ void Z_axis (char direction);
 void Twister (char direction);
 void Tweezer (void);
 void ms_delay(unsigned int val);
-void pickandplace_loop(void);
+void pick_and_place(char Component);
+void return_to_initial(void);
 void __interrupt() Rx_char_USART (void);
-void pickandplace(void);
 void Z_axis_and_Tweezer(void);
 
 
@@ -335,33 +376,103 @@ void ms_delay(unsigned int val)
 
 
 
-void pickandplace_1(void)
+void pick_and_place(char Component)
 {
     //// Component C //////////////////////////////////
     //Tweezer open 5 units wide
-    displacement_X = abs(X_Pick_1-X_diff);
-    displacement_Y = abs(Y_Pick_1-Y_diff);
-    rotation  = 0;
-    X_direction = Y_direction = rotation_direction = clockwise;
-    pickandplace();
+    if(Component=A)
+    {
+        X_Pick=X_Pick_A;
+        Y_Pick=Y_Pick_A;
+        X_Pick_dir=X_Pick_dir_A;
+        Y_Pick_dir=Y_Pick_dir_A;
+        Pick_Angle=Pick_Angle_A;
+        Rot_Pick_dir=Rot_Pick_dir_A;
+
+        X_Place=X_Place_A;
+        Y_Place=Y_Place_A;
+        X_Place_dir=X_Place_dir_A;
+        Y_Place_dir=Y_Place_dir_A;
+        Place_Angle=Place_Angle_A;
+        Rot_Place_dir=Rot_Place_dir_A;
+    }
+    else if(Component=B){
+        X_Pick=X_Pick_B;
+        Y_Pick=Y_Pick_B;
+        X_Pick_dir=X_Pick_dir_B;
+        Y_Pick_dir=Y_Pick_dir_B;
+        Pick_Angle=Pick_Angle_B;
+        Rot_Pick_dir=Rot_Pick_dir_B;
+
+        X_Place=X_Place_B;
+        Y_Place=Y_Place_B;
+        X_Place_dir=X_Place_dir_B;
+        Y_Place_dir=Y_Place_dir_B;
+        Place_Angle=Place_Angle_B;
+        Rot_Place_dir=Rot_Place_dir_B;
+    }
+    else if(Component=C){
+        X_Pick=X_Pick_C;
+        Y_Pick=Y_Pick_C;
+        X_Pick_dir=X_Pick_dir_C;
+        Y_Pick_dir=Y_Pick_dir_C;
+        Pick_Angle=Pick_Angle_C;
+        Rot_Pick_dir=Rot_Pick_dir_C;
+
+        X_Place=X_Place_C;
+        Y_Place=Y_Place_C;
+        X_Place_dir=X_Place_dir_C;
+        Y_Place_dir=Y_Place_dir_C;
+        Place_Angle=Place_Angle_C;
+        Rot_Place_dir=Rot_Place_dir_C;
+    }
+    else if(Component=D){
+        X_Pick=X_Pick_D;
+        Y_Pick=Y_Pick_D;
+        X_Pick_dir=X_Pick_dir_D;
+        Y_Pick_dir=Y_Pick_dir_D;
+        Pick_Angle=Pick_Angle_D;
+        Rot_Pick_dir=Rot_Pick_dir_D;
+
+        X_Place=X_Place_D;
+        Y_Place=Y_Place_D;
+        X_Place_dir=X_Place_dir_D;
+        Y_Place_dir=Y_Place_dir_D;
+        Place_Angle=Place_Angle_D;
+        Rot_Place_dir=Rot_Place_dir_D;
+    }
+    else{
+        //do nothing
+    }
+
+    //displacement_X = abs(X_Pick-X_diff);
+    //displacement_Y = abs(Y_Pick-Y_diff);
+    //rotation  = 0;
+    //X_direction = Y_direction = rotation_direction = clockwise;
+    for(int i = 0; i<(abs(X_Pick-X_diff)); i++){X_axis(X_Pick_dir);}
+    for(int i = 0; i<(abs(Y_Pick-Y_diff)); i++){Y_axis(Y_Pick_dir);}
+    for(int i = 0; i<((Angle_diff-Pick_Angle)/3.6); i++){Twister(Rot_Pick_dir);}
+    //pickandplace();
     //ultrasonic check while loop
         Z_axis_and_Tweezer();
         //Tweezer close 4 units wide
 
-    X_diff = X_Pick_1;
-    Y_diff = Y_Pick_1
-
-    displacement_X = abs(X_Place_1-X_diff);
-    displacement_Y = abs(Y_Place_1-Y_diff);
-    rotation = abs((360-Place_Angle_1)/3.6);
-    rotation_direction= anti_clockwise;
-    pickandplace();
+    //displacement_X = abs(X_Place-X_Pick);
+    //displacement_Y = abs(Y_Place-Y_Pick);
+    rotation = abs((360-Place_Angle)/3.6);
+    for(int i = 0; i<(abs(X_Place-X_diff)); i++){X_axis(X_Place_dir);}
+    for(int i = 0; i<(abs(Y_Place-Y_diff)); i++){Y_axis(Y_Place_dir);}
+    for(int i = 0; i<((Pick_Angle-Place_Angle)/3.6); i++){Twister(Rot_Place_dir);}
+    //pickandplace();
         Z_axis_and_Tweezer();
         //Tweezer open 5 units wide
+    X_diff = X_Place;
+    Y_diff = Y_Place;
+    Angle_diff= Place_Angle;
 
 }
 
-void pickandplace_2(void)
+/*void pickandplace_2(void)
     //// Component A //////////////////////////////////
     displacement_X = abs(X_Pick_2-X_diff);
     displacement_Y = abs(Y_Pick_2-Y_diff);
@@ -405,25 +516,24 @@ void pickandplace_3(void);
         Z_axis_and_Tweezer();
         //Tweezer open 3 units wide 
      
+*/
 
-
-void initial_position(void);    
+void return_to_initial(void);    
     ////Return to Initial position //////////////////////////////////
-    displacement_X = (X_Place_3);
-    displacement_Y = (Y_Place_3);
-    rotation = 0;
-    X_direction = anti_clockwise;
-    pickandplace();
+    for(int i = 0; i<X_diff; i++){X_axis(anti_clockwise);}
+    for(int i = 0; i<Y_diff; i++){Y_axis(anti_clockwise);}
+    for(int i = 0; i<Angle_diff; i++){Twister(anti_clockwise);}
 
 }
-
+/*
 void pickandplace(){
 
     for(int i = 0; i<displacement_X; i++){X_axis(X_direction);}
     for(int i = 0; i<displacement_Y; i++){Y_axis(Y_direction);}
     for(int i = 0; i<rotation; i++){Twister(rotation_direction);}
 
-}
+}*/
+
 void Z_axis_and_Tweezer(){
      for(int i = 0;i<15; i++){Z_axis(clockwise);}  //down
      //Tweezer actions, units refer sequence
