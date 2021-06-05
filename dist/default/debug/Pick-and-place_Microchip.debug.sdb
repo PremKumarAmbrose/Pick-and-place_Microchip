@@ -35,11 +35,11 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 /opt/microchip/xc8/v2.32/pic/sources/c99/common/Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"9 /home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+"9 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
 [v _init_PORTS init_PORTS `(v  1 e 1 0 ]
 "27
 [v _init_interrupts init_interrupts `(v  1 e 1 0 ]
-"158 /home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
+"158 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _main main `(v  1 e 1 0 ]
 "218
 [v _X_axis X_axis `(v  1 e 1 0 ]
@@ -59,7 +59,7 @@
 [v _Z_axis_and_Tweezer Z_axis_and_Tweezer `(v  1 e 1 0 ]
 "429
 [v _Rx_char_USART Rx_char_USART `IIH(v  1 e 1 0 ]
-"17 /home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+"17 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
 [v _init_USART init_USART `(v  1 e 1 0 ]
 "44
 [v _serial_tx_char serial_tx_char `(v  1 e 1 0 ]
@@ -221,7 +221,7 @@
 ]
 [u S159 . 1 `S137 1 . 1 0 `S146 1 . 1 0 `S155 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES159  1 e 1 @4082 ]
-"88 /home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
+"88 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _New_char_RX New_char_RX `a  1 s 1 New_char_RX ]
 "91
 [v _testarray testarray `[30]uc  1 e 30 0 ]
@@ -246,7 +246,7 @@
 [v main@RX_Char RX_Char `uc  1 a 1 61 ]
 "208
 } 0
-"44 /home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+"44 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
 [v _serial_tx_char serial_tx_char `(v  1 e 1 0 ]
 {
 [v serial_tx_char@val val `uc  1 a 1 wreg ]
@@ -255,7 +255,7 @@
 [v serial_tx_char@val val `uc  1 a 1 0 ]
 "48
 } 0
-"336 /home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
+"336 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _pickandplace_sequence pickandplace_sequence `(v  1 e 1 0 ]
 {
 "413
@@ -322,12 +322,12 @@
 [v ms_delay@val val `ui  1 p 2 0 ]
 "332
 } 0
-"27 /home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+"27 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
 [v _init_interrupts init_interrupts `(v  1 e 1 0 ]
 {
 "34
 } 0
-"17 /home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+"17 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
 [v _init_USART init_USART `(v  1 e 1 0 ]
 {
 "42
@@ -419,12 +419,12 @@
 [v ___fltol@f1 f1 `d  1 p 4 51 ]
 "70
 } 0
-"9 /home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+"9 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
 [v _init_PORTS init_PORTS `(v  1 e 1 0 ]
 {
 "23
 } 0
-"429 /home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
+"429 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _Rx_char_USART Rx_char_USART `IIH(v  1 e 1 0 ]
 {
 "436

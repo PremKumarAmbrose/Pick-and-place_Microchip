@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$/tmp/xcXJnOBnC.o
+$/tmp/xcXgnighm.o
 idloc IDLOC 5 200000 200000 8 1
 init CODE 0 3E 3E 4 1
 text CODE 0 1F20 1F20 2 1
@@ -88,22 +88,22 @@ MEDIUMCONST 1F22-7FFF 1
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/debug/Pick-and-place_Microchip.debug.o
-8 intcode CODE >6572:/tmp/xcXIGinPH.s
-8 intcode CODE >429:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-C intcode CODE >431:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-30 intcode CODE >433:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-34 intcode CODE >434:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-36 intcode CODE >436:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1ED2 text19 CODE >9:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1ED4 text19 CODE >11:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1ED8 text19 CODE >12:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1EDC text19 CODE >13:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1EE0 text19 CODE >14:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1EE4 text19 CODE >17:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1EE8 text19 CODE >18:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1EEC text19 CODE >19:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1EEE text19 CODE >20:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1EF0 text19 CODE >23:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+8 intcode CODE >6572:/tmp/xcXgcAjoh.s
+8 intcode CODE >429:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+C intcode CODE >431:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+30 intcode CODE >433:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+34 intcode CODE >434:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+36 intcode CODE >436:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1ED2 text19 CODE >9:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1ED4 text19 CODE >11:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1ED8 text19 CODE >12:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1EDC text19 CODE >13:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1EE0 text19 CODE >14:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1EE4 text19 CODE >17:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1EE8 text19 CODE >18:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1EEC text19 CODE >19:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1EEE text19 CODE >20:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1EF0 text19 CODE >23:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
 1448 text18 CODE >43:/opt/microchip/xc8/v2.32/pic/sources/c99/common/fltol.c
 144A text18 CODE >47:/opt/microchip/xc8/v2.32/pic/sources/c99/common/fltol.c
 1464 text18 CODE >48:/opt/microchip/xc8/v2.32/pic/sources/c99/common/fltol.c
@@ -372,243 +372,243 @@ BB8 text14 CODE >237:/opt/microchip/xc8/v2.32/pic/sources/c99/common/sprcadd.c
 140C text12 CODE >34:/opt/microchip/xc8/v2.32/pic/sources/c99/common/roundf.c
 1430 text12 CODE >35:/opt/microchip/xc8/v2.32/pic/sources/c99/common/roundf.c
 1442 text12 CODE >36:/opt/microchip/xc8/v2.32/pic/sources/c99/common/roundf.c
-1E2C text11 CODE >17:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1E2E text11 CODE >33:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1E5A text11 CODE >35:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1E5C text11 CODE >36:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1E5E text11 CODE >37:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1E60 text11 CODE >38:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1E62 text11 CODE >39:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1E64 text11 CODE >40:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1E66 text11 CODE >41:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1E68 text11 CODE >42:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1F14 text10 CODE >27:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1F16 text10 CODE >29:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1F18 text10 CODE >30:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1F1A text10 CODE >31:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1F1C text10 CODE >34:/home/legion/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
-1D44 text9 CODE >327:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1D46 text9 CODE >330:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1D52 text9 CODE >331:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1D9C text9 CODE >332:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A94 text8 CODE >274:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A98 text8 CODE >275:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1AAC text8 CODE >276:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1AB0 text8 CODE >277:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1ABC text8 CODE >278:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1AC0 text8 CODE >279:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1ACC text8 CODE >280:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1AD0 text8 CODE >281:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1ADC text8 CODE >282:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1AE0 text8 CODE >283:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1AEC text8 CODE >284:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1AF0 text8 CODE >285:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1AFC text8 CODE >287:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B12 text8 CODE >288:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B16 text8 CODE >289:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B22 text8 CODE >290:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B26 text8 CODE >291:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B32 text8 CODE >292:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B36 text8 CODE >293:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B42 text8 CODE >294:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B46 text8 CODE >295:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B52 text8 CODE >296:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B56 text8 CODE >297:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B62 text8 CODE >300:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1CD6 text7 CODE >423:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1CD8 text7 CODE >424:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1D0C text7 CODE >426:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1D40 text7 CODE >427:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C22 text6 CODE >302:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C26 text6 CODE >303:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C3A text6 CODE >304:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C3E text6 CODE >305:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C4A text6 CODE >306:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C4E text6 CODE >307:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C5A text6 CODE >308:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C5E text6 CODE >309:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C6A text6 CODE >310:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C6E text6 CODE >311:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C7A text6 CODE >313:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C90 text6 CODE >314:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C94 text6 CODE >315:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1CA0 text6 CODE >316:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1CA4 text6 CODE >317:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1CB0 text6 CODE >318:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1CB4 text6 CODE >319:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1CC0 text6 CODE >320:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1CC4 text6 CODE >321:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1CD0 text6 CODE >324:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-19C0 text5 CODE >218:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-19C4 text5 CODE >219:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-19D8 text5 CODE >220:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-19DC text5 CODE >221:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-19E8 text5 CODE >222:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-19EC text5 CODE >223:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-19F8 text5 CODE >224:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-19FC text5 CODE >225:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A08 text5 CODE >226:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A0C text5 CODE >227:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A18 text5 CODE >228:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A1C text5 CODE >229:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A28 text5 CODE >231:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A3E text5 CODE >232:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A42 text5 CODE >233:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A4E text5 CODE >234:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A52 text5 CODE >235:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A5E text5 CODE >236:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A62 text5 CODE >237:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A6E text5 CODE >238:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A72 text5 CODE >239:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A7E text5 CODE >240:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A82 text5 CODE >241:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1A8E text5 CODE >244:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18EC text4 CODE >246:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18F0 text4 CODE >247:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1904 text4 CODE >248:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1908 text4 CODE >249:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1914 text4 CODE >250:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1918 text4 CODE >251:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1924 text4 CODE >252:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1928 text4 CODE >253:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1934 text4 CODE >254:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1938 text4 CODE >255:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1944 text4 CODE >256:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1948 text4 CODE >257:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1954 text4 CODE >259:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-196A text4 CODE >260:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-196E text4 CODE >261:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-197A text4 CODE >262:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-197E text4 CODE >263:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-198A text4 CODE >264:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-198E text4 CODE >265:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-199A text4 CODE >266:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-199E text4 CODE >267:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-19AA text4 CODE >268:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-19AE text4 CODE >269:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-19BA text4 CODE >272:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B68 text3 CODE >416:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1B6A text3 CODE >418:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1BA6 text3 CODE >419:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1BE2 text3 CODE >420:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1C1E text3 CODE >422:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-17CE text2 CODE >336:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-17D0 text2 CODE >340:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-17D8 text2 CODE >341:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-17E0 text2 CODE >342:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-17E8 text2 CODE >343:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-17F4 text2 CODE >344:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-17F8 text2 CODE >346:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-17FC text2 CODE >349:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1804 text2 CODE >350:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-180C text2 CODE >351:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1814 text2 CODE >352:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1818 text2 CODE >353:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-181C text2 CODE >354:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1820 text2 CODE >361:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1828 text2 CODE >362:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1830 text2 CODE >363:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1838 text2 CODE >364:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-183C text2 CODE >365:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1840 text2 CODE >366:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1844 text2 CODE >368:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1848 text2 CODE >371:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1850 text2 CODE >372:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1858 text2 CODE >373:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1860 text2 CODE >374:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1864 text2 CODE >375:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1868 text2 CODE >376:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-186C text2 CODE >377:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1870 text2 CODE >384:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1878 text2 CODE >385:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1880 text2 CODE >386:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1888 text2 CODE >387:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1890 text2 CODE >388:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1894 text2 CODE >389:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1898 text2 CODE >391:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-189C text2 CODE >394:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18A4 text2 CODE >395:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18AC text2 CODE >396:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18B4 text2 CODE >397:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18BC text2 CODE >398:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18C0 text2 CODE >399:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18C4 text2 CODE >400:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18C8 text2 CODE >407:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18D0 text2 CODE >408:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18D8 text2 CODE >409:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18E0 text2 CODE >410:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18E4 text2 CODE >411:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-18E8 text2 CODE >413:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1EF4 text1 CODE >44:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1EF8 text1 CODE >46:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1EFC text1 CODE >47:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-1F10 text1 CODE >48:/home/legion/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-157E text0 CODE >158:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-157E text0 CODE >160:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1580 text0 CODE >161:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1584 text0 CODE >163:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1588 text0 CODE >164:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-158C text0 CODE >165:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1590 text0 CODE >167:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1592 text0 CODE >168:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-15C4 text0 CODE >172:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-15DA text0 CODE >174:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-15DE text0 CODE >175:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-15E4 text0 CODE >176:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-15EA text0 CODE >177:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-15F0 text0 CODE >180:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-15F6 text0 CODE >181:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-15FC text0 CODE >182:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1602 text0 CODE >183:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1608 text0 CODE >184:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-160E text0 CODE >185:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1614 text0 CODE >186:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-161A text0 CODE >187:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1620 text0 CODE >188:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1626 text0 CODE >189:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-162C text0 CODE >190:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1632 text0 CODE >191:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1638 text0 CODE >192:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-163E text0 CODE >193:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1644 text0 CODE >195:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1650 text0 CODE >196:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1662 text0 CODE >197:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1668 text0 CODE >198:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-168E text0 CODE >200:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1694 text0 CODE >201:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-169A text0 CODE >204:/home/legion/MPLABXProjects/Pick-and-place_Microchip/main.c
-1E6C cinit CODE >1071:/tmp/xcXIGinPH.s
-1E6C cinit CODE >1073:/tmp/xcXIGinPH.s
-1E6C cinit CODE >1076:/tmp/xcXIGinPH.s
-1E6C cinit CODE >1132:/tmp/xcXIGinPH.s
-1E6E cinit CODE >1133:/tmp/xcXIGinPH.s
-1E70 cinit CODE >1134:/tmp/xcXIGinPH.s
-1E72 cinit CODE >1135:/tmp/xcXIGinPH.s
-1E74 cinit CODE >1136:/tmp/xcXIGinPH.s
-1E76 cinit CODE >1137:/tmp/xcXIGinPH.s
-1E78 cinit CODE >1138:/tmp/xcXIGinPH.s
-1E7C cinit CODE >1139:/tmp/xcXIGinPH.s
-1E80 cinit CODE >1140:/tmp/xcXIGinPH.s
-1E80 cinit CODE >1141:/tmp/xcXIGinPH.s
-1E82 cinit CODE >1142:/tmp/xcXIGinPH.s
-1E86 cinit CODE >1143:/tmp/xcXIGinPH.s
-1E88 cinit CODE >1144:/tmp/xcXIGinPH.s
-1E8A cinit CODE >1145:/tmp/xcXIGinPH.s
-1E8C cinit CODE >1149:/tmp/xcXIGinPH.s
-1E90 cinit CODE >1150:/tmp/xcXIGinPH.s
-1E92 cinit CODE >1151:/tmp/xcXIGinPH.s
-1E92 cinit CODE >1152:/tmp/xcXIGinPH.s
-1E94 cinit CODE >1153:/tmp/xcXIGinPH.s
-1E96 cinit CODE >1154:/tmp/xcXIGinPH.s
-1E98 cinit CODE >1160:/tmp/xcXIGinPH.s
-1E98 cinit CODE >1162:/tmp/xcXIGinPH.s
-1E9A cinit CODE >1163:/tmp/xcXIGinPH.s
-1E9C cinit CODE >1165:/tmp/xcXIGinPH.s
-1E9E cinit CODE >1166:/tmp/xcXIGinPH.s
-1EA0 cinit CODE >1167:/tmp/xcXIGinPH.s
-1EA2 cinit CODE >1168:/tmp/xcXIGinPH.s
-1EA4 cinit CODE >1169:/tmp/xcXIGinPH.s
-1EA6 cinit CODE >1170:/tmp/xcXIGinPH.s
+1E2C text11 CODE >17:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1E2E text11 CODE >33:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1E5A text11 CODE >35:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1E5C text11 CODE >36:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1E5E text11 CODE >37:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1E60 text11 CODE >38:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1E62 text11 CODE >39:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1E64 text11 CODE >40:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1E66 text11 CODE >41:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1E68 text11 CODE >42:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1F14 text10 CODE >27:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1F16 text10 CODE >29:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1F18 text10 CODE >30:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1F1A text10 CODE >31:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1F1C text10 CODE >34:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+1D44 text9 CODE >327:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1D46 text9 CODE >330:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1D52 text9 CODE >331:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1D9C text9 CODE >332:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A94 text8 CODE >274:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A98 text8 CODE >275:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1AAC text8 CODE >276:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1AB0 text8 CODE >277:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1ABC text8 CODE >278:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1AC0 text8 CODE >279:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1ACC text8 CODE >280:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1AD0 text8 CODE >281:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1ADC text8 CODE >282:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1AE0 text8 CODE >283:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1AEC text8 CODE >284:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1AF0 text8 CODE >285:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1AFC text8 CODE >287:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B12 text8 CODE >288:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B16 text8 CODE >289:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B22 text8 CODE >290:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B26 text8 CODE >291:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B32 text8 CODE >292:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B36 text8 CODE >293:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B42 text8 CODE >294:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B46 text8 CODE >295:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B52 text8 CODE >296:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B56 text8 CODE >297:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B62 text8 CODE >300:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1CD6 text7 CODE >423:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1CD8 text7 CODE >424:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1D0C text7 CODE >426:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1D40 text7 CODE >427:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C22 text6 CODE >302:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C26 text6 CODE >303:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C3A text6 CODE >304:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C3E text6 CODE >305:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C4A text6 CODE >306:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C4E text6 CODE >307:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C5A text6 CODE >308:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C5E text6 CODE >309:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C6A text6 CODE >310:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C6E text6 CODE >311:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C7A text6 CODE >313:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C90 text6 CODE >314:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C94 text6 CODE >315:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1CA0 text6 CODE >316:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1CA4 text6 CODE >317:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1CB0 text6 CODE >318:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1CB4 text6 CODE >319:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1CC0 text6 CODE >320:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1CC4 text6 CODE >321:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1CD0 text6 CODE >324:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+19C0 text5 CODE >218:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+19C4 text5 CODE >219:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+19D8 text5 CODE >220:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+19DC text5 CODE >221:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+19E8 text5 CODE >222:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+19EC text5 CODE >223:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+19F8 text5 CODE >224:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+19FC text5 CODE >225:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A08 text5 CODE >226:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A0C text5 CODE >227:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A18 text5 CODE >228:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A1C text5 CODE >229:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A28 text5 CODE >231:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A3E text5 CODE >232:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A42 text5 CODE >233:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A4E text5 CODE >234:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A52 text5 CODE >235:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A5E text5 CODE >236:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A62 text5 CODE >237:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A6E text5 CODE >238:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A72 text5 CODE >239:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A7E text5 CODE >240:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A82 text5 CODE >241:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1A8E text5 CODE >244:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18EC text4 CODE >246:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18F0 text4 CODE >247:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1904 text4 CODE >248:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1908 text4 CODE >249:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1914 text4 CODE >250:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1918 text4 CODE >251:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1924 text4 CODE >252:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1928 text4 CODE >253:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1934 text4 CODE >254:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1938 text4 CODE >255:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1944 text4 CODE >256:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1948 text4 CODE >257:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1954 text4 CODE >259:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+196A text4 CODE >260:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+196E text4 CODE >261:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+197A text4 CODE >262:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+197E text4 CODE >263:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+198A text4 CODE >264:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+198E text4 CODE >265:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+199A text4 CODE >266:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+199E text4 CODE >267:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+19AA text4 CODE >268:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+19AE text4 CODE >269:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+19BA text4 CODE >272:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B68 text3 CODE >416:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1B6A text3 CODE >418:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1BA6 text3 CODE >419:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1BE2 text3 CODE >420:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1C1E text3 CODE >422:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+17CE text2 CODE >336:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+17D0 text2 CODE >340:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+17D8 text2 CODE >341:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+17E0 text2 CODE >342:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+17E8 text2 CODE >343:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+17F4 text2 CODE >344:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+17F8 text2 CODE >346:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+17FC text2 CODE >349:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1804 text2 CODE >350:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+180C text2 CODE >351:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1814 text2 CODE >352:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1818 text2 CODE >353:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+181C text2 CODE >354:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1820 text2 CODE >361:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1828 text2 CODE >362:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1830 text2 CODE >363:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1838 text2 CODE >364:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+183C text2 CODE >365:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1840 text2 CODE >366:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1844 text2 CODE >368:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1848 text2 CODE >371:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1850 text2 CODE >372:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1858 text2 CODE >373:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1860 text2 CODE >374:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1864 text2 CODE >375:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1868 text2 CODE >376:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+186C text2 CODE >377:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1870 text2 CODE >384:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1878 text2 CODE >385:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1880 text2 CODE >386:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1888 text2 CODE >387:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1890 text2 CODE >388:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1894 text2 CODE >389:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1898 text2 CODE >391:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+189C text2 CODE >394:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18A4 text2 CODE >395:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18AC text2 CODE >396:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18B4 text2 CODE >397:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18BC text2 CODE >398:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18C0 text2 CODE >399:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18C4 text2 CODE >400:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18C8 text2 CODE >407:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18D0 text2 CODE >408:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18D8 text2 CODE >409:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18E0 text2 CODE >410:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18E4 text2 CODE >411:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+18E8 text2 CODE >413:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1EF4 text1 CODE >44:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1EF8 text1 CODE >46:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1EFC text1 CODE >47:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+1F10 text1 CODE >48:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
+157E text0 CODE >158:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+157E text0 CODE >160:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1580 text0 CODE >161:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1584 text0 CODE >163:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1588 text0 CODE >164:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+158C text0 CODE >165:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1590 text0 CODE >167:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1592 text0 CODE >168:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+15C4 text0 CODE >172:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+15DA text0 CODE >174:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+15DE text0 CODE >175:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+15E4 text0 CODE >176:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+15EA text0 CODE >177:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+15F0 text0 CODE >180:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+15F6 text0 CODE >181:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+15FC text0 CODE >182:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1602 text0 CODE >183:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1608 text0 CODE >184:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+160E text0 CODE >185:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1614 text0 CODE >186:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+161A text0 CODE >187:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1620 text0 CODE >188:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1626 text0 CODE >189:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+162C text0 CODE >190:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1632 text0 CODE >191:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1638 text0 CODE >192:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+163E text0 CODE >193:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1644 text0 CODE >195:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1650 text0 CODE >196:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1662 text0 CODE >197:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1668 text0 CODE >198:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+168E text0 CODE >200:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1694 text0 CODE >201:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+169A text0 CODE >204:/mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+1E6C cinit CODE >1071:/tmp/xcXgcAjoh.s
+1E6C cinit CODE >1073:/tmp/xcXgcAjoh.s
+1E6C cinit CODE >1076:/tmp/xcXgcAjoh.s
+1E6C cinit CODE >1132:/tmp/xcXgcAjoh.s
+1E6E cinit CODE >1133:/tmp/xcXgcAjoh.s
+1E70 cinit CODE >1134:/tmp/xcXgcAjoh.s
+1E72 cinit CODE >1135:/tmp/xcXgcAjoh.s
+1E74 cinit CODE >1136:/tmp/xcXgcAjoh.s
+1E76 cinit CODE >1137:/tmp/xcXgcAjoh.s
+1E78 cinit CODE >1138:/tmp/xcXgcAjoh.s
+1E7C cinit CODE >1139:/tmp/xcXgcAjoh.s
+1E80 cinit CODE >1140:/tmp/xcXgcAjoh.s
+1E80 cinit CODE >1141:/tmp/xcXgcAjoh.s
+1E82 cinit CODE >1142:/tmp/xcXgcAjoh.s
+1E86 cinit CODE >1143:/tmp/xcXgcAjoh.s
+1E88 cinit CODE >1144:/tmp/xcXgcAjoh.s
+1E8A cinit CODE >1145:/tmp/xcXgcAjoh.s
+1E8C cinit CODE >1149:/tmp/xcXgcAjoh.s
+1E90 cinit CODE >1150:/tmp/xcXgcAjoh.s
+1E92 cinit CODE >1151:/tmp/xcXgcAjoh.s
+1E92 cinit CODE >1152:/tmp/xcXgcAjoh.s
+1E94 cinit CODE >1153:/tmp/xcXgcAjoh.s
+1E96 cinit CODE >1154:/tmp/xcXgcAjoh.s
+1E98 cinit CODE >1160:/tmp/xcXgcAjoh.s
+1E98 cinit CODE >1162:/tmp/xcXgcAjoh.s
+1E9A cinit CODE >1163:/tmp/xcXgcAjoh.s
+1E9C cinit CODE >1165:/tmp/xcXgcAjoh.s
+1E9E cinit CODE >1166:/tmp/xcXgcAjoh.s
+1EA0 cinit CODE >1167:/tmp/xcXgcAjoh.s
+1EA2 cinit CODE >1168:/tmp/xcXgcAjoh.s
+1EA4 cinit CODE >1169:/tmp/xcXgcAjoh.s
+1EA6 cinit CODE >1170:/tmp/xcXgcAjoh.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -629,16 +629,16 @@ __Hspace_2 0 0 ABS 0 - dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hspace_4 60000E 0 ABS 0 - dist/default/debug/Pick-and-place_Microchip.debug.o
 __end_of_init_interrupts 1F20 0 CODE 0 text10 dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/debug/Pick-and-place_Microchip.debug.o
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcXJnOBnC.o
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst /tmp/xcXgnighm.o
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/debug/Pick-and-place_Microchip.debug.o
 __end_of_Z_axis_and_Tweezer 1D44 0 CODE 0 text7 dist/default/debug/Pick-and-place_Microchip.debug.o
 main@i 40 0 COMRAM 1 cstackCOMRAM dist/default/debug/Pick-and-place_Microchip.debug.o
 __Lsmallconst 600 0 SMALLCONST 0 smallconst dist/default/debug/Pick-and-place_Microchip.debug.o
 _LATC F8B 0 ABS 0 - dist/default/debug/Pick-and-place_Microchip.debug.o
-___sp 0 0 STACK 2 stack /tmp/xcXJnOBnC.o
+___sp 0 0 STACK 2 stack /tmp/xcXgnighm.o
 _main 157E 0 CODE 0 text0 dist/default/debug/Pick-and-place_Microchip.debug.o
 btemp 7A 0 COMRAM 1 temp dist/default/debug/Pick-and-place_Microchip.debug.o
-start 3E 0 CODE 0 init /tmp/xcXJnOBnC.o
+start 3E 0 CODE 0 init /tmp/xcXgnighm.o
 ___flmul@aexp 12 0 COMRAM 1 cstackCOMRAM dist/default/debug/Pick-and-place_Microchip.debug.o
 ___flmul@bexp 13 0 COMRAM 1 cstackCOMRAM dist/default/debug/Pick-and-place_Microchip.debug.o
 ___flmul@prod 14 0 COMRAM 1 cstackCOMRAM dist/default/debug/Pick-and-place_Microchip.debug.o
@@ -660,11 +660,11 @@ ttemp7 82 0 COMRAM 1 temp dist/default/debug/Pick-and-place_Microchip.debug.o
 __HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/debug/Pick-and-place_Microchip.debug.o
 _Z_axis_and_Tweezer 1CD6 0 CODE 0 text7 dist/default/debug/Pick-and-place_Microchip.debug.o
 _init_interrupts 1F14 0 CODE 0 text10 dist/default/debug/Pick-and-place_Microchip.debug.o
-__accesstop 80 0 ABS 0 - /tmp/xcXJnOBnC.o
-intlevel0 1F20 0 CODE 0 text /tmp/xcXJnOBnC.o
-intlevel1 1F20 0 CODE 0 text /tmp/xcXJnOBnC.o
-intlevel2 1F20 0 CODE 0 text /tmp/xcXJnOBnC.o
-intlevel3 1F20 0 CODE 0 text /tmp/xcXJnOBnC.o
+__accesstop 80 0 ABS 0 - /tmp/xcXgnighm.o
+intlevel0 1F20 0 CODE 0 text /tmp/xcXgnighm.o
+intlevel1 1F20 0 CODE 0 text /tmp/xcXgnighm.o
+intlevel2 1F20 0 CODE 0 text /tmp/xcXgnighm.o
+intlevel3 1F20 0 CODE 0 text /tmp/xcXgnighm.o
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/debug/Pick-and-place_Microchip.debug.o
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/debug/Pick-and-place_Microchip.debug.o
 wtemp8 7B 0 COMRAM 1 temp dist/default/debug/Pick-and-place_Microchip.debug.o
@@ -680,8 +680,8 @@ __Hclrtext 0 0 ABS 0 clrtext dist/default/debug/Pick-and-place_Microchip.debug.o
 __end_of_Z_axis 1B68 0 CODE 0 text8 dist/default/debug/Pick-and-place_Microchip.debug.o
 __pidataCOMRAM 1EAA 0 CODE 0 idataCOMRAM dist/default/debug/Pick-and-place_Microchip.debug.o
 __end_of_Fosc@main$F455 611 0 SMALLCONST 0 smallconst dist/default/debug/Pick-and-place_Microchip.debug.o
-___inthi_sp 0 0 STACK 2 stack /tmp/xcXJnOBnC.o
-___intlo_sp 0 0 STACK 2 stack /tmp/xcXJnOBnC.o
+___inthi_sp 0 0 STACK 2 stack /tmp/xcXgnighm.o
+___intlo_sp 0 0 STACK 2 stack /tmp/xcXgnighm.o
 __LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/debug/Pick-and-place_Microchip.debug.o
 __end_of___flge 17CE 0 CODE 0 text17 dist/default/debug/Pick-and-place_Microchip.debug.o
@@ -715,7 +715,7 @@ __HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/debug/Pick-and-place_Microchip.de
 _TRISCbits F94 0 ABS 0 - dist/default/debug/Pick-and-place_Microchip.debug.o
 ___rparam_used 1 0 ABS 0 - dist/default/debug/Pick-and-place_Microchip.debug.o
 _testarray 44 0 COMRAM 1 dataCOMRAM dist/default/debug/Pick-and-place_Microchip.debug.o
-isa$xinst 0 0 ABS 0 - /tmp/xcXJnOBnC.o
+isa$xinst 0 0 ABS 0 - /tmp/xcXgnighm.o
 __end_of_roundf 1448 0 CODE 0 text12 dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hbank0 0 0 ABS 0 bank0 dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hbank1 0 0 ABS 0 bank1 dist/default/debug/Pick-and-place_Microchip.debug.o
@@ -747,7 +747,7 @@ _roundf$1150 22 0 COMRAM 1 cstackCOMRAM dist/default/debug/Pick-and-place_Microc
 _Y_axis 18EC 0 CODE 0 text4 dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hbigram 0 0 ABS 0 bigram dist/default/debug/Pick-and-place_Microchip.debug.o
-__smallconst 600 0 SMALLCONST 0 smallconst /tmp/xcXJnOBnC.o
+__smallconst 600 0 SMALLCONST 0 smallconst /tmp/xcXgnighm.o
 _Z_axis 1A94 0 CODE 0 text8 dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hcomram 0 0 ABS 0 comram dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hconfig 30000E 0 CONFIG 4 config dist/default/debug/Pick-and-place_Microchip.debug.o
@@ -820,10 +820,10 @@ _pickandplace_sequence 17CE 0 CODE 0 text2 dist/default/debug/Pick-and-place_Mic
 __Lintentry 0 0 ABS 0 intentry dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hramtop 600 0 RAM 0 ramtop dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hrparam 0 0 COMRAM 1 rparam dist/default/debug/Pick-and-place_Microchip.debug.o
-__cntErrataNOP_/tmp/xcXJnOBnC.o 1 0 ABS 0 - /tmp/xcXJnOBnC.o
 __activetblptr 1 0 ABS 0 - dist/default/debug/Pick-and-place_Microchip.debug.o
 __Hstruct 0 0 COMRAM 1 struct dist/default/debug/Pick-and-place_Microchip.debug.o
 __size_of___flge 0 0 ABS 0 - dist/default/debug/Pick-and-place_Microchip.debug.o
+__cntErrataNOP_/tmp/xcXgnighm.o 1 0 ABS 0 - /tmp/xcXgnighm.o
 __Htext10 0 0 ABS 0 text10 dist/default/debug/Pick-and-place_Microchip.debug.o
 __Htext11 0 0 ABS 0 text11 dist/default/debug/Pick-and-place_Microchip.debug.o
 __Htext12 0 0 ABS 0 text12 dist/default/debug/Pick-and-place_Microchip.debug.o
@@ -861,10 +861,10 @@ Z_axis_and_Tweezer@i_504 A 0 COMRAM 1 cstackCOMRAM dist/default/debug/Pick-and-p
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/debug/Pick-and-place_Microchip.debug.o
 main@i_480 42 0 COMRAM 1 cstackCOMRAM dist/default/debug/Pick-and-place_Microchip.debug.o
 __Lfardata 0 0 FARRAM 0 fardata dist/default/debug/Pick-and-place_Microchip.debug.o
-isa$std 1 0 ABS 0 - /tmp/xcXJnOBnC.o
+isa$std 1 0 ABS 0 - /tmp/xcXgnighm.o
 __size_of_Rx_char_USART 0 0 ABS 0 - dist/default/debug/Pick-and-place_Microchip.debug.o
-stackhi 5FF 0 ABS 0 - /tmp/xcXJnOBnC.o
-stacklo 80 0 ABS 0 - /tmp/xcXJnOBnC.o
+stackhi 5FF 0 ABS 0 - /tmp/xcXgnighm.o
+stacklo 80 0 ABS 0 - /tmp/xcXgnighm.o
 __Lintcode 8 0 CODE 0 intcode dist/default/debug/Pick-and-place_Microchip.debug.o
 __Lintret 0 0 ABS 0 intret dist/default/debug/Pick-and-place_Microchip.debug.o
 __Lirdata 0 0 CODE 0 irdata dist/default/debug/Pick-and-place_Microchip.debug.o
@@ -918,7 +918,7 @@ __Ltext16 0 0 ABS 0 text16 dist/default/debug/Pick-and-place_Microchip.debug.o
 __Ltext17 0 0 ABS 0 text17 dist/default/debug/Pick-and-place_Microchip.debug.o
 __Ltext18 0 0 ABS 0 text18 dist/default/debug/Pick-and-place_Microchip.debug.o
 __Ltext19 0 0 ABS 0 text19 dist/default/debug/Pick-and-place_Microchip.debug.o
-__ramtop 600 0 RAM 0 ramtop /tmp/xcXJnOBnC.o
+__ramtop 600 0 RAM 0 ramtop /tmp/xcXgnighm.o
 _init_PORTS 1ED2 0 CODE 0 text19 dist/default/debug/Pick-and-place_Microchip.debug.o
 _init_USART 1E2C 0 CODE 0 text11 dist/default/debug/Pick-and-place_Microchip.debug.o
 __Lpowerup 3E 0 CODE 0 powerup dist/default/debug/Pick-and-place_Microchip.debug.o

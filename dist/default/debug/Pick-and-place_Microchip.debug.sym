@@ -105,7 +105,6 @@ pickandplace@i 9 0 COMRAM 1
 _lenth_of_array 6A 0 COMRAM 1
 __end_of___fltol 157E 0 CODE 0
 __end_of_desired_BaudRate@main$F457 609 0 SMALLCONST 0
-__cntErrataNOP_/tmp/xcXJnOBnC.o 1 0 ABS 0
 __end_of___flsub 1DEA 0 CODE 0
 __size_of_init_interrupts 0 0 ABS 0
 __end_of___flge 17CE 0 CODE 0
@@ -317,6 +316,7 @@ __ptext19 1ED2 0 CODE 0
 _displacement_X 74 0 COMRAM 1
 ___intlo_sp 0 0 STACK 2
 _INTCONbits FF2 0 ABS 0
+__cntErrataNOP_/tmp/xcXgnighm.o 1 0 ABS 0
 __HidataCOMRAM 0 0 ABS 0
 __LidataCOMRAM 0 0 ABS 0
 __pidataCOMRAM 1EAA 0 CODE 0
@@ -374,7 +374,7 @@ text14 616 1F21 CODE 616 0
 %locals
 dist/default/debug/Pick-and-place_Microchip.debug.o
 /opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h
-/tmp/xcXIGinPH.s
+/tmp/xcXgcAjoh.s
 1071 1E6C 0 CODE 0
 1073 1E6C 0 CODE 0
 1076 1E6C 0 CODE 0
@@ -910,7 +910,7 @@ init_PIC.c
 19 1EEC 0 CODE 0
 20 1EEE 0 CODE 0
 23 1EF0 0 CODE 0
-/tmp/xcXIGinPH.s
+/tmp/xcXgcAjoh.s
 6572 8 0 CODE 0
 main.c
 429 8 0 CODE 0

@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/opt/microchip/xc8/v2.32/pic/dat/en_msgs.txt -cn \
   -h+dist/default/debug/Pick-and-place_Microchip.debug.sym \
   --cmf=dist/default/debug/Pick-and-place_Microchip.debug.cmf -z -Q18F452 \
-  -o/tmp/xcXeloihD --defsym=__MPLAB_BUILD=1 \
+  -o/tmp/xcXFmGmHf --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/debug/Pick-and-place_Microchip.debug.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=080h-05FFh -pstack=STACK \
   -ACODE=00h-03FFFhx2 -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
@@ -22,7 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/xcXJnOBnC.o dist/default/debug/Pick-and-place_Microchip.debug.o 
+  /tmp/xcXgnighm.o dist/default/debug/Pick-and-place_Microchip.debug.o 
 
 Object code version is 3.11
 
@@ -31,7 +31,7 @@ Machine type is 18F452
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/xcXJnOBnC.o
+/tmp/xcXgnighm.o
                 idloc                            200000   200000        8        0       5
                 config                           300000   300000        E        0       4
                 text                               1F20     1F20        2      30B       0
@@ -416,7 +416,7 @@ ___rparam_used                                                     (abs)        
 ___sp                                                              stack        000000
 __accesstop                                                        (abs)        000080
 __activetblptr                                                     (abs)        000001
-__cntErrataNOP_/tmp/xcXJnOBnC.o                                    (abs)        000001
+__cntErrataNOP_/tmp/xcXgnighm.o                                    (abs)        000001
 __cntErrataNOP_dist/default/debug/Pick-and-place_Microchip.debug.o (abs)        000145
 __end_of_Fosc                                                      smallconst   000615
 __end_of_Fosc@main$F455                                            smallconst   000611
