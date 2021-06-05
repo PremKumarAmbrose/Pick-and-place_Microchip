@@ -70,19 +70,17 @@
 
 // CONFIG7H
 #pragma config EBTRB = OFF      // Boot Block Table Read Protection bit (Boot Block (000000-0001FFh) not protected from Table Reads executed in other blocks)
- 
 #include <stdio.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <math.h>
 #include <xc.h>
 #include "init_PIC.h"
-#include "serial_rs232.h"  
+#include "serial_rs232.h"
 
 
 // Serial & Timing Parameters
 static double const Fosc              = 4000000;// Oscillator Frequency in Hz
-
 static double       Tosc              = 1/Fosc; // Tosc in sec
 static double const desired_BaudRate  = 9600;    // Desired Baud Rate in bps
 static _Bool   New_char_RX = false;
@@ -118,8 +116,12 @@ char X_direction, Y_direction, rotation_direction;
 #define Pick_Angle_3 90      //Pick angle of B
 #define Place_Angle_3 270    //Place angle of B
 
+#define X_diff 0
+#define Y_diff 0
+#define angle_diff 0
 
 
+#define abs(x) ((x) > 0 ? (x) : -(x))
 
 
 
@@ -144,7 +146,7 @@ void Z_axis (char direction);
 void Twister (char direction);
 void Tweezer (void);
 void ms_delay(unsigned int val);
-void pickandplace_sequence(void);
+void pickandplace_loop(void);
 void __interrupt() Rx_char_USART (void);
 void pickandplace(void);
 void Z_axis_and_Tweezer(void);
@@ -333,12 +335,12 @@ void ms_delay(unsigned int val)
 
 
 
-void pickandplace_sequence(void)
+void pickandplace_1(void)
 {
     //// Component C //////////////////////////////////
     //Tweezer open 5 units wide
-    displacement_X = (X_Pick_1);
-    displacement_Y = (Y_Pick_1);
+    displacement_X = abs(X_Pick_1-X_diff);
+    displacement_Y = abs(Y_Pick_1-Y_diff);
     rotation  = 0;
     X_direction = Y_direction = rotation_direction = clockwise;
     pickandplace();
@@ -346,21 +348,24 @@ void pickandplace_sequence(void)
         Z_axis_and_Tweezer();
         //Tweezer close 4 units wide
 
-    displacement_X = (X_Place_1-X_Pick_1);
-    displacement_Y = (Y_Place_1-Y_Pick_1);
-    rotation = ((360-Place_Angle_1)/3.6);
+    X_diff = X_Pick_1;
+    Y_diff = Y_Pick_1
+
+    displacement_X = abs(X_Place_1-X_diff);
+    displacement_Y = abs(Y_Place_1-Y_diff);
+    rotation = abs((360-Place_Angle_1)/3.6);
     rotation_direction= anti_clockwise;
     pickandplace();
         Z_axis_and_Tweezer();
         //Tweezer open 5 units wide
 
+}
 
-
-
+void pickandplace_2(void)
     //// Component A //////////////////////////////////
-    displacement_X = (X_Place_1-X_Pick_2);
-    displacement_Y = (Y_Place_1-Y_Pick_2);
-    rotation = ((Place_Angle_1-Pick_Angle_2)/3.6);
+    displacement_X = abs(X_Pick_2-X_diff);
+    displacement_Y = abs(Y_Pick_2-Y_diff);
+    rotation = abs((Place_Angle_1-Pick_Angle_2)/3.6);
     X_direction = anti_clockwise;
     rotation_direction= clockwise;
     pickandplace();
@@ -368,9 +373,9 @@ void pickandplace_sequence(void)
         Z_axis_and_Tweezer();
         //Tweezer close 4 units wide
 
-    displacement_X = (X_Pick_2-X_Place_2);
-    displacement_Y = (Y_Pick_2-Y_Place_2);
-    rotation = ((Pick_Angle_2-Place_Angle_2)/3.6);
+    displacement_X = abs(X_Place_2-X_diff);
+    displacement_Y = abs(Y_Place_2-Y_diff);
+    rotation = abs((Pick_Angle_2-Place_Angle_2)/3.6);
     X_direction = clockwise;
     Y_direction = anti_clockwise;
     pickandplace();
@@ -379,11 +384,11 @@ void pickandplace_sequence(void)
 
     
     
-
+void pickandplace_3(void);
     //// Component B //////////////////////////////////
-    displacement_X = (X_Place_2-X_Pick_3);
-    displacement_Y = (Y_Place_2-Y_Pick_3);
-    rotation = ((Place_Angle_2-Pick_Angle_3)/3.6);
+    displacement_X = abs(X_Pick_3-X_diff);
+    displacement_Y = abs(Y_Pick_3-Y_diff);
+    rotation = abs((Place_Angle_2-Pick_Angle_3)/3.6);
     X_direction = rotation_direction= anti_clockwise;
     Y_direction = clockwise;
     pickandplace();
@@ -391,9 +396,9 @@ void pickandplace_sequence(void)
         Z_axis_and_Tweezer();
         //Tweezer close 2 units wide
 
-    displacement_X = (X_Pick_3-X_Place_3);
-    displacement_Y = (Y_Pick_3-Y_Place_3);
-    rotation = ((Pick_Angle_3-Place_Angle_3)/3.6);
+    displacement_X = abs(X_Place_3-X_diff);
+    displacement_Y = abs(Y_Place_3-Y_diff);
+    rotation = abs((Pick_Angle_3-Place_Angle_3)/3.6);
     X_direction = rotation_direction= clockwise;
     Y_direction = anti_clockwise;
     pickandplace();
@@ -402,7 +407,7 @@ void pickandplace_sequence(void)
      
 
 
-    
+void initial_position(void);    
     ////Return to Initial position //////////////////////////////////
     displacement_X = (X_Place_3);
     displacement_Y = (Y_Place_3);
@@ -411,7 +416,6 @@ void pickandplace_sequence(void)
     pickandplace();
 
 }
-
 
 void pickandplace(){
 
@@ -434,3 +438,26 @@ void __interrupt() Rx_char_USART(void)  // Interrupt function
             PIR1bits.RCIF = 0;          // clear this interrupt condition
         }                               // end IF
 }                                       // end function
+
+
+void start_up_menu(void){
+
+    const char Menu[]="1. Default Sequence\n2. Change sequence\n3. Add new component\n4.Remove a component";
+    for(int i =0;Menu[i]!='\0';i++)
+        serial_tx_char(Menu[i]);
+        if(New_char_RX){
+            RX_Char = RCREG;
+            Switch(RX_Char){
+                case '1':  pickandplace_1(); pickandplace_2(); pickandplace_3();//function
+                    break;
+                case '2':  change_sequence();//change_sequence
+                    break;
+                case '3':  add_component();//add new component
+                    break;
+                case '4':  remove_component();//remove a component
+                    break;
+
+            }
+
+        }
+}
