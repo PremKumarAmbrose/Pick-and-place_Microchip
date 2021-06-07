@@ -7,7 +7,7 @@
 # 1 "/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 25 "main.c"
+# 24 "main.c"
 #pragma config OSC = XT
 #pragma config OSCS = OFF
 
@@ -56,7 +56,6 @@
 
 
 #pragma config EBTRB = OFF
-
 
 # 1 "/opt/microchip/xc8/v2.32/pic/include/c99/stdio.h" 1 3
 
@@ -214,7 +213,7 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 74 "main.c" 2
+# 72 "main.c" 2
 
 # 1 "/opt/microchip/xc8/v2.32/pic/include/c99/stdint.h" 1 3
 # 22 "/opt/microchip/xc8/v2.32/pic/include/c99/stdint.h" 3
@@ -300,10 +299,66 @@ typedef int32_t int_fast32_t;
 typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 145 "/opt/microchip/xc8/v2.32/pic/include/c99/stdint.h" 2 3
-# 75 "main.c" 2
+# 73 "main.c" 2
+
+# 1 "/opt/microchip/xc8/v2.32/pic/include/c99/string.h" 1 3
+# 25 "/opt/microchip/xc8/v2.32/pic/include/c99/string.h" 3
+# 1 "/opt/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 1 3
+# 411 "/opt/microchip/xc8/v2.32/pic/include/c99/bits/alltypes.h" 3
+typedef struct __locale_struct * locale_t;
+# 26 "/opt/microchip/xc8/v2.32/pic/include/c99/string.h" 2 3
+
+void *memcpy (void *restrict, const void *restrict, size_t);
+void *memmove (void *, const void *, size_t);
+void *memset (void *, int, size_t);
+int memcmp (const void *, const void *, size_t);
+void *memchr (const void *, int, size_t);
+
+char *strcpy (char *restrict, const char *restrict);
+char *strncpy (char *restrict, const char *restrict, size_t);
+
+char *strcat (char *restrict, const char *restrict);
+char *strncat (char *restrict, const char *restrict, size_t);
+
+int strcmp (const char *, const char *);
+int strncmp (const char *, const char *, size_t);
+
+int strcoll (const char *, const char *);
+size_t strxfrm (char *restrict, const char *restrict, size_t);
+
+char *strchr (const char *, int);
+char *strrchr (const char *, int);
+
+size_t strcspn (const char *, const char *);
+size_t strspn (const char *, const char *);
+char *strpbrk (const char *, const char *);
+char *strstr (const char *, const char *);
+char *strtok (char *restrict, const char *restrict);
+
+size_t strlen (const char *);
+
+char *strerror (int);
+# 65 "/opt/microchip/xc8/v2.32/pic/include/c99/string.h" 3
+char *strtok_r (char *restrict, const char *restrict, char **restrict);
+int strerror_r (int, char *, size_t);
+char *stpcpy(char *restrict, const char *restrict);
+char *stpncpy(char *restrict, const char *restrict, size_t);
+size_t strnlen (const char *, size_t);
+char *strdup (const char *);
+char *strndup (const char *, size_t);
+char *strsignal(int);
+char *strerror_l (int, locale_t);
+int strcoll_l (const char *, const char *, locale_t);
+size_t strxfrm_l (char *restrict, const char *restrict, size_t, locale_t);
+
+
+
+
+void *memccpy (void *restrict, const void *restrict, int, size_t);
+# 74 "main.c" 2
 
 # 1 "/opt/microchip/xc8/v2.32/pic/include/c99/stdbool.h" 1 3
-# 76 "main.c" 2
+# 75 "main.c" 2
 
 # 1 "/opt/microchip/xc8/v2.32/pic/include/c99/math.h" 1 3
 # 15 "/opt/microchip/xc8/v2.32/pic/include/c99/math.h" 3
@@ -677,7 +732,7 @@ double jn(int, double);
 double y0(double);
 double y1(double);
 double yn(int, double);
-# 77 "main.c" 2
+# 76 "main.c" 2
 
 # 1 "/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
 # 18 "/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 3
@@ -4455,35 +4510,57 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
-# 78 "main.c" 2
+# 77 "main.c" 2
 
 # 1 "./init_PIC.h" 1
 # 77 "./init_PIC.h"
 void init_PORTS(void);
 void init_interrupts(void);
-# 79 "main.c" 2
+# 78 "main.c" 2
 
 # 1 "./serial_rs232.h" 1
 # 80 "./serial_rs232.h"
 void init_USART(void);
 void serial_tx_char(unsigned char val);
-# 80 "main.c" 2
+# 79 "main.c" 2
 
 
 
 
 static double const Fosc = 4000000;
-
 static double Tosc = 1/Fosc;
 static double const desired_BaudRate = 9600;
 static _Bool New_char_RX = 0;
 int lenth_of_array = 30;
 char testarray [30];
-char testarray[] = " ";
+char sequence[4]="CAB";
 
 int displacement_X, displacement_Y, rotation;
-char X_direction, Y_direction, rotation_direction;
-# 140 "main.c"
+
+int X_Pick, X_Place, Y_Pick, Y_Place, Pick_Angle, Place_Angle, X_diff=0, Y_diff=0, Angle_diff=0;
+char X_dir, Y_dir, Rot_dir;
+unsigned char RX_Char;
+volatile unsigned char input_str[]=" ";
+# 155 "main.c"
+int X_Pick_D;
+int Y_Pick_D;
+int Pick_Angle_D;
+
+
+
+
+int X_Place_D;
+int Y_Place_D;
+int Place_Angle_D;
+
+
+
+
+
+int X_diff;
+int Y_diff;
+int angle_diff;
+# 191 "main.c"
 void system_init (void);
 void X_axis (char direction);
 void Y_axis (char direction);
@@ -4491,10 +4568,16 @@ void Z_axis (char direction);
 void Twister (char direction);
 void Tweezer (void);
 void ms_delay(unsigned int val);
-void pickandplace_sequence(void);
+int pick_and_place(char Componnt);
+void return_to_initial(void);
 void __attribute__((picinterrupt(("")))) Rx_char_USART (void);
-void pickandplace(void);
 void Z_axis_and_Tweezer(void);
+int direct(int prev, int next);
+void print_string(char strng[]);
+void start_up_menu(void);
+void change_sequence(void);
+void add_component(void);
+void remove_component(void);
 
 
 
@@ -4505,55 +4588,167 @@ void Z_axis_and_Tweezer(void);
 void main(void)
 {
     unsigned char RX_Char = ' ';
-    unsigned char test_C = ' ';
 
     init_PORTS();
     init_USART();
     init_interrupts();
 
     (INTCONbits.GIE = 1);
-    for(int i=0;i<2;i++){pickandplace_sequence();}
+    while(1){
+    start_up_menu();
+    }
+}
+
+
+
+
+
+void start_up_menu(void){
+
+
+
+    print_string("\n1. Default Sequence\n2. Change sequence\n3. Add new component\n4. Remove a component");
+
+
 
     while(1){
+        if(New_char_RX){
 
-        if (New_char_RX)
-        {
-            RX_Char = RCREG;
-            serial_tx_char(RX_Char);
-            serial_tx_char('\r');
-            serial_tx_char('\n');
+            const char ip = input_str[0];
 
+            New_char_RX=0;
+            switch(ip){
+                case '1':
+                while(!New_char_RX){
+                    pick_and_place('C');
+                    pick_and_place('A');
+                    pick_and_place('B');
 
-            serial_tx_char('H');
-            serial_tx_char('e');
-            serial_tx_char('l');
-            serial_tx_char('l');
-            serial_tx_char('o');
-            serial_tx_char(' ');
-            serial_tx_char('W');
-            serial_tx_char('o');
-            serial_tx_char('r');
-            serial_tx_char('l');
-            serial_tx_char('d');
-            serial_tx_char('!');
-            serial_tx_char('\r');
-            serial_tx_char('\n');
-
-            for(int i=0; i<lenth_of_array; i++){
-                test_C = testarray[i];
-                serial_tx_char(test_C);
+                    sequence[0]="C";
+                    sequence[1]="A";
+                    sequence[2]="B";
                 }
 
-            serial_tx_char('\r');
-            serial_tx_char('\n');
+                    break;
+                case '2': change_sequence();
+                    break;
+                case '3': add_component();
+                    break;
+                case '4': remove_component();
+                    break;
+
+            }
+            New_char_RX=0;
+            break;
+        }}
+}
+void change_sequence(void){
+
+    print_string("The current sequence is: ");
 
 
-            New_char_RX = 0;
+    int j = 0;
+    do{
+        serial_tx_char(sequence[j]);
+
+    }while(sequence[j++] != ((void*)0));
+    print_string("Please give the new sequence as input\r");
+
+
+    int i = 0;
+    while(1) {
+        if(New_char_RX){
+            print_string("\nThe New sequence is: ");
+            do{
+                sequence[i]=input_str[i];
+                serial_tx_char(sequence[i]);
+            }while(input_str[i++]!='\n');
+            New_char_RX=0;
+            break;
         }
     }
 
+    while(!New_char_RX){
+        int i =0;
+        do{
+            pick_and_place(sequence[i]);
+        }while(sequence[i++]!='\n');
+    }
+
 }
-# 218 "main.c"
+
+void add_component(void){
+    print_string("\nEnter the pick position X:");
+    while(1){if(New_char_RX){X_Pick_D=atoi(input_str); New_char_RX=0; break;}}
+    print_string("\nEnter the pick position Y:");
+    while(1){if(New_char_RX){Y_Pick_D=(atoi(input_str));New_char_RX=0;break;}}
+    print_string("\nEnter the pick orientation:");
+    while(1){if(New_char_RX){Pick_Angle_D=(atoi(input_str));New_char_RX=0;break;}}
+    print_string("\nEnter the place position X:");
+    while(1){if(New_char_RX){X_Place_D=(atoi(input_str));New_char_RX=0;break;}}
+    print_string("\nEnter the place position Y:");
+    while(1){if(New_char_RX){Y_Place_D=(atoi(input_str));New_char_RX=0;break;}};
+    print_string("\nEnter the place orientation:");
+    while(1){if(New_char_RX){Place_Angle_D=(atoi(input_str));New_char_RX=0;break;}}
+    char add_to_sequence[]="D";
+    strncat(sequence, add_to_sequence,1);
+    print_string("\nThe current sequence is: ");
+    print_string(sequence);
+
+    while(!New_char_RX){
+        int i =0;
+        do{
+
+            pick_and_place(sequence[i]);
+
+        }while(sequence[i++]!='\n');
+    }
+}
+
+void remove_component(void){
+    print_string("\nWhich component would you like to remove from the  sequence?\n");
+    while(1){
+    if(New_char_RX){
+        char rm_comp = input_str[0];
+        char *ptr;
+        int indxToDel;
+        ptr=strrchr(sequence,rm_comp);
+        if(ptr != ((void*)0)){
+            indxToDel = ptr - sequence;
+            memmove(&sequence[indxToDel], &sequence[indxToDel + 1], strlen(sequence) - indxToDel);
+            break;
+        }
+        else{
+            print_string("\ncomponent is not in the sequence. \nTry selecting another component\n");
+            New_char_RX=0;
+        }
+    }
+    }
+    print_string("\nThe new sequence is: ");
+    print_string(sequence);
+    New_char_RX=0;
+    while(!New_char_RX){
+        int i =0;
+        for(int i=0; i<strlen(sequence);i++){
+
+            serial_tx_char(sequence[i]);
+            pick_and_place(sequence[i]);
+        }
+
+
+
+
+    }
+}
+
+
+
+void print_string(char strng[]){
+    for(int i =0; strng[i]!='\0'; i++){
+        serial_tx_char(strng[i]);
+    }
+}
+
 void X_axis (char direction){
     if (direction == 1){
         PORTB = 0b00000011;
@@ -4662,7 +4857,6 @@ void Twister (char direction){
 
 }
 
-
 void ms_delay(unsigned int val)
 {
      unsigned int i,j;
@@ -4670,95 +4864,96 @@ void ms_delay(unsigned int val)
             for(j=0;j<1650;j++);
 }
 
-
-
-void pickandplace_sequence(void)
+int pick_and_place(char Componnt)
 {
 
 
-    displacement_X = (3);
-    displacement_Y = (4);
-    rotation = 0;
-    X_direction = Y_direction = rotation_direction = 0;
-    pickandplace();
+    if(Componnt=='A')
+    {
+        X_Pick=3;
+        Y_Pick=4;
+        Pick_Angle=0;
+
+        X_Place=17;
+        Y_Place=5;
+        Place_Angle=270;
+    }
+    else if(Componnt=='B'){
+        X_Pick=3;
+        Y_Pick=10;
+        Pick_Angle=90;
+
+        X_Place=10;
+        Y_Place=5;
+        Place_Angle=180;
+    }
+    else if(Componnt=='C'){
+        X_Pick=3;
+        Y_Pick=15;
+        Pick_Angle=90;
+
+        X_Place=16;
+        Y_Place=14;
+        Place_Angle=270;
+    }
+    else if(Componnt=='D'){
+        X_Pick=X_Pick_D;
+        Y_Pick=Y_Pick_D;
+        Pick_Angle=Pick_Angle_D;
+
+        X_Place=X_Place_D;
+        Y_Place=Y_Place_D;
+        Place_Angle=Place_Angle_D;
+    }
+    else{
+
+    }
+
+    X_dir=direct(X_diff,X_Pick);
+    Y_dir=direct(Y_diff, Y_Pick);
+    Rot_dir = direct(Angle_diff,Pick_Angle);
+    for(int i = 0; i<(((X_Pick-X_diff) > 0 ? (X_Pick-X_diff) : -(X_Pick-X_diff))); i++){X_axis(X_dir);}
+    for(int i = 0; i<(((Y_Pick-Y_diff) > 0 ? (Y_Pick-Y_diff) : -(Y_Pick-Y_diff))); i++){Y_axis(Y_dir);}
+    for(int i = 0; i<((Angle_diff-Pick_Angle)/3.6); i++){Twister(Rot_dir);}
 
         Z_axis_and_Tweezer();
 
 
-    displacement_X = (17 -3);
-    displacement_Y = (5 -4);
-    rotation = ((360-270)/3.6);
-    rotation_direction= 1;
-    pickandplace();
+
+
+    X_dir=direct(X_Pick,X_Place);
+    Y_dir=direct(Y_Pick,Y_Place);
+    Rot_dir=direct(Pick_Angle,Place_Angle);
+    for(int i = 0; i<(((X_Place-X_diff) > 0 ? (X_Place-X_diff) : -(X_Place-X_diff))); i++){X_axis(X_dir);}
+    for(int i = 0; i<(((Y_Place-Y_diff) > 0 ? (Y_Place-Y_diff) : -(Y_Place-Y_diff))); i++){Y_axis(Y_dir);}
+    for(int i = 0; i<((Pick_Angle-Place_Angle)/3.6); i++){Twister(Rot_dir);}
         Z_axis_and_Tweezer();
 
+    Angle_diff= Place_Angle;
+    X_diff = X_Place;
+    Y_diff = Y_Place;
 
-
-
-
-
-    displacement_X = (17 -3);
-    displacement_Y = (5 -10);
-    rotation = ((270 -90)/3.6);
-    X_direction = 1;
-    rotation_direction= 0;
-    pickandplace();
-
-        Z_axis_and_Tweezer();
-
-
-    displacement_X = (3 -10);
-    displacement_Y = (10 -5);
-    rotation = ((90 -180)/3.6);
-    X_direction = 0;
-    Y_direction = 1;
-    pickandplace();
-        Z_axis_and_Tweezer();
-
-
-
-
-
-
-    displacement_X = (10 -3);
-    displacement_Y = (5 -15);
-    rotation = ((180 -90)/3.6);
-    X_direction = rotation_direction= 1;
-    Y_direction = 0;
-    pickandplace();
-
-        Z_axis_and_Tweezer();
-
-
-    displacement_X = (3 -16);
-    displacement_Y = (15 -14);
-    rotation = ((90 -270)/3.6);
-    X_direction = rotation_direction= 0;
-    Y_direction = 1;
-    pickandplace();
-        Z_axis_and_Tweezer();
-
-
-
-
-
-
-    displacement_X = (16);
-    displacement_Y = (14);
-    rotation = 0;
-    X_direction = 1;
-    pickandplace();
 
 }
 
+void return_to_initial(void){
 
-void pickandplace(){
-
-    for(int i = 0; i<displacement_X; i++){X_axis(X_direction);}
-    for(int i = 0; i<displacement_Y; i++){Y_axis(Y_direction);}
-    for(int i = 0; i<rotation; i++){Twister(rotation_direction);}
+    for(int i = 0; i<X_diff; i++){X_axis(1);}
+    for(int i = 0; i<Y_diff; i++){Y_axis(1);}
+    for(int i = 0; i<Angle_diff; i++){Twister(1);}
 
 }
+
+int direct(prev,next){
+    if(prev<next){
+        return 0;
+    }
+    else{
+        return 1;
+    }
+
+}
+
 void Z_axis_and_Tweezer(){
      for(int i = 0;i<15; i++){Z_axis(0);}
 
@@ -4767,9 +4962,19 @@ void Z_axis_and_Tweezer(){
 
 void __attribute__((picinterrupt(("")))) Rx_char_USART(void)
 {
-    if(PIE1bits.RCIE && PIR1bits.RCIF)
-        {
-            New_char_RX = 1;
-            PIR1bits.RCIF = 0;
-        }
+
+    int i=0;
+    do{
+
+        while(!RCIF){};
+        input_str[i]=RCREG;
+
+    }while(input_str[i++]!= '\n');
+
+    PIR1bits.RCIF = 0;
+    New_char_RX = 1;
+
+
+
+
 }

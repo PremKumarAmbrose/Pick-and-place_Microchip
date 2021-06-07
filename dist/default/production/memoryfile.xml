@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production/Prototype_1.X.production.hex">
+  <executable name="dist/default/production/Pick-and-place_Microchip.production.hex">
     <memory name="program">
       <units>bytes</units>
       <length>32768</length>
-      <used>7800</used>
-      <free>24968</free>
+      <used>12412</used>
+      <free>20356</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>1536</length>
-      <used>114</used>
-      <free>1422</free>
+      <used>264</used>
+      <free>1272</free>
     </memory>
   </executable>
 </project>

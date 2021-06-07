@@ -1,4 +1,3 @@
-
 /*
  * File:   main.c
  * Author: Sourav Gupta
@@ -72,6 +71,7 @@
 #pragma config EBTRB = OFF      // Boot Block Table Read Protection bit (Boot Block (000000-0001FFh) not protected from Table Reads executed in other blocks)
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
 #include <stdbool.h>
 #include <math.h>
 #include <xc.h>
@@ -86,85 +86,95 @@ static double const desired_BaudRate  = 9600;    // Desired Baud Rate in bps
 static _Bool   New_char_RX = false;
 int lenth_of_array = 30;
 char testarray [30];
-char sequence[4] = "CAB";
+char sequence[4]="CAB";
 
 int displacement_X, displacement_Y, rotation;
 
-int X_Pick, X_Place, Y_pick, Y_Place, Pick_Angle, Place_Angle, X_diff=0, Y_diff=0, Angle_diff=0;
-char X_Pick_dir,X_Place_dir, Y_Pick_dir, Y_Place_dir, Rot_Pick_dir, Rot_Place_dir,;
+int X_Pick, X_Place, Y_Pick, Y_Place, Pick_Angle, Place_Angle, X_diff=0, Y_diff=0, Angle_diff=0;
+char X_dir, Y_dir, Rot_dir;
+unsigned char RX_Char;
+volatile unsigned char input_str[]=" ";
 
 
 ///*******************Specific Parameters for each component*********************///
 
 #define X_Pick_A 3  //Pick and Place Parameters of A
 #define Y_Pick_A 4
-#define Pick_Angle_A 0       
+#define Pick_Angle_A 0
+/*
 char X_Pick_dir_A = clockwise;
 char Y_Pick_dir_A = clockwise;
 char Rot_Pick_dir_A = clockwise;
-
+*/
 #define X_Place_A 17
 #define Y_Place_A 5
 #define Place_Angle_A 270    
+/*
 char X_Place_dir_A = clockwise;
 char Y_Place_dir_A = clockwise;
 char Rot_Place_dir_A = anti_clockwise;
-
+*/
 #define X_Pick_B 3  //Pick and Place Parameters of B
 #define Y_Pick_B 10
 #define Pick_Angle_B 90 
+
+/*
 char X_Pick_dir_B = anti_clockwise;
 char Y_Pick_dir_B = clockwise;
 char Rot_Pick_dir_B = clockwise;
-
+*/
 #define X_Place_B 10
 #define Y_Place_B 5     
 #define Place_Angle_B 180
+
+/*
 char X_Place_dir_B = clockwise;
 char Y_Place_dir_B = anti_clockwise;
 char Rot_Place_dir_B = anti_clockwise;    
-
+*/
 
 
 
 #define X_Pick_C 3  //Pick and Place Parameters of C
 #define Y_Pick_C 15
 #define Pick_Angle_C 90 
+/*
+ 
 char X_Pick_dir_C = anti_clockwise;
 char Y_Pick_dir_C = clockwise;
 char Rot_Pick_dir_C = anti_clockwise;
-
+*/
 
 #define X_Place_C 16
 #define Y_Place_C 14     
 #define Place_Angle_C 270
-char X_Place_dir_C = clockwise;
+/*char X_Place_dir_C = clockwise;
 char Y_Place_dir_C = anti_clockwise;
 char Rot_Place_dir_C = clockwise;    
-
-#define X_Pick_D 0  //Pick and Place Parameters of D
-#define Y_Pick_D 0
-#define Pick_Angle_D 0
-char X_Pick_dir_D;
+*/
+int X_Pick_D;   //Pick and Place Parameters of D
+int Y_Pick_D; 
+int Pick_Angle_D;
+/*char X_Pick_dir_D;
 char Y_Pick_dir_D;
 char Rot_Pick_dir_D;
-
-#define X_Place_D 0
-#define Y_Place_D 0
-#define Place_Angle_D 0
-char X_Place_dir_D;
+*/
+int X_Place_D;
+int Y_Place_D;
+int Place_Angle_D;
+/*char X_Place_dir_D;
 char Y_Place_dir_D;
 char Rot_Place_dir_D;    
+*/
 
-
-#define X_diff 0
-#define Y_diff 0
-#define angle_diff 0
+int X_diff;
+int Y_diff;
+int angle_diff;
 
 
 #define abs(x) ((x) > 0 ? (x) : -(x))
-#define dir(prev,next) ({if(prev<next){return clockwise} else{return anti_clockwise}) 
-#define dir_2(prev,next) ((prev<next)? clockwise: (anti_clockwise)
+//#define dir(prev,next) ({if(prev<next){return "clockwise";} else{return "anti_clockwise";}) 
+#define dir(prev,next) ((prev<next)? clockwise: (anti_clockwise)
 /*
  Hardware related definition
  */
@@ -173,7 +183,6 @@ char Rot_Place_dir_D;
 #define speed 1 // Speed Range 10 to 1  10 = lowest , 1 = highest
 #define clockwise 0 // clockwise direction macro
 #define anti_clockwise 1 // anti clockwise direction macro
- 
  
 /*
  *Application related function and definition
@@ -186,10 +195,16 @@ void Z_axis (char direction);
 void Twister (char direction);
 void Tweezer (void);
 void ms_delay(unsigned int val);
-void pick_and_place(char Component);
+int pick_and_place(char Componnt);
 void return_to_initial(void);
 void __interrupt() Rx_char_USART (void);
 void Z_axis_and_Tweezer(void);
+int direct(int prev, int next);
+void print_string(char strng[]);
+void start_up_menu(void);
+void change_sequence(void);
+void add_component(void);
+void remove_component(void);
 
 
 /*
@@ -199,54 +214,16 @@ void Z_axis_and_Tweezer(void);
  
 void main(void)
 {
-    unsigned char RX_Char = ' ';  // used for echo of the received char
-    unsigned char test_C = ' ';
+    unsigned char RX_Char = ' ';  // used for echo of the received char    unsigned char test_C = ' ';
     
     init_PORTS();           // PORTS configuration
     init_USART();           // USART module configuration
     init_interrupts();      // Interrupt configuration (only INT on RX USART enabled)
        
     ei();                   // enable all interrupts
-    for(int i=0;i<2;i++){pickandplace_sequence();}
-    
-    while(1){               // inifinte loop
-        
-        if (New_char_RX)    // sent "Hello World!" if a new char is RX on USART
-        {
-            RX_Char = RCREG;            // Read received char
-            serial_tx_char(RX_Char);    // Echo received char
-            serial_tx_char('\r');
-            serial_tx_char('\n');
-            
-            // TX string char by char   
-            serial_tx_char('H');
-            serial_tx_char('e');
-            serial_tx_char('l');
-            serial_tx_char('l');
-            serial_tx_char('o');
-            serial_tx_char(' ');
-            serial_tx_char('W');
-            serial_tx_char('o');
-            serial_tx_char('r');
-            serial_tx_char('l');
-            serial_tx_char('d');
-            serial_tx_char('!');
-            serial_tx_char('\r');       
-            serial_tx_char('\n'); 
-
-            for(int i=0; i<lenth_of_array; i++){
-                test_C = testarray[i];
-                serial_tx_char(test_C);
-                }
-            
-            serial_tx_char('\r');       
-            serial_tx_char('\n');
-            
-            //LATBbits.LATB0 = !LATBbits.LATB0;       //toggle led on RB0
-            New_char_RX = false;                    //reset monitor variable
-        }                   // end if
-    } 
-        
+    while(1){
+    start_up_menu();        
+    }
 }
 
 
@@ -255,18 +232,30 @@ void main(void)
 
 void start_up_menu(void){
 
-    const char Menu[]="1. Default Sequence\n2. Change sequence\n3. Add new component\n4.Remove a component";
-    for(int i =0;Menu[i]!='\0';i++)
+    //const char Menu[]="1. Default Sequence\n2. Change sequence\n3. Add new component\n4. Remove a component";
+    
+    print_string("\n1. Default Sequence\n2. Change sequence\n3. Add new component\n4. Remove a component");
+    /*for(int i =0;Menu[i]!='\0';i++)
         serial_tx_char(Menu[i]);
+    */
+    while(1){
         if(New_char_RX){
-            RX_Char = RCREG;
-            Switch(RX_Char){
+
+            const char ip = input_str[0];
+            //serial_tx_char(RX_Char);
+            New_char_RX=false;
+            switch(ip){
                 case '1':
-                While(1){
-                    pick_and_place(C);
-                    pick_and_place(A);
-                    pick_and_place(B);
-                }  
+                while(!New_char_RX){
+                    pick_and_place('C');
+                    pick_and_place('A');
+                    pick_and_place('B');
+                    
+                    sequence[0]="C";
+                    sequence[1]="A";
+                    sequence[2]="B";
+                }
+                
                     break;
                 case '2':  change_sequence();//change_sequence
                     break;
@@ -277,95 +266,114 @@ void start_up_menu(void){
 
             }
             New_char_RX=false;
-
-        }
+            break;
+        }}
 }
 void change_sequence(void){
     
-    const char Help_1[]="Please give the new sequence as input\r The current sequence is: \n"
-    for (int i=0; i++){
-        if(Help_1[i]!='\n'){
-            serial_tx_char(Help_1[i]);
-        }
-    }
+    print_string("The current sequence is: ");
+    
+    
     int j = 0;
     do{
-        serial_tx_char(sequence[j])
-        j++;
-    }while(sequence[j++] != '\n');
-
+        serial_tx_char(sequence[j]);
+        
+    }while(sequence[j++] != NULL);
+    print_string("Please give the new sequence as input\r");
+    
+    
     int i = 0;
-    do{
-        sequence[i]=input_str[i]
-        i++;
-    }while(input_str[i++]!='\n');
-
+    while(1) {
+        if(New_char_RX){
+            print_string("\nThe New sequence is: ");
+            do{
+                sequence[i]=input_str[i];
+                serial_tx_char(sequence[i]);
+            }while(input_str[i++]!='\n');
+            New_char_RX=false;
+            break;
+        }
+    }
+    
     while(!New_char_RX){
         int i =0;
         do{
             pick_and_place(sequence[i]);
-            i++;
         }while(sequence[i++]!='\n');
     }
 
 }
 
 void add_component(void){
-    print_string("Enter the pick position X:");
-    if(New_char_RX){X_Pick_D=RCREG;New_char_RX=false;}
-    print_string("Enter the pick position Y:");
-    if(New_char_RX){Y_Pick_D=RCREG;New_char_RX=false;}
-    print_string("Enter the pick orientation:");
-    if(New_char_RX){Pick_Angle_D=RCREG;New_char_RX=false;}
-    print_string("Enter the place position X:");
-    if(New_char_RX){X_Place_D=RCREG;New_char_RX=false;}
-    print_string("Enter the place position Y:");
-    if(New_char_RX){Y_Place_D=RCREG;New_char_RX=false;}
-    print_string("Enter the place orientation:");
-    if(New_char_RX){Place_Angle_D=RCREG;New_char_RX=false;}
-    char add_to_sequence="D";
-    strcar(sequence, add_to_sequence,1);
+    print_string("\nEnter the pick position X:");
+    while(1){if(New_char_RX){X_Pick_D=atoi(input_str); New_char_RX=false; break;}}
+    print_string("\nEnter the pick position Y:");   
+    while(1){if(New_char_RX){Y_Pick_D=(atoi(input_str));New_char_RX=false;break;}}
+    print_string("\nEnter the pick orientation:");
+    while(1){if(New_char_RX){Pick_Angle_D=(atoi(input_str));New_char_RX=false;break;}}
+    print_string("\nEnter the place position X:");
+    while(1){if(New_char_RX){X_Place_D=(atoi(input_str));New_char_RX=false;break;}}
+    print_string("\nEnter the place position Y:");
+    while(1){if(New_char_RX){Y_Place_D=(atoi(input_str));New_char_RX=false;break;}};
+    print_string("\nEnter the place orientation:");
+    while(1){if(New_char_RX){Place_Angle_D=(atoi(input_str));New_char_RX=false;break;}}
+    char add_to_sequence[]="D";
+    strncat(sequence, add_to_sequence,1);
+    print_string("\nThe current sequence is: ");
+    print_string(sequence);
+            
     while(!New_char_RX){
-        int i =0;
+        int i =0;        
         do{
+            
             pick_and_place(sequence[i]);
-            i++;
+            
         }while(sequence[i++]!='\n');
     }
 }
 
 void remove_component(void){
-    print_string("Which component would you like to remove from the  sequence");
+    print_string("\nWhich component would you like to remove from the  sequence?\n");
+    while(1){
     if(New_char_RX){
-        char rm_comp = RCREG;
+        char rm_comp = input_str[0];
         char *ptr;  
         int indxToDel;
         ptr=strrchr(sequence,rm_comp);
         if(ptr != NULL){
-            indxTpoDel = ptr - sequence + 1;
+            indxToDel = ptr - sequence;
+            memmove(&sequence[indxToDel], &sequence[indxToDel + 1], strlen(sequence) - indxToDel);
+            break;
         }
         else{
-            print_string("component is not in the sequence. \nTry selecting another component")
+            print_string("\ncomponent is not in the sequence. \nTry selecting another component\n");
             New_char_RX=false;
-            remove_component();
         } 
-        memmove(&sequence[indxToDel], &sequence[indxToDel + 1], strlen(sequence) - indxToDel);
     }
+    }
+    print_string("\nThe new sequence is: ");
+    print_string(sequence);
     New_char_RX=false;
     while(!New_char_RX){
         int i =0;
-        do{
+        for(int i=0; i<strlen(sequence);i++){
+            
+            serial_tx_char(sequence[i]);
             pick_and_place(sequence[i]);
-            i++;
-        }while(sequence[i++]!='\n');
+        }
+        /*do{
+            pick_and_place(sequence[i]);
+            serial_tx_char(sequence[i]);
+        }while(sequence[i++]!='\\0');*/
     }
 }
 
 /* This method will drive the motor in half-drive mode using direction input */
 
 void print_string(char strng[]){
-    for(int i =0; strng[i]!='\0')
+    for(int i =0; strng[i]!='\0'; i++){
         serial_tx_char(strng[i]);
+    }
 }
 
 void X_axis (char direction){
@@ -483,100 +491,75 @@ void ms_delay(unsigned int val)
             for(j=0;j<1650;j++);
 }
 
-void pick_and_place(char Component)
+int pick_and_place(char Componnt)
 {
     //// Component C //////////////////////////////////
     //Tweezer open 5 units wide
-    if(Component=A)
+    if(Componnt=='A')
     {
         X_Pick=X_Pick_A;
         Y_Pick=Y_Pick_A;
-        X_Pick_dir=X_Pick_dir_A;
-        Y_Pick_dir=Y_Pick_dir_A;
         Pick_Angle=Pick_Angle_A;
-        Rot_Pick_dir=Rot_Pick_dir_A;
 
         X_Place=X_Place_A;
         Y_Place=Y_Place_A;
-        X_Place_dir=X_Place_dir_A;
-        Y_Place_dir=Y_Place_dir_A;
         Place_Angle=Place_Angle_A;
-        Rot_Place_dir=Rot_Place_dir_A;
     }
-    else if(Component=B){
+    else if(Componnt=='B'){
         X_Pick=X_Pick_B;
         Y_Pick=Y_Pick_B;
-        X_Pick_dir=X_Pick_dir_B;
-        Y_Pick_dir=Y_Pick_dir_B;
         Pick_Angle=Pick_Angle_B;
-        Rot_Pick_dir=Rot_Pick_dir_B;
 
         X_Place=X_Place_B;
         Y_Place=Y_Place_B;
-        X_Place_dir=X_Place_dir_B;
-        Y_Place_dir=Y_Place_dir_B;
         Place_Angle=Place_Angle_B;
-        Rot_Place_dir=Rot_Place_dir_B;
     }
-    else if(Component=C){
+    else if(Componnt=='C'){
         X_Pick=X_Pick_C;
         Y_Pick=Y_Pick_C;
-        X_Pick_dir=X_Pick_dir_C;
-        Y_Pick_dir=Y_Pick_dir_C;
         Pick_Angle=Pick_Angle_C;
-        Rot_Pick_dir=Rot_Pick_dir_C;
 
         X_Place=X_Place_C;
         Y_Place=Y_Place_C;
-        X_Place_dir=X_Place_dir_C;
-        Y_Place_dir=Y_Place_dir_C;
         Place_Angle=Place_Angle_C;
-        Rot_Place_dir=Rot_Place_dir_C;
     }
-    else if(Component=D){
+    else if(Componnt=='D'){
         X_Pick=X_Pick_D;
         Y_Pick=Y_Pick_D;
-        X_Pick_dir=X_Pick_dir_D;
-        Y_Pick_dir=Y_Pick_dir_D;
         Pick_Angle=Pick_Angle_D;
-        Rot_Pick_dir=Rot_Pick_dir_D;
 
         X_Place=X_Place_D;
         Y_Place=Y_Place_D;
-        X_Place_dir=X_Place_dir_D;
-        Y_Place_dir=Y_Place_dir_D;
         Place_Angle=Place_Angle_D;
-        Rot_Place_dir=Rot_Place_dir_D;
     }
     else{
         //do nothing
     }
-
-    X_Pick_dir=dir(X_diff,X_Pick);
-    Y_Pick_dir=dir_2(Y_diff, Y_Pick);
-    Rot_Pick_dir=direction(Angle_diff,Pick_Angle);
-    for(int i = 0; i<(abs(X_Pick-X_diff)); i++){X_axis(X_Pick_dir);}
-    for(int i = 0; i<(abs(Y_Pick-Y_diff)); i++){Y_axis(Y_Pick_dir);}
-    for(int i = 0; i<((Angle_diff-Pick_Angle)/3.6); i++){Twister(Rot_Pick_dir);}
+    
+    X_dir=direct(X_diff,X_Pick);
+    Y_dir=direct(Y_diff, Y_Pick);
+    Rot_dir = direct(Angle_diff,Pick_Angle);
+    for(int i = 0; i<(abs(X_Pick-X_diff)); i++){X_axis(X_dir);}
+    for(int i = 0; i<(abs(Y_Pick-Y_diff)); i++){Y_axis(Y_dir);}
+    for(int i = 0; i<((Angle_diff-Pick_Angle)/3.6); i++){Twister(Rot_dir);}
     //ultrasonic check while loop
         Z_axis_and_Tweezer();
         //Tweezer close 4 units wide
 
 
 
-    X_dir=dir(X_Pick,X_Place);
-    Y_dir=dir(Y_Pick,Y_Place);
-    Rot_dir=dir(Pick_Angle,Place_Angle);
-    //rotation = abs((360-Place_Angle)/3.6);
+    X_dir=direct(X_Pick,X_Place);
+    Y_dir=direct(Y_Pick,Y_Place);
+    Rot_dir=direct(Pick_Angle,Place_Angle);
     for(int i = 0; i<(abs(X_Place-X_diff)); i++){X_axis(X_dir);}
     for(int i = 0; i<(abs(Y_Place-Y_diff)); i++){Y_axis(Y_dir);}
     for(int i = 0; i<((Pick_Angle-Place_Angle)/3.6); i++){Twister(Rot_dir);}
         Z_axis_and_Tweezer();
         //Tweezer open 5 units wide
-
+    Angle_diff= Place_Angle;    
     X_diff = X_Place;
     Y_diff = Y_Place;
-    Angle_diff= Place_Angle;
+    
 
 }
 
@@ -588,7 +571,7 @@ void return_to_initial(void){
 
 }
 
-void direction(int prev,next){
+int direct(prev,next){
     if(prev<next){
         return clockwise;
     }
@@ -606,13 +589,21 @@ void Z_axis_and_Tweezer(){
 
 void __interrupt() Rx_char_USART(void)  // Interrupt function
 {
-    int i =0;
+    //if(PIE1bits.RCIE&&PIR1bits.RCIF){
+    int i=0;
     do{
+        
         while(!RCIF){};
         input_str[i]=RCREG;
-    }while(input_str[i++]!= '\n');     
-    P1R1bits.RCIF = 0;  //clear the interrupt condition
+        //print_string("in while loop");
+    }while(input_str[i++]!= '\n');
+    //print_string(input_str);
+    PIR1bits.RCIF = 0;  //clear the interrupt condition
     New_char_RX = true;                               // end IF
-}                                       // end function
+    //serial_tx_char(input_str[0]);
+    //serial_tx_char(input_str[1]);
+    //serial_tx_char(input_str[2]);
+//}                                    
+}// end function
 
 
