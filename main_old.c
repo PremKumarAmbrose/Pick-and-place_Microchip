@@ -93,7 +93,7 @@ int displacement_X, displacement_Y, rotation;
 int X_Pick, X_Place, Y_Pick, Y_Place, Pick_Angle, Place_Angle, X_diff=0, Y_diff=0, Angle_diff=0;
 char X_dir, Y_dir, Rot_dir;
 unsigned char RX_Char;
-volatile unsigned char input_str[]=" ";
+volatile unsigned char input_str[10]=" ";
 
 
 ///*******************Specific Parameters for each component*********************///
