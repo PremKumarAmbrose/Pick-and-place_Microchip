@@ -4535,7 +4535,7 @@ _Bool stop = 0;
 int lenth_of_array = 30;
 char testarray [30];
 char sequence[]="CAB";
-
+unsigned char State='0';
 int displacement_X, displacement_Y, rotation;
 
 int X_Pick, X_Place, Y_Pick, Y_Place, Pick_Angle, Place_Angle, X_diff=0, Y_diff=0, Angle_diff=0;
@@ -4566,7 +4566,7 @@ int pick_and_place(char Componnt);
 void return_to_initial(void);
 void __attribute__((picinterrupt(("")))) Rx_char_USART (void);
 void Z_axis_and_Tweezer(void);
-char direct(int prev,int next);
+
 void print_string(char strng[]);
 void start_up_menu(void);
 void change_sequence(void);
@@ -4589,7 +4589,7 @@ void main(void)
 
     (INTCONbits.GIE = 1);
     while(1){
-        New_char_RX=0;
+
         start_up_menu();
     }
 }
@@ -4600,18 +4600,12 @@ void main(void)
 
 void start_up_menu(void){
 
-
-
-    print_string("\n1. Default Sequence\n2. Change sequence\n3. Add new component\n4. Remove a component");
-
-
+    print_string("\n\n1. Start Sequence\n2. Change sequence\n3. Add new component\n4. Remove a component");
 
     while(1){
-        if(New_char_RX){
-            unsigned char ip = input_str[0];
-
+        if(New_char_RX || State=='1'){
             New_char_RX=0;
-            switch(ip){
+            switch(State){
                 case '1':
                     print_string("\nConitinuing sequence:");
                     print_string(sequence);
@@ -4626,58 +4620,26 @@ void start_up_menu(void){
 
                 case '2':
                     change_sequence();
-                    print_string("\nConitinuing sequence:");
-                    print_string(sequence);
-                    print_string("\nEnter 'Q' to exit to MAIN MENU");
-                    stop=0;
-                    while(!New_char_RX){
-                        int i =0;
-                        do{
-                            pick_and_place(sequence[i]);
-                        }while(sequence[i++]!='\n'&& !stop);
-                    }
-                    stop=0;
                     break;
 
                 case '3':
                     add_component();
-                    print_string("\nConitinuing sequence:");
-                    print_string(sequence);
-                    print_string("\nEnter 'Q' to exit to MAIN MENU");
-                    stop=0;
-                    while(!New_char_RX){
-                        int i =0;
-                        do{
-                            pick_and_place(sequence[i]);
-                        }while(sequence[i++]!='\n' && !stop);
-                    }
-                    stop=0;
                     break;
 
                 case '4':
                     remove_component();
-                    print_string("\nConitinuing sequence:");
-                    print_string(sequence);
-                    print_string("\nEnter 'Q' to exit to MAIN MENU");
-
-                    while(!New_char_RX){
-                        int i =0;
-                        do{
-                            pick_and_place(sequence[i]);
-                        }while(sequence[i++]!='\n'&& !stop);
-                    }
                     break;
+
                 case 'Q':
                     New_char_RX=0;
                     stop=0;
                     break;
             }
-
             break;
         }
-
     }
 }
+
 void change_sequence(void){
 
     print_string("\nThe current sequence is: ");
@@ -4698,75 +4660,73 @@ void change_sequence(void){
 }
 
 void add_component(void){
-    print_string("\nEnter the pick position X:");
-    while(1){
-        if(New_char_RX){
-            X_Pick_D=atoi(input_str);
-            New_char_RX=0;
-            break;
-        }
-    }
-    print_string("\nEnter the pick position Y:");
-    while(1){
-        if(New_char_RX){
-            Y_Pick_D=(atoi(input_str));
-            New_char_RX=0;
-            break;
-        }
-    }
-    print_string("\nEnter the pick orientation:");
-    while(1){
-        if(New_char_RX){
-            Pick_Angle_D=(atoi(input_str));
-            New_char_RX=0;
-            break;
-        }
-    }
-    print_string("\nEnter the place position X:");
-    while(1){
-        if(New_char_RX){
-            X_Place_D=(atoi(input_str));
-            New_char_RX=0;
-            break;
-        }
-    }
-    print_string("\nEnter the place position Y:");
-    while(1){
-        if(New_char_RX){
-            Y_Place_D=(atoi(input_str));
-            New_char_RX=0;
-            break;
-        }
-    }
-    print_string("\nEnter the place orientation:");
-    while(1){
-        if(New_char_RX){
-            Place_Angle_D=(atoi(input_str));
-            New_char_RX=0;
-            break;
-        }
-    }
-
-    char add_to_sequence[]="D";
-    strncat(sequence, add_to_sequence,1);
-    print_string("\nThe current sequence is: ");
+    print_string("\nThe Current sequence is:");
     print_string(sequence);
-    print_string("\n1. Continue sequence\n2. Change sequence");
-    New_char_RX=0;
+    print_string("\nEnter the component want to add (A,B,C,D)?");
     while(1){
+        char add_component=input_str[0];
         if(New_char_RX){
-            const char ip = input_str[0];
             New_char_RX=0;
-            switch(ip){
-                case '1':
+            switch(add_component){
+                case 'D':
+                    print_string("\nEnter the pick position X:");
+                    while(1){
+                        if(New_char_RX){
+                            X_Pick_D=atoi(input_str);
+                            New_char_RX=0;
+                            break;
+                        }
+                    }
+                    print_string("\nEnter the pick position Y:");
+                    while(1){
+                        if(New_char_RX){
+                            Y_Pick_D=(atoi(input_str));
+                            New_char_RX=0;
+                            break;
+                        }
+                    }
+                    print_string("\nEnter the pick orientation:");
+                    while(1){
+                        if(New_char_RX){
+                            Pick_Angle_D=(atoi(input_str));
+                            New_char_RX=0;
+                            break;
+                        }
+                    }
+                    print_string("\nEnter the place position X:");
+                    while(1){
+                        if(New_char_RX){
+                            X_Place_D=(atoi(input_str));
+                            New_char_RX=0;
+                            break;
+                        }
+                    }
+                    print_string("\nEnter the place position Y:");
+                    while(1){
+                        if(New_char_RX){
+                            Y_Place_D=(atoi(input_str));
+                            New_char_RX=0;
+                            break;
+                        }
+                    }
+                    print_string("\nEnter the place orientation:");
+                    while(1){
+                        if(New_char_RX){
+                            Place_Angle_D=(atoi(input_str));
+                            New_char_RX=0;
+                            break;
+                        }
+                    }
+
                     break;
-                case '2':
-                    change_sequence();
-                    break;
+# 338 "main.c"
             }
             break;
         }
+
     }
+    strncat(sequence, add_component,1);
+    New_char_RX=0;
 }
 
 void remove_component(void){
@@ -4774,6 +4734,7 @@ void remove_component(void){
     print_string(sequence);
     while(1){
         if(New_char_RX){
+            New_char_RX=0;
             char rm_comp = input_str[0];
             char *ptr;
             int indxToDel;
@@ -4785,23 +4746,26 @@ void remove_component(void){
             else if(ptr != ((void*)0)){
                 indxToDel = ptr - sequence;
                 memmove(&sequence[indxToDel], &sequence[indxToDel + 1], strlen(sequence) - indxToDel);
+                print_string("component removed:");
+                serial_tx_char(rm_comp);
                 stop=0;
                 break;
             }
 
             else{
-                print_string("\ncomponent is not in the sequence. \nTry selecting another component\n");
+                print_string("\ncomponent is not in the sequence. Try selecting another component: \n");
+                while(!New_char_RX){}
             }
         }
-
     }
     New_char_RX=0;
 }
 
 
 
-void print_string(char strng[]){
-    for(int i =0; strng[i]!='\0'; i++){
+void print_string(char strng[])
+{
+    for(int i =0; strng[i]!=((void*)0); i++){
         serial_tx_char(strng[i]);
     }
 }
@@ -4900,7 +4864,7 @@ void Z_axis (char direction){
 }
 
 void Twister (char direction){
-    if(New_char_RX){
+    if(!New_char_RX){
     if (direction == 0){
         PORTD = 0b00110000;
         ms_delay(1);
@@ -4934,6 +4898,7 @@ void ms_delay(unsigned int val)
         for(i=0;i<val;i++)
             for(j=0;j<1650;j++);
 }
+void change_parameters(char Componnt);
 
 int pick_and_place(char Componnt)
 {
@@ -4955,7 +4920,7 @@ int pick_and_place(char Componnt)
             Pick_Angle=90;
 
             X_Place=10;
-            Y_Place=5;
+             Y_Place=5;
             Place_Angle=180;
         }
         else if(Componnt=='C'){
@@ -4980,13 +4945,13 @@ int pick_and_place(char Componnt)
 
         }
 
-        X_dir=direct(X_diff,X_Pick);
-        Y_dir=direct(Y_diff, Y_Pick);
-        Rot_dir=direct(Angle_diff,Pick_Angle);
+        X_dir=((X_diff<X_Pick)? 1:0);
+        Y_dir=((Y_diff<Y_Pick)? 1:0);
+        Rot_dir=((Angle_diff<Pick_Angle)? 1:0);
 
         for(int i = 0; (i<(((X_Pick-X_diff) > 0 ? (X_Pick-X_diff) : -(X_Pick-X_diff)))) && !stop; i++){X_axis(X_dir);}
         for(int i = 0; (i<(((Y_Pick-Y_diff) > 0 ? (Y_Pick-Y_diff) : -(Y_Pick-Y_diff)))) && !stop; i++){Y_axis(Y_dir);}
-        for(int i = 0; (i<((Angle_diff-Pick_Angle)/3.6)) && !stop; i++){Twister(Rot_dir);}
+        for(int i = 0; (i<(((Angle_diff-Pick_Angle) > 0 ? (Angle_diff-Pick_Angle) : -(Angle_diff-Pick_Angle))/3.6)) && !stop; i++){Twister(Rot_dir);}
 
 
 
@@ -4994,13 +4959,13 @@ int pick_and_place(char Componnt)
 
 
 
-        X_dir=direct(X_Pick,X_Place);
-        Y_dir=direct(Y_Pick,Y_Place);
-        Rot_dir=direct(Pick_Angle,Place_Angle);
+        X_dir=((X_Pick<X_Place)? 1:0);
+        Y_dir=((Y_Pick<Y_Place)? 1:0);
+        Rot_dir=((Pick_Angle<Place_Angle)? 1:0);
 
         for(int i = 0; (i<(((X_Place-X_diff) > 0 ? (X_Place-X_diff) : -(X_Place-X_diff)))) && !stop; i++){X_axis(X_dir);}
         for(int i = 0; (i<(((Y_Place-Y_diff) > 0 ? (Y_Place-Y_diff) : -(Y_Place-Y_diff)))) && !stop; i++){Y_axis(Y_dir);}
-        for(int i = 0; (i<((Pick_Angle-Place_Angle)/3.6)) && !stop; i++){Twister(Rot_dir);}
+        for(int i = 0; (i<(((Pick_Angle-Place_Angle) > 0 ? (Pick_Angle-Place_Angle) : -(Pick_Angle-Place_Angle))/3.6)) && !stop; i++){Twister(Rot_dir);}
 
 
 
@@ -5018,17 +4983,7 @@ void return_to_initial(void){
     for(int i = 0; i<Angle_diff; i++){Twister(1);}
 
 }
-
-char direct(int prev, int next){
-    if(prev<next){
-        return 1;
-    }
-    else{
-        return 0;
-    }
-
-}
-
+# 612 "main.c"
 void Z_axis_and_Tweezer(){
      for(int i = 0;i<15; i++){Z_axis(0);}
 
@@ -5046,5 +5001,5 @@ void __attribute__((picinterrupt(("")))) Rx_char_USART(void)
 
     PIR1bits.RCIF = 0;
     New_char_RX = 1;
-
+    State = input_str[0];
 }
