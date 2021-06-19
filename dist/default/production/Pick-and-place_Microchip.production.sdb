@@ -307,11 +307,11 @@
 [v _return_to_initial return_to_initial `(v  1 e 1 0 ]
 {
 "597
-[v return_to_initial@i_606 i `i  1 a 2 21 ]
+[v return_to_initial@i_610 i `i  1 a 2 21 ]
 "596
-[v return_to_initial@i_605 i `i  1 a 2 19 ]
+[v return_to_initial@i_609 i `i  1 a 2 19 ]
 "595
-[v return_to_initial@i_604 i `i  1 a 2 17 ]
+[v return_to_initial@i_608 i `i  1 a 2 17 ]
 "594
 [v return_to_initial@i i `i  1 a 2 15 ]
 "599
@@ -363,17 +363,17 @@
 {
 [v pick_and_place@Componnt Componnt `uc  1 a 1 wreg ]
 "583
-[v pick_and_place@i_601 i `i  1 a 2 31 ]
+[v pick_and_place@i_604 i `i  1 a 2 31 ]
 "580
-[v pick_and_place@i_600 i `i  1 a 2 29 ]
+[v pick_and_place@i_602 i `i  1 a 2 29 ]
 "579
-[v pick_and_place@i_598 i `i  1 a 2 21 ]
+[v pick_and_place@i_600 i `i  1 a 2 21 ]
 "578
-[v pick_and_place@i_596 i `i  1 a 2 17 ]
+[v pick_and_place@i_598 i `i  1 a 2 17 ]
 "577
-[v pick_and_place@i_594 i `i  1 a 2 13 ]
+[v pick_and_place@i_596 i `i  1 a 2 13 ]
 "569
-[v pick_and_place@i_593 i `i  1 a 2 27 ]
+[v pick_and_place@i_594 i `i  1 a 2 27 ]
 "566
 [v pick_and_place@i_591 i `i  1 a 2 25 ]
 "564
@@ -484,7 +484,7 @@
 [v _add_component add_component `(v  1 e 1 0 ]
 {
 "269
-[v add_component@add_componnt add_componnt `[1]uc  1 a 1 29 ]
+[v add_component@add_componnt add_componnt `[1]uc  1 a 1 31 ]
 "268
 [v add_component@F3128 F3128 `[1]uc  1 s 1 F3128 ]
 "339
@@ -571,15 +571,15 @@
 {
 "16
 [v roundf@y y `f  1 a 4 80 ]
-[u S1095 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
+[u S1100 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
 "14
-[v roundf@u u `S1095  1 a 4 76 ]
+[v roundf@u u `S1100  1 a 4 76 ]
 "15
 [v roundf@e e `i  1 a 2 70 ]
 "12
 [v roundf@x x `f  1 p 4 58 ]
 "13
-[v roundf@F528 F528 `S1095  1 s 4 F528 ]
+[v roundf@F528 F528 `S1100  1 s 4 F528 ]
 "36
 } 0
 "245 /opt/microchip/xc8/v2.32/pic/sources/c99/common/sprcadd.c
@@ -614,17 +614,17 @@
 "8 /opt/microchip/xc8/v2.32/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S918 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S923 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S923 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
-[u S926 . 4 `l 1 i 4 0 `d 1 f 4 0 `S918 1 fAsBytes 4 0 `S923 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S926  1 a 4 26 ]
+[s S928 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
+[u S931 . 4 `l 1 i 4 0 `d 1 f 4 0 `S923 1 fAsBytes 4 0 `S928 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S931  1 a 4 26 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 20 ]
-[s S994 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S999 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S997 . 2 `s 1 i 2 0 `us 1 n 2 0 `S994 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S997  1 a 2 30 ]
+[u S1002 . 2 `s 1 i 2 0 `us 1 n 2 0 `S999 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S1002  1 a 2 30 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 25 ]
 "11
