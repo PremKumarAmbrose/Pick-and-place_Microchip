@@ -78,7 +78,7 @@ extern "C" {
 #endif	/* XC_HEADER_TEMPLATE_H */
 
 void init_USART(void);                          // USART configuration
-void serial_tx_char(unsigned char val);         // TX Char
+void print_string(char strng[]);         // TX Char
  
 
 //Add here additional function prototypes

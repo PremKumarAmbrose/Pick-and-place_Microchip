@@ -3904,10 +3904,15 @@ void init_interrupts(void);
 
 void init_PORTS(void)
 {
-    TRISB = 0x00;
+
+
     TRISD = 0x00;
-    PORTB = 0x0F;
-    PORTD = 0x0F;
+    TRISA = 0x00;
+    TRISB = 0X0F;
+    PORTA = 0x00;
+    PORTD = 0x00;
+
+
 
 
     LATC = 0;
@@ -3925,6 +3930,12 @@ void init_interrupts(void)
     PIR1bits.RCIF = 0;
  PIE1bits.RCIE = 1;
  INTCONbits.PEIE = 1;
+
+
+
+    INTCON2=0x00;
+    INTCONbits.INT0IF=0;
+    INTCONbits.INT0IE=1;
 
     return;
 }

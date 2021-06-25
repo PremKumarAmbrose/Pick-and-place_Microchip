@@ -4521,7 +4521,7 @@ void init_interrupts(void);
 # 1 "./serial_rs232.h" 1
 # 80 "./serial_rs232.h"
 void init_USART(void);
-void serial_tx_char(unsigned char val);
+void print_string(char strng[]);
 # 80 "main.c" 2
 
 
@@ -4538,10 +4538,11 @@ char sequence[]="CAB";
 unsigned char State='0';
 int displacement_X, displacement_Y, rotation;
 
-int X_Pick, X_Place, Y_Pick, Y_Place, Pick_Angle, Place_Angle, X_diff=0, Y_diff=0, Angle_diff=0;
+int X_Pick, X_Place, Y_Pick, Y_Place, Pick_Angle, Place_Angle, X_diff, Y_diff, Angle_diff;
 char X_dir, Y_dir, Rot_dir;
 unsigned char RX_Char;
 volatile unsigned char input_str[10]=" ";
+int Steps,Step_X=0, Step_Y=0, Step_Z=0, Step_Angle=0;
 # 132 "main.c"
 int X_Pick_D;
 int Y_Pick_D;
@@ -4560,7 +4561,6 @@ void X_axis (char direction);
 void Y_axis (char direction);
 void Z_axis (char direction);
 void Twister (char direction);
-void Tweezer (void);
 void ms_delay(unsigned int val);
 int pick_and_place(char Componnt);
 int fetch_parameters(char Componnt);
@@ -4568,13 +4568,11 @@ void return_to_initial(void);
 void __attribute__((picinterrupt(("")))) Rx_char_USART (void);
 void Z_axis_and_Tweezer(void);
 
-void print_string(char strng[]);
 void start_up_menu(void);
 void change_sequence(void);
 void add_component(void);
 void remove_component(void);
-
-
+void Tweezer(char action);
 
 
 
@@ -4582,15 +4580,14 @@ void remove_component(void);
 
 void main(void)
 {
-    unsigned char RX_Char = ' ';
+
 
     init_PORTS();
     init_USART();
     init_interrupts();
-
     (INTCONbits.GIE = 1);
     while(1){
-
+        New_char_RX=0;
         start_up_menu();
     }
 }
@@ -4611,27 +4608,31 @@ void start_up_menu(void){
                     print_string("\nStarting sequence:");
                     print_string(sequence);
                     print_string("\nEnter 'Q' to exit to MAIN MENU");
-                    while(!New_char_RX){
+                    return_to_initial();
+                    while(!New_char_RX && !stop){
                         int i =0;
+                        X_diff=0;
+                        Y_diff=0;
+                        Angle_diff=0;
                         do{
                             pick_and_place(sequence[i]);
-                        }while(sequence[i++]!='\n'&& !stop);
+                        }while(!stop && sequence[i++]!='\n');
                     }
                     break;
 
                 case '2':
                     change_sequence();
-                    return_to_initial();
+
                     break;
 
                 case '3':
                     add_component();
-                    return_to_initial();
+
                     break;
 
                 case '4':
                     remove_component();
-                    return_to_initial();
+
                     break;
 
                 case 'Q':
@@ -4661,14 +4662,14 @@ void change_sequence(void){
 }
 
 void add_component(void){
-    char add_componnt[1]=" ";
+    char add_componnt[]=" ";
     print_string("\nThe Current sequence is:");
     print_string(sequence);
     print_string("\nEnter the component you want to add: A, B, C or D?");
     while(1){
         if(New_char_RX){
             add_componnt[0]=input_str[0];
-            if(add_componnt=='D'){
+            if(add_componnt[0]=='D'){
                 New_char_RX=0;
                 print_string("\nEnter the pick position X:");
                 while(1){
@@ -4720,7 +4721,7 @@ void add_component(void){
                 }
                 break;
             }
-            else if(New_char_RX){
+            else{
                 New_char_RX=0;
                 break;
             }
@@ -4728,8 +4729,8 @@ void add_component(void){
     }
     State='0';
     strncat(sequence,add_componnt,1);
-    print_string("\nComponent Added: ");
-    serial_tx_char(add_componnt[0]);
+    print_string("\n\nComponent Added: ");
+    print_string(add_componnt);
     New_char_RX=0;
 }
 
@@ -4750,8 +4751,7 @@ void remove_component(void){
             else if(ptr != ((void*)0)){
                 indxToDel = ptr - sequence;
                 memmove(&sequence[indxToDel], &sequence[indxToDel + 1], strlen(sequence) - indxToDel);
-                print_string("\ncomponent removed: ");
-                serial_tx_char(rm_comp);
+                print_string("\ncomponent removed");
                 stop=0;
                 break;
             }
@@ -4767,40 +4767,37 @@ void remove_component(void){
 
 
 
-void print_string(char strng[])
-{
-    for(int i =0; strng[i]!=((void*)0); i++){
-        serial_tx_char(strng[i]);
-    }
-}
 
 
 void X_axis (char direction){
     if(!New_char_RX){
-    if (direction == 0){
-        PORTB = 0b00000011;
-        ms_delay(1);
-        PORTB = 0b00000110;
-        ms_delay(1);
-        PORTB = 0b00001100;
-        ms_delay(1);
-        PORTB = 0b00001001;
-        ms_delay(1);
-        PORTB = 0b00000011;
-        ms_delay(1);
+        if (direction == 0){
+            PORTA = 0b00000011;
+            ms_delay(1);
+            PORTA = 0b00000110;
+            ms_delay(1);
+            PORTA = 0b00001100;
+            ms_delay(1);
+            PORTA = 0b00001001;
+            ms_delay(1);
+            PORTA = 0b00000011;
+            ms_delay(1);
+            Step_X--;
+        }
+        if (direction == 1){
+            PORTA = 0b00001001;
+            ms_delay(1);
+            PORTA = 0b00001100;
+            ms_delay(1);
+            PORTA = 0b00000110;
+            ms_delay(1);
+            PORTA = 0b00000011;
+            ms_delay(1);
+            PORTA = 0b00001001;
+            ms_delay(1);
+            Step_X++;
+        }
     }
-    if (direction == 1){
-        PORTB = 0b00001001;
-        ms_delay(1);
-        PORTB = 0b00001100;
-        ms_delay(1);
-        PORTB = 0b00000110;
-        ms_delay(1);
-        PORTB = 0b00000011;
-        ms_delay(1);
-        PORTB = 0b00001001;
-        ms_delay(1);
-    }}
     else{
         stop=1;
     }
@@ -4808,30 +4805,33 @@ void X_axis (char direction){
 
 void Y_axis (char direction){
     if(!New_char_RX){
-    if (direction == 0){
-        PORTB = 0b00110000;
-        ms_delay(1);
-        PORTB = 0b01100000;
-        ms_delay(1);
-        PORTB = 0b11000000;
-        ms_delay(1);
-        PORTB = 0b10010000;
-        ms_delay(1);
-        PORTB = 0b00110000;
-        ms_delay(1);
+        if (direction == 0){
+            PORTB = 0b00110000;
+            ms_delay(1);
+            PORTB = 0b01100000;
+            ms_delay(1);
+            PORTB = 0b11000000;
+            ms_delay(1);
+            PORTB = 0b10010000;
+            ms_delay(1);
+            PORTB = 0b00110000;
+            ms_delay(1);
+            Step_Y--;
+        }
+        if (direction == 1){
+            PORTB = 0b10010000;
+            ms_delay(1);
+            PORTB = 0b11000000;
+            ms_delay(1);
+            PORTB = 0b01100000;
+            ms_delay(1);
+            PORTB = 0b00110000;
+            ms_delay(1);
+            PORTB = 0b10010000;
+            ms_delay(1);
+            Step_Y++;
+        }
     }
-    if (direction == 1){
-        PORTB = 0b10010000;
-        ms_delay(1);
-        PORTB = 0b11000000;
-        ms_delay(1);
-        PORTB = 0b01100000;
-        ms_delay(1);
-        PORTB = 0b00110000;
-        ms_delay(1);
-        PORTB = 0b10010000;
-        ms_delay(1);
-    } }
     else{
         stop=1;
     }
@@ -4839,30 +4839,33 @@ void Y_axis (char direction){
 
 void Z_axis (char direction){
     if(!New_char_RX){
-    if (direction == 0){
-        PORTD = 0b00000011;
-        ms_delay(1);
-        PORTD = 0b00000110;
-        ms_delay(1);
-        PORTD = 0b00001100;
-        ms_delay(1);
-        PORTD = 0b00001001;
-        ms_delay(1);
-        PORTD = 0b00000011;
-        ms_delay(1);
+        if (direction == 0){
+            PORTD = 0b00000011;
+            ms_delay(1);
+            PORTD = 0b00000110;
+            ms_delay(1);
+            PORTD = 0b00001100;
+            ms_delay(1);
+            PORTD = 0b00001001;
+            ms_delay(1);
+            PORTD = 0b00000011;
+            ms_delay(5);
+            Step_Z--;
+        }
+        if (direction == 1){
+            PORTD = 0b00001001;
+            ms_delay(1);
+            PORTD = 0b00001100;
+            ms_delay(1);
+            PORTD = 0b00000110;
+            ms_delay(1);
+            PORTD = 0b00000011;
+            ms_delay(1);
+            PORTD = 0b00001001;
+            ms_delay(5);
+            Step_Z++;
+        }
     }
-    if (direction == 1){
-        PORTD = 0b00001001;
-        ms_delay(1);
-        PORTD = 0b00001100;
-        ms_delay(1);
-        PORTD = 0b00000110;
-        ms_delay(1);
-        PORTD = 0b00000011;
-        ms_delay(1);
-        PORTD = 0b00001001;
-        ms_delay(1);
-    }}
     else{
         stop=1;
     }
@@ -4870,38 +4873,48 @@ void Z_axis (char direction){
 
 void Twister (char direction){
     if(!New_char_RX){
-    if (direction == 0){
-        PORTD = 0b00110000;
-        ms_delay(1);
-        PORTD = 0b11000000;
-        ms_delay(1);
-        PORTD = 0b10010000;
-        ms_delay(1);
-        PORTD = 0b00110000;
-        ms_delay(1);
-    }
-    if (direction == 1){
-        PORTD = 0b10010000;
-        ms_delay(1);
-        PORTD = 0b01100000;
-        ms_delay(1);
-        PORTD = 0b00110000;
-        ms_delay(1);
-        PORTD = 0b10010000;
-        ms_delay(1);
-    }
+        if (direction == 0){
+            PORTD = 0b00110000;
+            ms_delay(1);
+            PORTD = 0b11000000;
+            ms_delay(1);
+            PORTD = 0b10010000;
+            ms_delay(1);
+            PORTD = 0b00110000;
+            ms_delay(1);
+            Step_Angle--;
+        }
+        if (direction == 1){
+            PORTD = 0b10010000;
+            ms_delay(1);
+            PORTD = 0b01100000;
+            ms_delay(1);
+            PORTD = 0b00110000;
+            ms_delay(1);
+            PORTD = 0b10010000;
+            ms_delay(1);
+            Step_Angle++;
+        }
     }
     else{
         stop=1;
     }
 }
 
+void Tweezer(char angle){
+    if(!New_char_RX){
+
+    }
+    else{
+        stop=1;
+    }
+}
 
 void ms_delay(unsigned int val)
 {
      unsigned int i,j;
         for(i=0;i<val;i++)
-            for(j=0;j<1650;j++);
+; for(j=0;j<1650;j++);
 }
 int fetch_parameters(char Componnt){
     if(Componnt=='A')
@@ -4955,13 +4968,15 @@ int pick_and_place(char Componnt)
         Rot_dir=((Angle_diff<Pick_Angle)? 1:0);
 
         for(int i = 0; (i<(((X_Pick-X_diff) > 0 ? (X_Pick-X_diff) : -(X_Pick-X_diff)))) && !stop; i++){X_axis(X_dir);}
+
         for(int i = 0; (i<(((Y_Pick-Y_diff) > 0 ? (Y_Pick-Y_diff) : -(Y_Pick-Y_diff)))) && !stop; i++){Y_axis(Y_dir);}
+
         for(int i = 0; (i<(((Angle_diff-Pick_Angle) > 0 ? (Angle_diff-Pick_Angle) : -(Angle_diff-Pick_Angle))/3.6)) && !stop; i++){Twister(Rot_dir);}
 
-        for(int i=0; i<3; i++){Z_axis("1");}
+        for(int i=0; i<3 && !stop; i++){Z_axis(1);}
 
 
-        for(int i=0; i<3; i++){Z_axis("0");}
+        for(int i=0; i<3 && !stop; i++){Z_axis(0);}
 
 
 
@@ -4969,13 +4984,13 @@ int pick_and_place(char Componnt)
         Y_dir=((Y_Pick<Y_Place)? 1:0);
         Rot_dir=((Pick_Angle<Place_Angle)? 1:0);
 
-        for(int i = 0; (i<(((X_Place-X_diff) > 0 ? (X_Place-X_diff) : -(X_Place-X_diff)))) && !stop; i++){X_axis(X_dir);}
-        for(int i = 0; (i<(((Y_Place-Y_diff) > 0 ? (Y_Place-Y_diff) : -(Y_Place-Y_diff)))) && !stop; i++){Y_axis(Y_dir);}
+        for(int i = 0; (i<(((X_Place-X_Pick) > 0 ? (X_Place-X_Pick) : -(X_Place-X_Pick)))) && !stop; i++){X_axis(X_dir);}
+        for(int i = 0; (i<(((Y_Place-Y_Pick) > 0 ? (Y_Place-Y_Pick) : -(Y_Place-Y_Pick)))) && !stop; i++){Y_axis(Y_dir);}
         for(int i = 0; (i<(((Pick_Angle-Place_Angle) > 0 ? (Pick_Angle-Place_Angle) : -(Pick_Angle-Place_Angle))/3.6)) && !stop; i++){Twister(Rot_dir);}
-        for(int i=0; i<3; i++){Z_axis("1");}
+        for(int i=0; i<3 && !stop; i++){Z_axis(1);}
 
 
-        for(int i=0; i<3; i++){Z_axis("0");}
+        for(int i=0; i<3 && !stop; i++){Z_axis(0);}
 
         Angle_diff= Place_Angle;
         X_diff = X_Place;
@@ -4986,17 +5001,23 @@ int pick_and_place(char Componnt)
 
 void return_to_initial(void){
 
-    for(int i = 0; i<X_diff; i++){X_axis(1);}
-    for(int i = 0; i<Y_diff; i++){Y_axis(1);}
-    for(int i = 0; i<Angle_diff; i++){Twister(1);}
-    for(int i=0; i<3 && !stop; i++){Z_axis("0");}
+    New_char_RX=0;
+    stop=0;
+    Steps=Step_X;
+    for(int i = 0; i<Steps; i++){X_axis(0);}
+    Steps=Step_Y;
+    for(int i = 0; i<Steps; i++){Y_axis(0);}
+    Steps=Step_Angle;
+    for(int i = 0; i<Steps; i++){Twister(0);}
+    Steps=Step_Z;
+    for(int i=0; i<Steps && !stop; i++){Z_axis(0);}
 
 }
-# 611 "main.c"
+# 631 "main.c"
 void Z_axis_and_Tweezer(){
-     for(int i = 0;i<15; i++){Z_axis(0);}
+     for(int i = 0;i<15; i++){Z_axis(1);}
 
-     for(int i = 0; i<15; i++){Z_axis(1);}
+     for(int i = 0; i<15; i++){Z_axis(0);}
  }
 
 void __attribute__((picinterrupt(("")))) Rx_char_USART(void)
@@ -5004,11 +5025,17 @@ void __attribute__((picinterrupt(("")))) Rx_char_USART(void)
     int i=0;
     do
     {
-        while(!RCIF){};
+        while(INTCONbits.INT0IF==0 && !RCIF){};
         input_str[i]=RCREG;
-    }while(input_str[i++] != '\n');
+    }while(INTCONbits.INT0IF==0 && input_str[i++] != '\n');
 
     PIR1bits.RCIF = 0;
     New_char_RX = 1;
     State = input_str[0];
+    if(INTCONbits.INT0IF==1 && INTCONbits.INT0IE==1){
+        INTCONbits.INT0IF=0;
+
+        input_str[0]="Q";
+        stop=1;
+    }
 }

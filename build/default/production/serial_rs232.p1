@@ -502,29 +502,45 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 238 ]
 }
 "44
-[; ;serial_rs232.c: 44: void serial_tx_char(unsigned char val)
-[v _serial_tx_char `(v ~T0 @X0 1 ef1`uc ]
+[; ;serial_rs232.c: 44: void print_string(char strng[])
+[v _print_string `(v ~T0 @X0 1 ef1`*uc ]
 "45
 [; ;serial_rs232.c: 45: {
 {
-[e :U _serial_tx_char ]
+[e :U _print_string ]
 "44
-[; ;serial_rs232.c: 44: void serial_tx_char(unsigned char val)
-[v _val `uc ~T0 @X0 1 r1 ]
+[; ;serial_rs232.c: 44: void print_string(char strng[])
+[v _strng `*uc ~T0 @X0 1 r1 ]
 "45
 [; ;serial_rs232.c: 45: {
 [f ]
 "46
-[; ;serial_rs232.c: 46:   TXREG=val;
-[e = _TXREG _val ]
-"47
-[; ;serial_rs232.c: 47:   while(!TXSTAbits.TRMT);
-[e $U 240  ]
-[e :U 241 ]
+[; ;serial_rs232.c: 46:     for(int i=0; strng[i]!=((void*)0);i++){
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 243  ]
 [e :U 240 ]
-[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 241  ]
-[e :U 242 ]
+{
+"47
+[; ;serial_rs232.c: 47:         TXREG=strng[i];
+[e = _TXREG -> *U + _strng * -> _i `x -> -> # *U _strng `i `x `uc ]
 "48
-[; ;serial_rs232.c: 48: }
+[; ;serial_rs232.c: 48:         while(!TXSTAbits.TRMT);
+[e $U 244  ]
+[e :U 245 ]
+[e :U 244 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 245  ]
+[e :U 246 ]
+"49
+[; ;serial_rs232.c: 49:     }
+}
+[e ++ _i -> 1 `i ]
+[e :U 243 ]
+[e $ != -> -> *U + _strng * -> _i `x -> -> # *U _strng `i `x `i `*v -> -> 0 `i `*v 240  ]
+[e :U 241 ]
+}
+"51
+[; ;serial_rs232.c: 51: }
 [e :UE 239 ]
 }

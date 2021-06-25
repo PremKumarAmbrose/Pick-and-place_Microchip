@@ -57,11 +57,11 @@
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
 "9 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
 [v _init_PORTS init_PORTS `(v  1 e 1 0 ]
-"27
+"32
 [v _init_interrupts init_interrupts `(v  1 e 1 0 ]
-"188 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+"185 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _main main `(v  1 e 1 0 ]
-"207
+"203
 [v _start_up_menu start_up_menu `(v  1 e 1 0 ]
 "252
 [v _change_sequence change_sequence `(v  1 e 1 0 ]
@@ -69,31 +69,31 @@
 [v _add_component add_component `(v  1 e 1 0 ]
 "341
 [v _remove_component remove_component `(v  1 e 1 0 ]
-"375
-[v _print_string print_string `(v  1 e 1 0 ]
-"383
+"376
 [v _X_axis X_axis `(v  1 e 1 0 ]
-"414
+"410
 [v _Y_axis Y_axis `(v  1 e 1 0 ]
-"445
+"444
 [v _Z_axis Z_axis `(v  1 e 1 0 ]
-"476
+"478
 [v _Twister Twister `(v  1 e 1 0 ]
-"505
+"517
 [v _ms_delay ms_delay `(v  1 e 1 0 ]
-"511
+"523
 [v _fetch_parameters fetch_parameters `(i  1 e 2 0 ]
-"552
+"564
 [v _pick_and_place pick_and_place `(i  1 e 2 0 ]
-"592
+"606
 [v _return_to_initial return_to_initial `(v  1 e 1 0 ]
-"617
+"637
 [v _Rx_char_USART Rx_char_USART `IIH(v  1 e 1 0 ]
 "17 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
 [v _init_USART init_USART `(v  1 e 1 0 ]
 "44
-[v _serial_tx_char serial_tx_char `(v  1 e 1 0 ]
-"197 /opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h
+[v _print_string print_string `(v  1 e 1 0 ]
+"52 /opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h
+[v _PORTA PORTA `VEuc  1 e 1 @3968 ]
+"197
 [v _PORTB PORTB `VEuc  1 e 1 @3969 ]
 "322
 [v _PORTC PORTC `VEuc  1 e 1 @3970 ]
@@ -101,9 +101,11 @@
 [v _PORTD PORTD `VEuc  1 e 1 @3971 ]
 "934
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
+"1210
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
 "1408
 [v _TRISB TRISB `VEuc  1 e 1 @3987 ]
-[s S30 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S31 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -113,7 +115,7 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1684
-[s S39 . 1 `uc 1 RC0 1 0 :1:0 
+[s S40 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -122,14 +124,14 @@
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[s S48 . 1 `uc 1 . 1 0 :1:0 
+[s S49 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 CCP2 1 0 :1:1 
 ]
-[u S51 . 1 `S30 1 . 1 0 `S39 1 . 1 0 `S48 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES51  1 e 1 @3988 ]
+[u S52 . 1 `S31 1 . 1 0 `S40 1 . 1 0 `S49 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES52  1 e 1 @3988 ]
 "1888
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-[s S107 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S108 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSPIE 1 0 :1:3 
@@ -139,13 +141,13 @@
 `uc 1 PSPIE 1 0 :1:7 
 ]
 "2284
-[s S116 . 1 `uc 1 . 1 0 :4:0 
+[s S117 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TX1IE 1 0 :1:4 
 `uc 1 RC1IE 1 0 :1:5 
 ]
-[u S120 . 1 `S107 1 . 1 0 `S116 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES120  1 e 1 @3997 ]
-[s S77 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S121 . 1 `S108 1 . 1 0 `S117 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES121  1 e 1 @3997 ]
+[s S78 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSPIF 1 0 :1:3 
@@ -155,13 +157,13 @@
 `uc 1 PSPIF 1 0 :1:7 
 ]
 "2361
-[s S86 . 1 `uc 1 . 1 0 :4:0 
+[s S87 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 TX1IF 1 0 :1:4 
 `uc 1 RC1IF 1 0 :1:5 
 ]
-[u S90 . 1 `S77 1 . 1 0 `S86 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES90  1 e 1 @3998 ]
-[s S289 . 1 `uc 1 RX9D 1 0 :1:0 
+[u S91 . 1 `S78 1 . 1 0 `S87 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES91  1 e 1 @3998 ]
+[s S299 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -171,25 +173,25 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "2755
-[s S298 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S308 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S302 . 1 `uc 1 . 1 0 :6:0 
+[s S312 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 NOT_RC8 1 0 :1:6 
 ]
-[s S305 . 1 `uc 1 . 1 0 :6:0 
+[s S315 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nRC8 1 0 :1:6 
 ]
-[s S308 . 1 `uc 1 . 1 0 :6:0 
+[s S318 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S311 . 1 `uc 1 . 1 0 :5:0 
+[s S321 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[u S314 . 1 `S289 1 . 1 0 `S298 1 . 1 0 `S302 1 . 1 0 `S305 1 . 1 0 `S308 1 . 1 0 `S311 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES314  1 e 1 @4011 ]
-[s S226 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S324 . 1 `S299 1 . 1 0 `S308 1 . 1 0 `S312 1 . 1 0 `S315 1 . 1 0 `S318 1 . 1 0 `S321 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES324  1 e 1 @4011 ]
+[s S236 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -199,17 +201,17 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "2981
-[s S235 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S245 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S239 . 1 `uc 1 . 1 0 :6:0 
+[s S249 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 NOT_TX8 1 0 :1:6 
 ]
-[s S242 . 1 `uc 1 . 1 0 :6:0 
+[s S252 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S245 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S255 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -218,15 +220,17 @@
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[u S254 . 1 `S226 1 . 1 0 `S235 1 . 1 0 `S239 1 . 1 0 `S242 1 . 1 0 `S245 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES254  1 e 1 @4012 ]
+[u S264 . 1 `S236 1 . 1 0 `S245 1 . 1 0 `S249 1 . 1 0 `S252 1 . 1 0 `S255 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES264  1 e 1 @4012 ]
 "3204
 [v _TXREG TXREG `VEuc  1 e 1 @4013 ]
 "3216
 [v _RCREG RCREG `VEuc  1 e 1 @4014 ]
 "3228
 [v _SPBRG SPBRG `VEuc  1 e 1 @4015 ]
-[s S137 . 1 `uc 1 RBIF 1 0 :1:0 
+"5230
+[v _INTCON2 INTCON2 `VEuc  1 e 1 @4081 ]
+[s S138 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -236,7 +240,7 @@
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "5344
-[s S146 . 1 `uc 1 . 1 0 :1:0 
+[s S147 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -245,12 +249,12 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S155 . 1 `uc 1 . 1 0 :6:0 
+[s S156 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S159 . 1 `S137 1 . 1 0 `S146 1 . 1 0 `S155 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES159  1 e 1 @4082 ]
+[u S160 . 1 `S138 1 . 1 0 `S147 1 . 1 0 `S156 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES160  1 e 1 @4082 ]
 "6644
 [v _RCIF RCIF `VEb  1 e 0 @31989 ]
 "87 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
@@ -275,6 +279,12 @@
 [v _Rot_dir Rot_dir `uc  1 e 1 0 ]
 "98
 [v _input_str input_str `VE[10]uc  1 e 10 0 ]
+"99
+[v _Steps Steps `i  1 e 2 0 ]
+[v _Step_X Step_X `i  1 e 2 0 ]
+[v _Step_Y Step_Y `i  1 e 2 0 ]
+[v _Step_Z Step_Z `i  1 e 2 0 ]
+[v _Step_Angle Step_Angle `i  1 e 2 0 ]
 "132
 [v _X_Pick_D X_Pick_D `i  1 e 2 0 ]
 "133
@@ -291,41 +301,41 @@
 [v _X_diff X_diff `i  1 e 2 0 ]
 "141
 [v _Y_diff Y_diff `i  1 e 2 0 ]
-"188
+"185
 [v _main main `(v  1 e 1 0 ]
 {
-"201
+"197
 } 0
-"207
+"203
 [v _start_up_menu start_up_menu `(v  1 e 1 0 ]
 {
-"220
+"217
 [v start_up_menu@i i `i  1 a 2 63 ]
 "250
 } 0
-"592
+"606
 [v _return_to_initial return_to_initial `(v  1 e 1 0 ]
 {
-"597
-[v return_to_initial@i_606 i `i  1 a 2 21 ]
-"596
-[v return_to_initial@i_605 i `i  1 a 2 19 ]
-"595
-[v return_to_initial@i_604 i `i  1 a 2 17 ]
-"594
+"617
+[v return_to_initial@i_616 i `i  1 a 2 21 ]
+"615
+[v return_to_initial@i_615 i `i  1 a 2 19 ]
+"613
+[v return_to_initial@i_614 i `i  1 a 2 17 ]
+"611
 [v return_to_initial@i i `i  1 a 2 15 ]
-"599
+"619
 } 0
 "341
 [v _remove_component remove_component `(v  1 e 1 0 ]
 {
 "349
-[v remove_component@indxToDel indxToDel `i  1 a 2 27 ]
+[v remove_component@indxToDel indxToDel `i  1 a 2 28 ]
 "348
 [v remove_component@ptr ptr `*.39uc  1 a 2 25 ]
 "347
-[v remove_component@rm_comp rm_comp `uc  1 a 1 29 ]
-"371
+[v remove_component@rm_comp rm_comp `uc  1 a 1 27 ]
+"370
 } 0
 "5 /opt/microchip/xc8/v2.32/pic/sources/c99/common/strrchr.c
 [v _strrchr strrchr `(*.39uc  1 e 2 0 ]
@@ -358,43 +368,43 @@
 [v memmove@n n `ui  1 p 2 15 ]
 "28
 } 0
-"552 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+"564 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _pick_and_place pick_and_place `(i  1 e 2 0 ]
 {
 [v pick_and_place@Componnt Componnt `uc  1 a 1 wreg ]
+"597
+[v pick_and_place@i_611 i `i  1 a 2 31 ]
+"594
+[v pick_and_place@i_610 i `i  1 a 2 29 ]
+"593
+[v pick_and_place@i_608 i `i  1 a 2 25 ]
+"592
+[v pick_and_place@i_606 i `i  1 a 2 21 ]
+"591
+[v pick_and_place@i_604 i `i  1 a 2 17 ]
 "583
-[v pick_and_place@i_601 i `i  1 a 2 31 ]
+[v pick_and_place@i_603 i `i  1 a 2 15 ]
 "580
-[v pick_and_place@i_600 i `i  1 a 2 29 ]
-"579
-[v pick_and_place@i_598 i `i  1 a 2 21 ]
+[v pick_and_place@i_601 i `i  1 a 2 13 ]
 "578
-[v pick_and_place@i_596 i `i  1 a 2 17 ]
-"577
-[v pick_and_place@i_594 i `i  1 a 2 13 ]
-"569
-[v pick_and_place@i_593 i `i  1 a 2 27 ]
-"566
-[v pick_and_place@i_591 i `i  1 a 2 25 ]
-"564
-[v pick_and_place@i_588 i `i  1 a 2 9 ]
-"563
-[v pick_and_place@i_585 i `i  1 a 2 5 ]
-"562
+[v pick_and_place@i_598 i `i  1 a 2 9 ]
+"576
+[v pick_and_place@i_595 i `i  1 a 2 5 ]
+"574
 [v pick_and_place@i i `i  1 a 2 1 ]
-"552
+"564
 [v pick_and_place@Componnt Componnt `uc  1 a 1 wreg ]
-"556
+"568
 [v pick_and_place@Componnt Componnt `uc  1 a 1 0 ]
-"590
+"604
 } 0
-"511
+"523
 [v _fetch_parameters fetch_parameters `(i  1 e 2 0 ]
 {
 [v fetch_parameters@Componnt Componnt `uc  1 a 1 wreg ]
 [v fetch_parameters@Componnt Componnt `uc  1 a 1 wreg ]
 [v fetch_parameters@Componnt Componnt `uc  1 a 1 7 ]
-"550
+"562
 } 0
 "10 /opt/microchip/xc8/v2.32/pic/sources/c99/common/xxtofl.c
 [v ___xxtofl __xxtofl `(d  1 e 4 0 ]
@@ -431,62 +441,62 @@
 [v ___fldiv@a a `d  1 p 4 25 ]
 "185
 } 0
-"445 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+"444 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _Z_axis Z_axis `(v  1 e 1 0 ]
 {
 [v Z_axis@direction direction `uc  1 a 1 wreg ]
 [v Z_axis@direction direction `uc  1 a 1 wreg ]
 [v Z_axis@direction direction `uc  1 a 1 13 ]
-"474
+"476
 } 0
-"414
+"410
 [v _Y_axis Y_axis `(v  1 e 1 0 ]
 {
 [v Y_axis@direction direction `uc  1 a 1 wreg ]
 [v Y_axis@direction direction `uc  1 a 1 wreg ]
 [v Y_axis@direction direction `uc  1 a 1 13 ]
-"443
+"442
 } 0
-"383
+"376
 [v _X_axis X_axis `(v  1 e 1 0 ]
 {
 [v X_axis@direction direction `uc  1 a 1 wreg ]
 [v X_axis@direction direction `uc  1 a 1 wreg ]
 [v X_axis@direction direction `uc  1 a 1 13 ]
-"412
+"408
 } 0
-"476
+"478
 [v _Twister Twister `(v  1 e 1 0 ]
 {
 [v Twister@direction direction `uc  1 a 1 wreg ]
 [v Twister@direction direction `uc  1 a 1 wreg ]
 [v Twister@direction direction `uc  1 a 1 13 ]
-"502
+"506
 } 0
-"505
+"517
 [v _ms_delay ms_delay `(v  1 e 1 0 ]
 {
-"507
+"519
 [v ms_delay@j j `ui  1 a 2 11 ]
 [v ms_delay@i i `ui  1 a 2 9 ]
-"505
+"517
 [v ms_delay@val val `ui  1 p 2 7 ]
-"510
+"522
 } 0
 "252
 [v _change_sequence change_sequence `(v  1 e 1 0 ]
 {
 "256
-[v change_sequence@i i `i  1 a 2 17 ]
+[v change_sequence@i i `i  1 a 2 16 ]
 "266
 } 0
 "268
 [v _add_component add_component `(v  1 e 1 0 ]
 {
 "269
-[v add_component@add_componnt add_componnt `[1]uc  1 a 1 29 ]
+[v add_component@add_componnt add_componnt `[2]uc  1 a 2 29 ]
 "268
-[v add_component@F3128 F3128 `[1]uc  1 s 1 F3128 ]
+[v add_component@F3131 F3131 `[2]uc  1 s 2 F3131 ]
 "339
 } 0
 "3 /opt/microchip/xc8/v2.32/pic/sources/c99/common/strncat.c
@@ -506,23 +516,14 @@
 [v strlen@s s `*.39Cuc  1 p 2 7 ]
 "12
 } 0
-"375 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+"44 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
 [v _print_string print_string `(v  1 e 1 0 ]
 {
-"377
-[v print_string@i i `i  1 a 2 12 ]
-"375
-[v print_string@strng strng `*.35uc  1 p 2 8 ]
-"380
-} 0
-"44 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
-[v _serial_tx_char serial_tx_char `(v  1 e 1 0 ]
-{
-[v serial_tx_char@val val `uc  1 a 1 wreg ]
-[v serial_tx_char@val val `uc  1 a 1 wreg ]
 "46
-[v serial_tx_char@val val `uc  1 a 1 7 ]
-"48
+[v print_string@i i `i  1 a 2 11 ]
+"44
+[v print_string@strng strng `*.35uc  1 p 2 7 ]
+"51
 } 0
 "4 /opt/microchip/xc8/v2.32/pic/sources/c99/common/atoi.c
 [v _atoi atoi `(i  1 e 2 0 ]
@@ -556,10 +557,10 @@
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 9 ]
 "53
 } 0
-"27 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
+"32 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
 [v _init_interrupts init_interrupts `(v  1 e 1 0 ]
 {
-"34
+"45
 } 0
 "17 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/serial_rs232.c
 [v _init_USART init_USART `(v  1 e 1 0 ]
@@ -571,15 +572,15 @@
 {
 "16
 [v roundf@y y `f  1 a 4 80 ]
-[u S1095 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
+[u S1106 . 4 `f 1 f 4 0 `ul 1 i 4 0 ]
 "14
-[v roundf@u u `S1095  1 a 4 76 ]
+[v roundf@u u `S1106  1 a 4 76 ]
 "15
 [v roundf@e e `i  1 a 2 70 ]
 "12
 [v roundf@x x `f  1 p 4 58 ]
 "13
-[v roundf@F528 F528 `S1095  1 s 4 F528 ]
+[v roundf@F528 F528 `S1106  1 s 4 F528 ]
 "36
 } 0
 "245 /opt/microchip/xc8/v2.32/pic/sources/c99/common/sprcadd.c
@@ -614,17 +615,17 @@
 "8 /opt/microchip/xc8/v2.32/pic/sources/c99/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
 {
-[s S918 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+[s S929 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
 "13
-[s S923 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
-[u S926 . 4 `l 1 i 4 0 `d 1 f 4 0 `S918 1 fAsBytes 4 0 `S923 1 fAsWords 4 0 ]
-[v ___flmul@prod prod `S926  1 a 4 26 ]
+[s S934 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
+[u S937 . 4 `l 1 i 4 0 `d 1 f 4 0 `S929 1 fAsBytes 4 0 `S934 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S937  1 a 4 26 ]
 "12
 [v ___flmul@grs grs `ul  1 a 4 20 ]
-[s S994 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+[s S1005 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
 "14
-[u S997 . 2 `s 1 i 2 0 `us 1 n 2 0 `S994 1 nAsBytes 2 0 ]
-[v ___flmul@temp temp `S997  1 a 2 30 ]
+[u S1008 . 2 `s 1 i 2 0 `us 1 n 2 0 `S1005 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S1008  1 a 2 30 ]
 "10
 [v ___flmul@bexp bexp `uc  1 a 1 25 ]
 "11
@@ -647,8 +648,8 @@
 [v ___fltol __fltol `(l  1 e 4 0 ]
 {
 "45
-[v ___fltol@exp1 exp1 `uc  1 a 1 89 ]
-[v ___fltol@sign1 sign1 `uc  1 a 1 88 ]
+[v ___fltol@exp1 exp1 `uc  1 a 1 1 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 0 ]
 "43
 [v ___fltol@f1 f1 `d  1 p 4 84 ]
 "70
@@ -656,12 +657,12 @@
 "9 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/init_PIC.c
 [v _init_PORTS init_PORTS `(v  1 e 1 0 ]
 {
-"23
+"28
 } 0
-"617 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
+"637 /mnt/Files/Projects/MPLABXProjects/Pick-and-place_Microchip/main.c
 [v _Rx_char_USART Rx_char_USART `IIH(v  1 e 1 0 ]
 {
-"619
+"639
 [v Rx_char_USART@i i `i  1 a 2 5 ]
-"629
+"655
 } 0

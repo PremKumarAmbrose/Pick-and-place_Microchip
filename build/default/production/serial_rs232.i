@@ -4271,7 +4271,7 @@ double yn(int, double);
 # 1 "./serial_rs232.h" 1
 # 80 "./serial_rs232.h"
 void init_USART(void);
-void serial_tx_char(unsigned char val);
+void print_string(char strng[]);
 # 7 "serial_rs232.c" 2
 
 
@@ -4297,8 +4297,11 @@ void init_USART(void)
     RCSTAbits.CREN=1;
 }
 
-void serial_tx_char(unsigned char val)
+void print_string(char strng[])
 {
-  TXREG=val;
-  while(!TXSTAbits.TRMT);
+    for(int i=0; strng[i]!=((void*)0);i++){
+        TXREG=strng[i];
+        while(!TXSTAbits.TRMT);
+    }
+
 }

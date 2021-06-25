@@ -41,10 +41,13 @@ void init_USART(void)
     RCSTAbits.CREN=1;  //RX enable
 }
 
-void serial_tx_char(unsigned char val)
+void print_string(char strng[])
 {
-  TXREG=val;
-  while(!TXSTAbits.TRMT);
+    for(int i=0; strng[i]!=NULL;i++){
+        TXREG=strng[i];
+        while(!TXSTAbits.TRMT);   
+    }
+  
 }
 
 //Add functions here 
