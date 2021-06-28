@@ -76,3 +76,4 @@ extern "C" {
 
 void init_PORTS(void);            // PORTS configurations
 void init_interrupts(void);       // Interrupts configuration 
+void init_Timers(void);

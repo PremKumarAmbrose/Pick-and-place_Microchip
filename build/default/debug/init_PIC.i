@@ -3899,7 +3899,11 @@ typedef uint32_t uint_fast32_t;
 # 77 "./init_PIC.h"
 void init_PORTS(void);
 void init_interrupts(void);
+void init_Timers(void);
 # 7 "init_PIC.c" 2
+# 17 "init_PIC.c"
+static uint8_t new_TMR1H = 0xFA;
+static uint8_t new_TMR1L = 0x4D;
 
 
 void init_PORTS(void)
@@ -3908,7 +3912,7 @@ void init_PORTS(void)
 
     TRISD = 0x00;
     TRISA = 0x00;
-    TRISB = 0X0F;
+    TRISB = 0X03;
     PORTA = 0x00;
     PORTD = 0x00;
 
@@ -3919,10 +3923,37 @@ void init_PORTS(void)
     PORTC = 0;
     TRISCbits.RC7 = 1;
     TRISCbits.RC6 = 0;
+    TRISCbits.RC2 = 0;
 
     return;
 }
 
+
+void init_Timers(void){
+    T0CONbits.T08BIT = 0;
+ T0CONbits.T0CS = 0;
+ T0CONbits.PSA = 1;
+ T0CONbits.TMR0ON = 0;
+
+
+ TMR0H = 0xB2;
+ TMR0L = 0x04;
+
+
+    T1CONbits.RD16 = 1;
+ T1CONbits.T1CKPS1 = 0;
+ T1CONbits.T1CKPS0 = 0;
+ T1CONbits.T1OSCEN = 0;
+ T1CONbits.TMR1CS = 0;
+ T1CONbits.TMR1ON = 0;
+
+
+ TMR1H = 0xFA;
+    TMR1L = 0x4D;
+
+    return;
+
+}
 
 
 void init_interrupts(void)
@@ -3931,11 +3962,16 @@ void init_interrupts(void)
  PIE1bits.RCIE = 1;
  INTCONbits.PEIE = 1;
 
-
+    PIE1bits.TMR1IE = 1;
+    INTCONbits.TMR0IE = 1;
 
     INTCON2=0x00;
+
+    INTCON3=0x00;
     INTCONbits.INT0IF=0;
     INTCONbits.INT0IE=1;
+    INTCON3bits.INT1IF=0;
+    INTCON3bits.INT1IE=1;
 
     return;
 }

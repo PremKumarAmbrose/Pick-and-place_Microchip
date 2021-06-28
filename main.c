@@ -85,6 +85,7 @@ static double const Fosc              = 4000000;// Oscillator Frequency in Hz
 static double       Tosc              = 1/Fosc; // Tosc in sec
 static double const desired_BaudRate  = 9600;    // Desired Baud Rate in bps
 static _Bool   New_char_RX = false;
+static _Bool component_present = false;
 _Bool stop = false; 
 int lenth_of_array = 30;
 char testarray [30];
@@ -99,6 +100,12 @@ volatile unsigned char input_str[10]=" ";
 int Steps,Step_X=0, Step_Y=0, Step_Z=0, Step_Angle=0;
 
 ///*******************Specific Parameters for each component*********************///
+
+static uint8_t new_TMR1H = 0xFA; 	//new pulse duration (i.e. new position of the servo)
+static uint8_t new_TMR1L = 0x4D;
+
+#define TMR0H_set   0xB2	// Fine tuned Timer0 registers (PWM period)
+#define TMR0L_set   0x04	// 
 
 #define X_Pick_A 3  //Pick and Place Parameters of A
 #define Y_Pick_A 4
@@ -127,7 +134,9 @@ int Steps,Step_X=0, Step_Y=0, Step_Z=0, Step_Angle=0;
 
 #define X_Place_C 16
 #define Y_Place_C 14     
-#define Place_Angle_C 270 
+#define Place_Angle_C 270
+
+
 
 int X_Pick_D;   //Pick and Place Parameters of D
 int Y_Pick_D; 
@@ -155,7 +164,9 @@ int angle_diff;
 #define speed 1 // Speed Range 10 to 1  10 = lowest , 1 = highest
 #define clockwise 1 // clockwise direction macro
 #define anti_clockwise 0 // anti clockwise direction macro
- 
+#define Open 1
+#define Close 0
+
 /*
  *Application related function and definition
  */
@@ -177,6 +188,8 @@ void change_sequence(void);
 void add_component(void);
 void remove_component(void);
 void Tweezer(char action);
+void set_new_pos(uint8_t new_TMR1H, uint8_t new_TMR1L);
+
 
 /*
  * main function starts here
@@ -185,11 +198,17 @@ void Tweezer(char action);
 void main(void)
 {
     //unsigned char RX_Char = ' ';  // used for echo of the received char    unsigned char test_C = ' ';
-    
     init_PORTS();           // PORTS configuration  
     init_USART();           // USART module configuration
     init_interrupts();      // Interrupt configuration (only INT on RX USART enabled)
+    
+    init_Timers();
+    
     ei();                   // enable all interrupts
+    T0CONbits.TMR0ON = 1; //Timer 0 enabled, start PWM period count
+	T1CONbits.TMR1ON = 1; //Timer 1 enabled, start initial Ton count
+	LATCbits.LC2     = 1; //set output on RC2 HIGH (Ton)
+    
     while(receive_input){
         New_char_RX=false;
         start_up_menu();        
@@ -218,6 +237,7 @@ void start_up_menu(void){
                         X_diff=0; 
                         Y_diff=0; 
                         Angle_diff=0;
+                        //Tweezer(0);
                         do{  
                             pick_and_place(sequence[i]); 
                         }while(!stop && sequence[i++]!='\n');
@@ -505,9 +525,49 @@ void Twister (char direction){
     }
 }
 
-void Tweezer(char angle){
+void set_new_pos(uint8_t nTMR1H, uint8_t nTMR1L)  // set new position of the servo
+{
+    TMR1H = nTMR1H;
+    TMR1L = nTMR1L;
+	
+//	SET position = 0° => Ton = 1.5 msec => 1500 Tcyc =>
+//	 => overflow after 1500 Tcyc 
+//	 => Set initial value of (TMR1H:TMR1L) = 65.536-1.500 = 64.036 = 0xFA24
+//	 TMR1H = 0xFA
+//	 TMR1L = 0x24
+    
+//	SET  position at -45° => Ton = 1.25 msec => 1250 Tcyc =>
+//	 => overflow after 1250 Tcyc 
+//	 => Set initial value of (TMR1H:TMR1L) = 65.536-1.250 = 64.286 = 0xFB1E
+//	 TMR1H = 0xFB
+//	 TMR1L = 0x1E
+	
+//	SET  position at +45° => Ton = 1.75 msec => 1750 Tcyc =>
+//	 => overflow after 1750 Tcyc 
+//	 => Set initial value of (TMR1H:TMR1L) = 65.536-1.750 = 64.036 = 0xF92A
+//	 TMR1H = 0xF9
+//	 TMR1L = 0x2A
+	
+    LATCbits.LC2 =  1;       //set output pin RC2 HIGH (Ton)
+	T1CONbits.TMR1ON = 1;    //enable Timer 1 => Start of Ton
+	   
+    return;
+}
+
+
+void Tweezer(char action){
     if(!New_char_RX){
-        
+        if(action==1){                               //Open       
+            new_TMR1H = 0xF9;
+            new_TMR1L = 0x53;
+            
+        }
+        if(action == 0){                             //close   
+            new_TMR1H= 0xFA;
+            new_TMR1L= 0x4D;
+        }
+        LATCbits.LC2=1;
+        T1CONbits.TMR1ON=1;
     }
     else{
         stop=true;
@@ -517,8 +577,8 @@ void Tweezer(char angle){
 void ms_delay(unsigned int val)
 {
      unsigned int i,j;
-        for(i=0;i<val;i++)
-;            for(j=0;j<1650;j++);                    
+        for(i=0;i<val;i++);
+        for(j=0;j<1650;j++);                    
 }
 int fetch_parameters(char Componnt){
     if(Componnt=='A')
@@ -565,6 +625,7 @@ int pick_and_place(char Componnt)
 {
     //// Component C //////////////////////////////////
     //Tweezer open 5 units wide
+    int j =0;
     fetch_parameters(Componnt);
 
         X_dir=direct(X_diff,X_Pick);
@@ -577,8 +638,23 @@ int pick_and_place(char Componnt)
         
         for(int i = 0; (i<(abs(Angle_diff-Pick_Angle)/3.6)) && !stop; i++){Twister(Rot_dir);}
         //ultrasonic check while loop
+        Tweezer(Open);
+        print_string("\nOpening tweezer");
+        while(1){
+            if(component_present){
+                break;
+            }
+            else if(j>2 && !component_present){
+                print_string("\nComponent is missing!");
+                break;
+            }
+            else{
+                ms_delay(5000);
+                j++;}
+        }
+        ms_delay(10);
         for(int i=0; i<3 && !stop; i++){Z_axis(clockwise);}
-            //Tweezer();
+        Tweezer(Close);
             //Tweezer close 4 units wide
         for(int i=0; i<3 && !stop; i++){Z_axis(anti_clockwise);}    
         
@@ -592,10 +668,10 @@ int pick_and_place(char Componnt)
         for(int i = 0; (i<(abs(Y_Place-Y_Pick))) && !stop; i++){Y_axis(Y_dir);}
         for(int i = 0; (i<(abs(Pick_Angle-Place_Angle)/3.6)) && !stop; i++){Twister(Rot_dir);}
         for(int i=0; i<3 && !stop; i++){Z_axis(clockwise);}
-            //Tweezer();
+        Tweezer(Open);
             //Tweezer open 5 units wide
         for(int i=0; i<3 && !stop; i++){Z_axis(anti_clockwise);}
-
+        Tweezer(Close);
         Angle_diff= Place_Angle;    
         X_diff = X_Place;
         Y_diff = Y_Place;
@@ -636,6 +712,7 @@ void Z_axis_and_Tweezer(){
 
 void __interrupt() Rx_char_USART(void)  // Interrupt function
 {
+    if(PIE1bits.RCIE && PIR1bits.RCIF){
     int i=0;
     do
     {
@@ -646,12 +723,32 @@ void __interrupt() Rx_char_USART(void)  // Interrupt function
     PIR1bits.RCIF = 0;  //clear the interrupt condition
     New_char_RX = true;                               // end IF
     State = input_str[0];
+    }
     if(INTCONbits.INT0IF==1 && INTCONbits.INT0IE==1){
         INTCONbits.INT0IF=0;
         //return_to_initial();
         input_str[0]="Q";
         stop=true;
     }
+    if(INTCON3bits.INT1IF==1 && INTCON3bits.INT1IE==1){
+        INTCON3bits.INT1IF=0;
+        component_present=true;
+    }
+    
+    if(INTCONbits.TMR0IE && INTCONbits.TMR0IF) // process Timer 0 overflow interrupt -> END of Period
+        {
+            //reset Timer0
+	        TMR0H = TMR0H_set;			//set TMR0H
+            TMR0L = TMR0L_set;			//set TMR0L
+			set_new_pos(new_TMR1H, new_TMR1L);	//set Timer 1
+            T0CONbits.TMR0ON = 1;		//Timer 0 enabled (start period)
+			T1CONbits.TMR1ON = 1;		//Timer 1 enabled (start Ton)
+            INTCONbits.TMR0IF = 0;    	// clear this interrupt condition flag
+        }
+    if(PIE1bits.TMR1IE && PIR1bits.TMR1IF) // process Timer 1 overflow interrupt -> END of Ton
+        {
+            LATCbits.LC2 = 0;       //clear output pin (RC2)
+            T1CONbits.TMR1ON = 0;   //Stop Timer 1 disabled => END of Ton
+	        PIR1bits.TMR1IF = 0;    // clear this interrupt condition flag
+        }                           // end IF
 }// end function
-
-

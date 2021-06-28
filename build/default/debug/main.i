@@ -4516,6 +4516,7 @@ extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 77 "./init_PIC.h"
 void init_PORTS(void);
 void init_interrupts(void);
+void init_Timers(void);
 # 79 "main.c" 2
 
 # 1 "./serial_rs232.h" 1
@@ -4531,6 +4532,7 @@ static double const Fosc = 4000000;
 static double Tosc = 1/Fosc;
 static double const desired_BaudRate = 9600;
 static _Bool New_char_RX = 0;
+static _Bool component_present = 0;
 _Bool stop = 0;
 int lenth_of_array = 30;
 char testarray [30];
@@ -4543,7 +4545,12 @@ char X_dir, Y_dir, Rot_dir;
 unsigned char RX_Char;
 volatile unsigned char input_str[10]=" ";
 int Steps,Step_X=0, Step_Y=0, Step_Z=0, Step_Angle=0;
-# 132 "main.c"
+
+
+
+static uint8_t new_TMR1H = 0xFA;
+static uint8_t new_TMR1L = 0x4D;
+# 141 "main.c"
 int X_Pick_D;
 int Y_Pick_D;
 int Pick_Angle_D;
@@ -4555,7 +4562,7 @@ int Place_Angle_D;
 int X_diff;
 int Y_diff;
 int angle_diff;
-# 163 "main.c"
+# 174 "main.c"
 void system_init (void);
 void X_axis (char direction);
 void Y_axis (char direction);
@@ -4573,6 +4580,8 @@ void change_sequence(void);
 void add_component(void);
 void remove_component(void);
 void Tweezer(char action);
+void set_new_pos(uint8_t new_TMR1H, uint8_t new_TMR1L);
+
 
 
 
@@ -4581,11 +4590,17 @@ void Tweezer(char action);
 void main(void)
 {
 
-
     init_PORTS();
     init_USART();
     init_interrupts();
+
+    init_Timers();
+
     (INTCONbits.GIE = 1);
+    T0CONbits.TMR0ON = 1;
+ T1CONbits.TMR1ON = 1;
+ LATCbits.LC2 = 1;
+
     while(1){
         New_char_RX=0;
         start_up_menu();
@@ -4614,6 +4629,7 @@ void start_up_menu(void){
                         X_diff=0;
                         Y_diff=0;
                         Angle_diff=0;
+
                         do{
                             pick_and_place(sequence[i]);
                         }while(!stop && sequence[i++]!='\n');
@@ -4901,9 +4917,31 @@ void Twister (char direction){
     }
 }
 
-void Tweezer(char angle){
-    if(!New_char_RX){
+void set_new_pos(uint8_t nTMR1H, uint8_t nTMR1L)
+{
+    TMR1H = nTMR1H;
+    TMR1L = nTMR1L;
+# 551 "main.c"
+    LATCbits.LC2 = 1;
+ T1CONbits.TMR1ON = 1;
 
+    return;
+}
+
+
+void Tweezer(char action){
+    if(!New_char_RX){
+        if(action==1){
+            new_TMR1H = 0xF9;
+            new_TMR1L = 0x53;
+
+        }
+        if(action == 0){
+            new_TMR1H= 0xFA;
+            new_TMR1L= 0x4D;
+        }
+        LATCbits.LC2=1;
+        T1CONbits.TMR1ON=1;
     }
     else{
         stop=1;
@@ -4913,8 +4951,8 @@ void Tweezer(char angle){
 void ms_delay(unsigned int val)
 {
      unsigned int i,j;
-        for(i=0;i<val;i++)
-; for(j=0;j<1650;j++);
+        for(i=0;i<val;i++);
+        for(j=0;j<1650;j++);
 }
 int fetch_parameters(char Componnt){
     if(Componnt=='A')
@@ -4961,6 +4999,7 @@ int pick_and_place(char Componnt)
 {
 
 
+    int j =0;
     fetch_parameters(Componnt);
 
         X_dir=((X_diff<X_Pick)? 1:0);
@@ -4973,8 +5012,23 @@ int pick_and_place(char Componnt)
 
         for(int i = 0; (i<(((Angle_diff-Pick_Angle) > 0 ? (Angle_diff-Pick_Angle) : -(Angle_diff-Pick_Angle))/3.6)) && !stop; i++){Twister(Rot_dir);}
 
+        Tweezer(1);
+        print_string("\nOpening tweezer");
+        while(1){
+            if(component_present){
+                break;
+            }
+            else if(j>2 && !component_present){
+                print_string("\nComponent is missing!");
+                break;
+            }
+            else{
+                ms_delay(5000);
+                j++;}
+        }
+        ms_delay(10);
         for(int i=0; i<3 && !stop; i++){Z_axis(1);}
-
+        Tweezer(0);
 
         for(int i=0; i<3 && !stop; i++){Z_axis(0);}
 
@@ -4988,10 +5042,10 @@ int pick_and_place(char Componnt)
         for(int i = 0; (i<(((Y_Place-Y_Pick) > 0 ? (Y_Place-Y_Pick) : -(Y_Place-Y_Pick)))) && !stop; i++){Y_axis(Y_dir);}
         for(int i = 0; (i<(((Pick_Angle-Place_Angle) > 0 ? (Pick_Angle-Place_Angle) : -(Pick_Angle-Place_Angle))/3.6)) && !stop; i++){Twister(Rot_dir);}
         for(int i=0; i<3 && !stop; i++){Z_axis(1);}
-
+        Tweezer(1);
 
         for(int i=0; i<3 && !stop; i++){Z_axis(0);}
-
+        Tweezer(0);
         Angle_diff= Place_Angle;
         X_diff = X_Place;
         Y_diff = Y_Place;
@@ -5013,7 +5067,7 @@ void return_to_initial(void){
     for(int i=0; i<Steps && !stop; i++){Z_axis(0);}
 
 }
-# 631 "main.c"
+# 707 "main.c"
 void Z_axis_and_Tweezer(){
      for(int i = 0;i<15; i++){Z_axis(1);}
 
@@ -5022,6 +5076,7 @@ void Z_axis_and_Tweezer(){
 
 void __attribute__((picinterrupt(("")))) Rx_char_USART(void)
 {
+    if(PIE1bits.RCIE && PIR1bits.RCIF){
     int i=0;
     do
     {
@@ -5032,10 +5087,32 @@ void __attribute__((picinterrupt(("")))) Rx_char_USART(void)
     PIR1bits.RCIF = 0;
     New_char_RX = 1;
     State = input_str[0];
+    }
     if(INTCONbits.INT0IF==1 && INTCONbits.INT0IE==1){
         INTCONbits.INT0IF=0;
 
         input_str[0]="Q";
         stop=1;
     }
+    if(INTCON3bits.INT1IF==1 && INTCON3bits.INT1IE==1){
+        INTCON3bits.INT1IF=0;
+        component_present=1;
+    }
+
+    if(INTCONbits.TMR0IE && INTCONbits.TMR0IF)
+        {
+
+         TMR0H = 0xB2;
+            TMR0L = 0x04;
+   set_new_pos(new_TMR1H, new_TMR1L);
+            T0CONbits.TMR0ON = 1;
+   T1CONbits.TMR1ON = 1;
+            INTCONbits.TMR0IF = 0;
+        }
+    if(PIE1bits.TMR1IE && PIR1bits.TMR1IF)
+        {
+            LATCbits.LC2 = 0;
+            T1CONbits.TMR1ON = 0;
+         PIR1bits.TMR1IF = 0;
+        }
 }
