@@ -4272,6 +4272,7 @@ double yn(int, double);
 # 80 "./serial_rs232.h"
 void init_USART(void);
 void print_string(char strng[]);
+void print_char(char chr);
 # 7 "serial_rs232.c" 2
 
 
@@ -4304,4 +4305,8 @@ void print_string(char strng[])
         while(!TXSTAbits.TRMT);
     }
 
+}
+void print_char(char chr){
+    TXREG=chr;
+    while(!TXSTAbits.TRMT);
 }

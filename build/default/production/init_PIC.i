@@ -3908,11 +3908,11 @@ static uint8_t new_TMR1L = 0x4D;
 
 void init_PORTS(void)
 {
-    TRISBbits.RB0 = 1;
-    TRISBbits.RB1 = 1;
+
+
     TRISD = 0x00;
     TRISA = 0x00;
-
+    TRISB = 0X03;
     PORTA = 0x00;
     PORTD = 0x00;
 
@@ -3966,10 +3966,12 @@ void init_interrupts(void)
     INTCONbits.TMR0IE = 1;
 
     INTCON2=0x00;
+
+    INTCON3=0x00;
     INTCONbits.INT0IF=0;
     INTCONbits.INT0IE=1;
-    INTCONbits.INT1IF=0;
-    INTCONbits.INT1IE=1;
+    INTCON3bits.INT1IF=0;
+    INTCON3bits.INT1IE=1;
 
     return;
 }

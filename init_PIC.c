@@ -9,7 +9,7 @@
 
 
 #define TMR1H_0     0xFA	// Fine tuned Timer1 registers (Ton = 1.5 msec => set position 0°)
-#define TMR1L_0     0x4D	// 
+#define TMR1L_0     0x24	// 
 
 #define TMR0H_set   0xB2	// Fine tuned Timer0 registers (PWM period)
 #define TMR0L_set   0x04	// 

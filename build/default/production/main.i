@@ -4629,7 +4629,7 @@ void start_up_menu(void){
                         X_diff=0;
                         Y_diff=0;
                         Angle_diff=0;
-                        Tweezer(0);
+
                         do{
                             pick_and_place(sequence[i]);
                         }while(!stop && sequence[i++]!='\n');
@@ -4951,8 +4951,8 @@ void Tweezer(char action){
 void ms_delay(unsigned int val)
 {
      unsigned int i,j;
-        for(i=0;i<val;i++)
-; for(j=0;j<1650;j++);
+        for(i=0;i<val;i++);
+        for(j=0;j<1650;j++);
 }
 int fetch_parameters(char Componnt){
     if(Componnt=='A')
@@ -4999,7 +4999,7 @@ int pick_and_place(char Componnt)
 {
 
 
-    int i =0;
+    int j =0;
     fetch_parameters(Componnt);
 
         X_dir=((X_diff<X_Pick)? 1:0);
@@ -5013,16 +5013,17 @@ int pick_and_place(char Componnt)
         for(int i = 0; (i<(((Angle_diff-Pick_Angle) > 0 ? (Angle_diff-Pick_Angle) : -(Angle_diff-Pick_Angle))/3.6)) && !stop; i++){Twister(Rot_dir);}
 
         Tweezer(1);
-        print_string("\nOpening tweezer");
         while(1){
             if(component_present){
                 break;
             }
-            else if(i>2 && !component_present){
-                ms_delay(5000);
-                print_string("Component is missing!");
+            else if(j>2 && !component_present){
+                print_string("\nComponent is missing!");
+                break;
             }
-            else{i++;}
+            else{
+                _delay((unsigned long)((1000)*(200000000/4000.0)));
+                j++;}
         }
         ms_delay(10);
         for(int i=0; i<3 && !stop; i++){Z_axis(1);}
@@ -5065,7 +5066,7 @@ void return_to_initial(void){
     for(int i=0; i<Steps && !stop; i++){Z_axis(0);}
 
 }
-# 705 "main.c"
+# 706 "main.c"
 void Z_axis_and_Tweezer(){
      for(int i = 0;i<15; i++){Z_axis(1);}
 
@@ -5091,6 +5092,10 @@ void __attribute__((picinterrupt(("")))) Rx_char_USART(void)
 
         input_str[0]="Q";
         stop=1;
+    }
+    if(INTCON3bits.INT1IF==1 && INTCON3bits.INT1IE==1){
+        INTCON3bits.INT1IF=0;
+        component_present=1;
     }
 
     if(INTCONbits.TMR0IE && INTCONbits.TMR0IF)

@@ -79,6 +79,6 @@ extern "C" {
 
 void init_USART(void);                          // USART configuration
 void print_string(char strng[]);         // TX Char
- 
+void print_char(char chr);
 
 //Add here additional function prototypes

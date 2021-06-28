@@ -544,3 +544,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;serial_rs232.c: 51: }
 [e :UE 239 ]
 }
+"52
+[; ;serial_rs232.c: 52: void print_char(char chr){
+[v _print_char `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _print_char ]
+[v _chr `uc ~T0 @X0 1 r1 ]
+[f ]
+"53
+[; ;serial_rs232.c: 53:     TXREG=chr;
+[e = _TXREG -> _chr `uc ]
+"54
+[; ;serial_rs232.c: 54:     while(!TXSTAbits.TRMT);
+[e $U 248  ]
+[e :U 249 ]
+[e :U 248 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 249  ]
+[e :U 250 ]
+"55
+[; ;serial_rs232.c: 55: }
+[e :UE 247 ]
+}

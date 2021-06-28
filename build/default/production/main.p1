@@ -97,9 +97,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "182 main.c
 [; ;main.c: 182: void return_to_initial(void);
 [v _return_to_initial `(v ~T0 @X0 0 ef ]
-"190
-[; ;main.c: 190: void Tweezer(char action);
-[v _Tweezer `(v ~T0 @X0 0 ef1`uc ]
 "180
 [; ;main.c: 180: int pick_and_place(char Componnt);
 [v _pick_and_place `(i ~T0 @X0 0 ef1`uc ]
@@ -145,9 +142,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4526
 [; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 4526: extern volatile unsigned char TMR1L __attribute__((address(0xFCE)));
 [v _TMR1L `Vuc ~T0 @X0 0 e@4046 ]
+[v F3048 `(v ~T0 @X0 1 tf1`ul ]
+"203 /opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/pic18.h
+[v __delay `JF3048 ~T0 @X0 0 e ]
+[p i __delay ]
 [t ~ __interrupt . k ]
 [t T39 __interrupt ]
-"2268
+"2268 /opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h
 [; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 2268:     struct {
 [s S85 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S85 . TMR1IE TMR2IE CCP1IE SSPIE TXIE RCIE ADIE PSPIE ]
@@ -183,6 +184,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3216
 [; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 3216: extern volatile unsigned char RCREG __attribute__((address(0xFAE)));
 [v _RCREG `Vuc ~T0 @X0 0 e@4014 ]
+"5144
+[; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 5144:     struct {
+[s S223 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S223 . INT1IF INT2IF . INT1IE INT2IE . INT1IP INT2IP ]
+"5154
+[; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 5154:     struct {
+[s S224 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S224 . INT1F INT2F . INT1E INT2E . INT1P INT2P ]
+"5143
+[; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 5143: typedef union {
+[u S222 `S223 1 `S224 1 ]
+[n S222 . . . ]
+"5165
+[; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 5165: extern volatile INTCON3bits_t INTCON3bits __attribute__((address(0xFF0)));
+[v _INTCON3bits `VS222 ~T0 @X0 0 e@4080 ]
 "4873
 [; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 4873: extern volatile unsigned char TMR0H __attribute__((address(0xFD7)));
 [v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
@@ -889,9 +905,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "239
 [; ;main.c: 239:                         Angle_diff=0;
 [e = _Angle_diff -> 0 `i ]
-"240
-[; ;main.c: 240:                         Tweezer(0);
-[e ( _Tweezer (1 -> -> 0 `i `uc ]
 "241
 [; ;main.c: 241:                         do{
 [e :U 258 ]
@@ -1976,18 +1989,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _i `ui ~T0 @X0 1 a ]
 [v _j `ui ~T0 @X0 1 a ]
 "580
-[; ;main.c: 580:         for(i=0;i<val;i++)
+[; ;main.c: 580:         for(i=0;i<val;i++);
 {
 [e = _i -> -> 0 `i `ui ]
 [e $U 344  ]
 [e :U 341 ]
-"581
-[; ;main.c: 581: ; for(j=0;j<1650;j++);
 [e ++ _i -> -> 1 `i `ui ]
 [e :U 344 ]
 [e $ < _i _val 341  ]
 [e :U 342 ]
 }
+"581
+[; ;main.c: 581:         for(j=0;j<1650;j++);
 {
 [e = _j -> -> 0 `i `ui ]
 [e $ < _j -> -> 1650 `i `ui 345  ]
@@ -2138,9 +2151,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 625: {
 [f ]
 "628
-[; ;main.c: 628:     int i =0;
-[v _i `i ~T0 @X0 1 a ]
-[e = _i -> 0 `i ]
+[; ;main.c: 628:     int j =0;
+[v _j `i ~T0 @X0 1 a ]
+[e = _j -> 0 `i ]
 "629
 [; ;main.c: 629:     fetch_parameters(Componnt);
 [e ( _fetch_parameters (1 _Componnt ]
@@ -2202,57 +2215,59 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 641:         Tweezer(1);
 [e ( _Tweezer (1 -> -> 1 `i `uc ]
 "642
-[; ;main.c: 642:         print_string("\nOpening tweezer");
-[e ( _print_string (1 :s 18C ]
-"643
-[; ;main.c: 643:         while(1){
+[; ;main.c: 642:         while(1){
 [e :U 370 ]
 {
-"644
-[; ;main.c: 644:             if(component_present){
+"643
+[; ;main.c: 643:             if(component_present){
 [e $ ! != -> _component_present `i -> 0 `i 372  ]
 {
-"645
-[; ;main.c: 645:                 break;
+"644
+[; ;main.c: 644:                 break;
 [e $U 371  ]
-"646
-[; ;main.c: 646:             }
+"645
+[; ;main.c: 645:             }
 }
 [e $U 373  ]
-"647
-[; ;main.c: 647:             else if(i>2 && !component_present){
+"646
+[; ;main.c: 646:             else if(j>2 && !component_present){
 [e :U 372 ]
-[e $ ! && > _i -> 2 `i ! != -> _component_present `i -> 0 `i 374  ]
+[e $ ! && > _j -> 2 `i ! != -> _component_present `i -> 0 `i 374  ]
 {
+"647
+[; ;main.c: 647:                 print_string("\nComponent is missing!");
+[e ( _print_string (1 :s 18C ]
 "648
-[; ;main.c: 648:                 ms_delay(5000);
-[e ( _ms_delay (1 -> -> 5000 `i `ui ]
+[; ;main.c: 648:                 break;
+[e $U 371  ]
 "649
-[; ;main.c: 649:                 print_string("Component is missing!");
-[e ( _print_string (1 :s 19C ]
-"650
-[; ;main.c: 650:             }
+[; ;main.c: 649:             }
 }
 [e $U 375  ]
-"651
-[; ;main.c: 651:             else{i++;}
+"650
+[; ;main.c: 650:             else{
 [e :U 374 ]
 {
-[e ++ _i -> 1 `i ]
+"651
+[; ;main.c: 651:                 _delay((unsigned long)((1000)*(200000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 200000000 `l `d .4000.0 `ul ]
+"652
+[; ;main.c: 652:                 j++;}
+[e ++ _j -> 1 `i ]
 }
 [e :U 375 ]
 [e :U 373 ]
-"652
-[; ;main.c: 652:         }
+"653
+[; ;main.c: 653:         }
 }
 [e :U 369 ]
 [e $U 370  ]
 [e :U 371 ]
-"653
-[; ;main.c: 653:         ms_delay(10);
-[e ( _ms_delay (1 -> -> 10 `i `ui ]
 "654
-[; ;main.c: 654:         for(int i=0; i<3 && !stop; i++){Z_axis(1);}
+[; ;main.c: 654:         ms_delay(10);
+[e ( _ms_delay (1 -> -> 10 `i `ui ]
+"655
+[; ;main.c: 655:         for(int i=0; i<3 && !stop; i++){Z_axis(1);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2266,11 +2281,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ && < _i -> 3 `i ! != -> _stop `i -> 0 `i 376  ]
 [e :U 377 ]
 }
-"655
-[; ;main.c: 655:         Tweezer(0);
+"656
+[; ;main.c: 656:         Tweezer(0);
 [e ( _Tweezer (1 -> -> 0 `i `uc ]
-"657
-[; ;main.c: 657:         for(int i=0; i<3 && !stop; i++){Z_axis(0);}
+"658
+[; ;main.c: 658:         for(int i=0; i<3 && !stop; i++){Z_axis(0);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2284,17 +2299,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ && < _i -> 3 `i ! != -> _stop `i -> 0 `i 380  ]
 [e :U 381 ]
 }
-"661
-[; ;main.c: 661:         X_dir=((X_Pick<X_Place)? 1:0);
-[e = _X_dir -> ? < _X_Pick _X_Place : -> 1 `i -> 0 `i `uc ]
 "662
-[; ;main.c: 662:         Y_dir=((Y_Pick<Y_Place)? 1:0);
-[e = _Y_dir -> ? < _Y_Pick _Y_Place : -> 1 `i -> 0 `i `uc ]
+[; ;main.c: 662:         X_dir=((X_Pick<X_Place)? 1:0);
+[e = _X_dir -> ? < _X_Pick _X_Place : -> 1 `i -> 0 `i `uc ]
 "663
-[; ;main.c: 663:         Rot_dir=((Pick_Angle<Place_Angle)? 1:0);
+[; ;main.c: 663:         Y_dir=((Y_Pick<Y_Place)? 1:0);
+[e = _Y_dir -> ? < _Y_Pick _Y_Place : -> 1 `i -> 0 `i `uc ]
+"664
+[; ;main.c: 664:         Rot_dir=((Pick_Angle<Place_Angle)? 1:0);
 [e = _Rot_dir -> ? < _Pick_Angle _Place_Angle : -> 1 `i -> 0 `i `uc ]
-"665
-[; ;main.c: 665:         for(int i = 0; (i<(((X_Place-X_Pick) > 0 ? (X_Place-X_Pick) : -(X_Place-X_Pick)))) && !stop; i++){X_axis(X_dir);}
+"666
+[; ;main.c: 666:         for(int i = 0; (i<(((X_Place-X_Pick) > 0 ? (X_Place-X_Pick) : -(X_Place-X_Pick)))) && !stop; i++){X_axis(X_dir);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2308,8 +2323,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ && < _i ? > - _X_Place _X_Pick -> 0 `i : - _X_Place _X_Pick -U - _X_Place _X_Pick ! != -> _stop `i -> 0 `i 384  ]
 [e :U 385 ]
 }
-"666
-[; ;main.c: 666:         for(int i = 0; (i<(((Y_Place-Y_Pick) > 0 ? (Y_Place-Y_Pick) : -(Y_Place-Y_Pick)))) && !stop; i++){Y_axis(Y_dir);}
+"667
+[; ;main.c: 667:         for(int i = 0; (i<(((Y_Place-Y_Pick) > 0 ? (Y_Place-Y_Pick) : -(Y_Place-Y_Pick)))) && !stop; i++){Y_axis(Y_dir);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2323,8 +2338,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ && < _i ? > - _Y_Place _Y_Pick -> 0 `i : - _Y_Place _Y_Pick -U - _Y_Place _Y_Pick ! != -> _stop `i -> 0 `i 388  ]
 [e :U 389 ]
 }
-"667
-[; ;main.c: 667:         for(int i = 0; (i<(((Pick_Angle-Place_Angle) > 0 ? (Pick_Angle-Place_Angle) : -(Pick_Angle-Place_Angle))/3.6)) && !stop; i++){Twister(Rot_dir);}
+"668
+[; ;main.c: 668:         for(int i = 0; (i<(((Pick_Angle-Place_Angle) > 0 ? (Pick_Angle-Place_Angle) : -(Pick_Angle-Place_Angle))/3.6)) && !stop; i++){Twister(Rot_dir);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2338,8 +2353,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ && < -> _i `d / -> ? > - _Pick_Angle _Place_Angle -> 0 `i : - _Pick_Angle _Place_Angle -U - _Pick_Angle _Place_Angle `d .3.6 ! != -> _stop `i -> 0 `i 392  ]
 [e :U 393 ]
 }
-"668
-[; ;main.c: 668:         for(int i=0; i<3 && !stop; i++){Z_axis(1);}
+"669
+[; ;main.c: 669:         for(int i=0; i<3 && !stop; i++){Z_axis(1);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2353,11 +2368,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ && < _i -> 3 `i ! != -> _stop `i -> 0 `i 396  ]
 [e :U 397 ]
 }
-"669
-[; ;main.c: 669:         Tweezer(1);
+"670
+[; ;main.c: 670:         Tweezer(1);
 [e ( _Tweezer (1 -> -> 1 `i `uc ]
-"671
-[; ;main.c: 671:         for(int i=0; i<3 && !stop; i++){Z_axis(0);}
+"672
+[; ;main.c: 672:         for(int i=0; i<3 && !stop; i++){Z_axis(0);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2371,39 +2386,39 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ && < _i -> 3 `i ! != -> _stop `i -> 0 `i 400  ]
 [e :U 401 ]
 }
-"672
-[; ;main.c: 672:         Tweezer(0);
-[e ( _Tweezer (1 -> -> 0 `i `uc ]
 "673
-[; ;main.c: 673:         Angle_diff= Place_Angle;
-[e = _Angle_diff _Place_Angle ]
+[; ;main.c: 673:         Tweezer(0);
+[e ( _Tweezer (1 -> -> 0 `i `uc ]
 "674
-[; ;main.c: 674:         X_diff = X_Place;
-[e = _X_diff _X_Place ]
+[; ;main.c: 674:         Angle_diff= Place_Angle;
+[e = _Angle_diff _Place_Angle ]
 "675
-[; ;main.c: 675:         Y_diff = Y_Place;
+[; ;main.c: 675:         X_diff = X_Place;
+[e = _X_diff _X_Place ]
+"676
+[; ;main.c: 676:         Y_diff = Y_Place;
 [e = _Y_diff _Y_Place ]
-"678
-[; ;main.c: 678: }
+"679
+[; ;main.c: 679: }
 [e :UE 356 ]
 }
-"680
-[; ;main.c: 680: void return_to_initial(void){
+"681
+[; ;main.c: 681: void return_to_initial(void){
 [v _return_to_initial `(v ~T0 @X0 1 ef ]
 {
 [e :U _return_to_initial ]
 [f ]
-"682
-[; ;main.c: 682:     New_char_RX=0;
-[e = _New_char_RX -> -> 0 `i `a ]
 "683
-[; ;main.c: 683:     stop=0;
-[e = _stop -> -> 0 `i `a ]
+[; ;main.c: 683:     New_char_RX=0;
+[e = _New_char_RX -> -> 0 `i `a ]
 "684
-[; ;main.c: 684:     Steps=Step_X;
-[e = _Steps _Step_X ]
+[; ;main.c: 684:     stop=0;
+[e = _stop -> -> 0 `i `a ]
 "685
-[; ;main.c: 685:     for(int i = 0; i<Steps; i++){X_axis(0);}
+[; ;main.c: 685:     Steps=Step_X;
+[e = _Steps _Step_X ]
+"686
+[; ;main.c: 686:     for(int i = 0; i<Steps; i++){X_axis(0);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2417,11 +2432,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < _i _Steps 405  ]
 [e :U 406 ]
 }
-"686
-[; ;main.c: 686:     Steps=Step_Y;
-[e = _Steps _Step_Y ]
 "687
-[; ;main.c: 687:     for(int i = 0; i<Steps; i++){Y_axis(0);}
+[; ;main.c: 687:     Steps=Step_Y;
+[e = _Steps _Step_Y ]
+"688
+[; ;main.c: 688:     for(int i = 0; i<Steps; i++){Y_axis(0);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2435,11 +2450,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < _i _Steps 409  ]
 [e :U 410 ]
 }
-"688
-[; ;main.c: 688:     Steps=Step_Angle;
-[e = _Steps _Step_Angle ]
 "689
-[; ;main.c: 689:     for(int i = 0; i<Steps; i++){Twister(0);}
+[; ;main.c: 689:     Steps=Step_Angle;
+[e = _Steps _Step_Angle ]
+"690
+[; ;main.c: 690:     for(int i = 0; i<Steps; i++){Twister(0);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2453,11 +2468,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < _i _Steps 413  ]
 [e :U 414 ]
 }
-"690
-[; ;main.c: 690:     Steps=Step_Z;
-[e = _Steps _Step_Z ]
 "691
-[; ;main.c: 691:     for(int i=0; i<Steps && !stop; i++){Z_axis(0);}
+[; ;main.c: 691:     Steps=Step_Z;
+[e = _Steps _Step_Z ]
+"692
+[; ;main.c: 692:     for(int i=0; i<Steps && !stop; i++){Z_axis(0);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2471,18 +2486,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ && < _i _Steps ! != -> _stop `i -> 0 `i 417  ]
 [e :U 418 ]
 }
-"693
-[; ;main.c: 693: }
+"694
+[; ;main.c: 694: }
 [e :UE 404 ]
 }
-"705
-[; ;main.c: 705: void Z_axis_and_Tweezer(){
+"706
+[; ;main.c: 706: void Z_axis_and_Tweezer(){
 [v _Z_axis_and_Tweezer `(v ~T0 @X0 1 ef ]
 {
 [e :U _Z_axis_and_Tweezer ]
 [f ]
-"706
-[; ;main.c: 706:      for(int i = 0;i<15; i++){Z_axis(1);}
+"707
+[; ;main.c: 707:      for(int i = 0;i<15; i++){Z_axis(1);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2496,8 +2511,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < _i -> 15 `i 422  ]
 [e :U 423 ]
 }
-"708
-[; ;main.c: 708:      for(int i = 0; i<15; i++){Z_axis(0);}
+"709
+[; ;main.c: 709:      for(int i = 0; i<15; i++){Z_axis(0);}
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -2511,35 +2526,35 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ < _i -> 15 `i 425  ]
 [e :U 426 ]
 }
-"709
-[; ;main.c: 709:  }
+"710
+[; ;main.c: 710:  }
 [e :UE 421 ]
 }
 [v $root$_Rx_char_USART `(v ~T0 @X0 0 e ]
-"711
-[; ;main.c: 711: void __attribute__((picinterrupt(("")))) Rx_char_USART(void)
-[v _Rx_char_USART `(v ~T39 @X0 1 ef ]
 "712
-[; ;main.c: 712: {
+[; ;main.c: 712: void __attribute__((picinterrupt(("")))) Rx_char_USART(void)
+[v _Rx_char_USART `(v ~T39 @X0 1 ef ]
+"713
+[; ;main.c: 713: {
 {
 [e :U _Rx_char_USART ]
 [f ]
-"713
-[; ;main.c: 713:     if(PIE1bits.RCIE && PIR1bits.RCIF){
+"714
+[; ;main.c: 714:     if(PIE1bits.RCIE && PIR1bits.RCIF){
 [e $ ! && != -> . . _PIE1bits 0 5 `i -> 0 `i != -> . . _PIR1bits 0 5 `i -> 0 `i 429  ]
 {
-"714
-[; ;main.c: 714:     int i=0;
+"715
+[; ;main.c: 715:     int i=0;
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-"715
-[; ;main.c: 715:     do
-[e :U 432 ]
 "716
-[; ;main.c: 716:     {
-{
+[; ;main.c: 716:     do
+[e :U 432 ]
 "717
-[; ;main.c: 717:         while(INTCONbits.INT0IF==0 && !RCIF){};
+[; ;main.c: 717:     {
+{
+"718
+[; ;main.c: 718:         while(INTCONbits.INT0IF==0 && !RCIF){};
 [e $U 433  ]
 [e :U 434 ]
 {
@@ -2547,100 +2562,113 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 433 ]
 [e $ && == -> . . _INTCONbits 0 1 `i -> 0 `i ! _RCIF 434  ]
 [e :U 435 ]
-"718
-[; ;main.c: 718:         input_str[i]=RCREG;
-[e = *U + &U _input_str * -> -> _i `ui `ux -> -> # *U &U _input_str `ui `ux _RCREG ]
 "719
-[; ;main.c: 719:     }while(INTCONbits.INT0IF==0 && input_str[i++] != '\n');
+[; ;main.c: 719:         input_str[i]=RCREG;
+[e = *U + &U _input_str * -> -> _i `ui `ux -> -> # *U &U _input_str `ui `ux _RCREG ]
+"720
+[; ;main.c: 720:     }while(INTCONbits.INT0IF==0 && input_str[i++] != '\n');
 }
 [e $ && == -> . . _INTCONbits 0 1 `i -> 0 `i != -> *U + &U _input_str * -> -> ++ _i -> 1 `i `ui `ux -> -> # *U &U _input_str `ui `ux `ui -> 10 `ui 432  ]
 [e :U 431 ]
-"721
-[; ;main.c: 721:     PIR1bits.RCIF = 0;
-[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
 "722
-[; ;main.c: 722:     New_char_RX = 1;
-[e = _New_char_RX -> -> 1 `i `a ]
+[; ;main.c: 722:     PIR1bits.RCIF = 0;
+[e = . . _PIR1bits 0 5 -> -> 0 `i `uc ]
 "723
-[; ;main.c: 723:     State = input_str[0];
-[e = _State *U + &U _input_str * -> -> -> 0 `i `ui `ux -> -> # *U &U _input_str `ui `ux ]
+[; ;main.c: 723:     New_char_RX = 1;
+[e = _New_char_RX -> -> 1 `i `a ]
 "724
-[; ;main.c: 724:     }
+[; ;main.c: 724:     State = input_str[0];
+[e = _State *U + &U _input_str * -> -> -> 0 `i `ui `ux -> -> # *U &U _input_str `ui `ux ]
+"725
+[; ;main.c: 725:     }
 }
 [e :U 429 ]
-"725
-[; ;main.c: 725:     if(INTCONbits.INT0IF==1 && INTCONbits.INT0IE==1){
+"726
+[; ;main.c: 726:     if(INTCONbits.INT0IF==1 && INTCONbits.INT0IE==1){
 [e $ ! && == -> . . _INTCONbits 0 1 `i -> 1 `i == -> . . _INTCONbits 0 4 `i -> 1 `i 436  ]
 {
-"726
-[; ;main.c: 726:         INTCONbits.INT0IF=0;
+"727
+[; ;main.c: 727:         INTCONbits.INT0IF=0;
 [e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"728
-[; ;main.c: 728:         input_str[0]="Q";
-[e = *U + &U _input_str * -> -> -> 0 `i `ui `ux -> -> # *U &U _input_str `ui `ux -> :s 20C `uc ]
 "729
-[; ;main.c: 729:         stop=1;
-[e = _stop -> -> 1 `i `a ]
+[; ;main.c: 729:         input_str[0]="Q";
+[e = *U + &U _input_str * -> -> -> 0 `i `ui `ux -> -> # *U &U _input_str `ui `ux -> :s 19C `uc ]
 "730
-[; ;main.c: 730:     }
+[; ;main.c: 730:         stop=1;
+[e = _stop -> -> 1 `i `a ]
+"731
+[; ;main.c: 731:     }
 }
 [e :U 436 ]
 "732
-[; ;main.c: 732:     if(INTCONbits.TMR0IE && INTCONbits.TMR0IF)
-[e $ ! && != -> . . _INTCONbits 0 5 `i -> 0 `i != -> . . _INTCONbits 0 2 `i -> 0 `i 437  ]
-"733
-[; ;main.c: 733:         {
+[; ;main.c: 732:     if(INTCON3bits.INT1IF==1 && INTCON3bits.INT1IE==1){
+[e $ ! && == -> . . _INTCON3bits 0 0 `i -> 1 `i == -> . . _INTCON3bits 0 3 `i -> 1 `i 437  ]
 {
+"733
+[; ;main.c: 733:         INTCON3bits.INT1IF=0;
+[e = . . _INTCON3bits 0 0 -> -> 0 `i `uc ]
+"734
+[; ;main.c: 734:         component_present=1;
+[e = _component_present -> -> 1 `i `a ]
 "735
-[; ;main.c: 735:          TMR0H = 0xB2;
-[e = _TMR0H -> -> 178 `i `uc ]
-"736
-[; ;main.c: 736:             TMR0L = 0x04;
-[e = _TMR0L -> -> 4 `i `uc ]
-"737
-[; ;main.c: 737:    set_new_pos(new_TMR1H, new_TMR1L);
-[e ( _set_new_pos (2 , _new_TMR1H _new_TMR1L ]
-"738
-[; ;main.c: 738:             T0CONbits.TMR0ON = 1;
-[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
-"739
-[; ;main.c: 739:    T1CONbits.TMR1ON = 1;
-[e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
-"740
-[; ;main.c: 740:             INTCONbits.TMR0IF = 0;
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"741
-[; ;main.c: 741:         }
+[; ;main.c: 735:     }
 }
 [e :U 437 ]
-"742
-[; ;main.c: 742:     if(PIE1bits.TMR1IE && PIR1bits.TMR1IF)
-[e $ ! && != -> . . _PIE1bits 0 0 `i -> 0 `i != -> . . _PIR1bits 0 0 `i -> 0 `i 438  ]
-"743
-[; ;main.c: 743:         {
+"737
+[; ;main.c: 737:     if(INTCONbits.TMR0IE && INTCONbits.TMR0IF)
+[e $ ! && != -> . . _INTCONbits 0 5 `i -> 0 `i != -> . . _INTCONbits 0 2 `i -> 0 `i 438  ]
+"738
+[; ;main.c: 738:         {
 {
+"740
+[; ;main.c: 740:          TMR0H = 0xB2;
+[e = _TMR0H -> -> 178 `i `uc ]
+"741
+[; ;main.c: 741:             TMR0L = 0x04;
+[e = _TMR0L -> -> 4 `i `uc ]
+"742
+[; ;main.c: 742:    set_new_pos(new_TMR1H, new_TMR1L);
+[e ( _set_new_pos (2 , _new_TMR1H _new_TMR1L ]
+"743
+[; ;main.c: 743:             T0CONbits.TMR0ON = 1;
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
 "744
-[; ;main.c: 744:             LATCbits.LC2 = 0;
-[e = . . _LATCbits 1 2 -> -> 0 `i `uc ]
+[; ;main.c: 744:    T1CONbits.TMR1ON = 1;
+[e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
 "745
-[; ;main.c: 745:             T1CONbits.TMR1ON = 0;
-[e = . . _T1CONbits 1 0 -> -> 0 `i `uc ]
+[; ;main.c: 745:             INTCONbits.TMR0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "746
-[; ;main.c: 746:          PIR1bits.TMR1IF = 0;
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"747
-[; ;main.c: 747:         }
+[; ;main.c: 746:         }
 }
 [e :U 438 ]
+"747
+[; ;main.c: 747:     if(PIE1bits.TMR1IE && PIR1bits.TMR1IF)
+[e $ ! && != -> . . _PIE1bits 0 0 `i -> 0 `i != -> . . _PIR1bits 0 0 `i -> 0 `i 439  ]
 "748
-[; ;main.c: 748: }
+[; ;main.c: 748:         {
+{
+"749
+[; ;main.c: 749:             LATCbits.LC2 = 0;
+[e = . . _LATCbits 1 2 -> -> 0 `i `uc ]
+"750
+[; ;main.c: 750:             T1CONbits.TMR1ON = 0;
+[e = . . _T1CONbits 1 0 -> -> 0 `i `uc ]
+"751
+[; ;main.c: 751:          PIR1bits.TMR1IF = 0;
+[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
+"752
+[; ;main.c: 752:         }
+}
+[e :U 439 ]
+"753
+[; ;main.c: 753: }
 [e :UE 428 ]
 }
 [a 1C 10 10 49 46 32 83 116 97 114 116 32 83 101 113 117 101 110 99 101 10 50 46 32 67 104 97 110 103 101 32 115 101 113 117 101 110 99 101 10 51 46 32 65 100 100 32 110 101 119 32 99 111 109 112 111 110 101 110 116 10 52 46 32 82 101 109 111 118 101 32 97 32 99 111 109 112 111 110 101 110 116 0 ]
-[a 18C 10 79 112 101 110 105 110 103 32 116 119 101 101 122 101 114 0 ]
 [a 16C 10 99 111 109 112 111 110 101 110 116 32 114 101 109 111 118 101 100 0 ]
 [a 3C 10 69 110 116 101 114 32 39 81 39 32 116 111 32 101 120 105 116 32 116 111 32 77 65 73 78 32 77 69 78 85 0 ]
-[a 20C 81 0 ]
+[a 19C 81 0 ]
 [a 7C 10 69 110 116 101 114 32 116 104 101 32 99 111 109 112 111 110 101 110 116 32 121 111 117 32 119 97 110 116 32 116 111 32 97 100 100 58 32 65 44 32 66 44 32 67 32 111 114 32 68 63 0 ]
 [a 6C 10 84 104 101 32 67 117 114 114 101 110 116 32 115 101 113 117 101 110 99 101 32 105 115 58 0 ]
 [a 10C 10 69 110 116 101 114 32 116 104 101 32 112 105 99 107 32 111 114 105 101 110 116 97 116 105 111 110 58 0 ]
@@ -2650,7 +2678,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [a 12C 10 69 110 116 101 114 32 116 104 101 32 112 108 97 99 101 32 112 111 115 105 116 105 111 110 32 89 58 0 ]
 [a 8C 10 69 110 116 101 114 32 116 104 101 32 112 105 99 107 32 112 111 115 105 116 105 111 110 32 88 58 0 ]
 [a 11C 10 69 110 116 101 114 32 116 104 101 32 112 108 97 99 101 32 112 111 115 105 116 105 111 110 32 88 58 0 ]
-[a 19C 67 111 109 112 111 110 101 110 116 32 105 115 32 109 105 115 115 105 110 103 33 0 ]
+[a 18C 10 67 111 109 112 111 110 101 110 116 32 105 115 32 109 105 115 115 105 110 103 33 0 ]
 [a 4C 10 84 104 101 32 99 117 114 114 101 110 116 32 115 101 113 117 101 110 99 101 32 105 115 58 32 0 ]
 [a 14C 10 10 67 111 109 112 111 110 101 110 116 32 65 100 100 101 100 58 32 0 ]
 [a 5C 10 80 108 101 97 115 101 32 103 105 118 101 32 116 104 101 32 110 101 119 32 115 101 113 117 101 110 99 101 32 97 115 32 105 110 112 117 116 13 0 ]
