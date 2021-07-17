@@ -3914,7 +3914,7 @@ void init_PORTS(void)
     TRISA = 0x00;
     TRISB = 0X03;
     PORTA = 0x00;
-    PORTD = 0x00;
+
 
 
 

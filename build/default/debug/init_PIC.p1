@@ -11,9 +11,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "52
 [; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 52: extern volatile unsigned char PORTA __attribute__((address(0xF80)));
 [v _PORTA `Vuc ~T0 @X0 0 e@3968 ]
-"489
-[; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 489: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
-[v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
 "934
 [; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 934: extern volatile unsigned char LATC __attribute__((address(0xF8B)));
 [v _LATC `Vuc ~T0 @X0 0 e@3979 ]
@@ -576,9 +573,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "28
 [; ;init_PIC.c: 28:     PORTA = 0x00;
 [e = _PORTA -> -> 0 `i `uc ]
-"29
-[; ;init_PIC.c: 29:     PORTD = 0x00;
-[e = _PORTD -> -> 0 `i `uc ]
 "34
 [; ;init_PIC.c: 34:     LATC = 0;
 [e = _LATC -> -> 0 `i `uc ]

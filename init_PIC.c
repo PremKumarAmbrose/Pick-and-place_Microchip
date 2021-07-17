@@ -26,7 +26,7 @@ void init_PORTS(void)          //PORTS configurations
     TRISA = 0x00;
     TRISB = 0X03;  // RB0 and RB1 as input //TRISB=0X0f; // Enable the 4 LSB as I/P & 4 MSB as O/P
     PORTA = 0x00; //0xF0;
-    PORTD = 0x00; //0x0F;
+    //PORTD = 0x00; //0x0F;
     //PORTB= 0X0F;
     
     
