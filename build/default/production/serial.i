@@ -1,4 +1,4 @@
-# 1 "serial_rs232.c"
+# 1 "serial.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "serial_rs232.c" 2
+# 1 "serial.c" 2
 
 
 # 1 "/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 1 3
@@ -3803,7 +3803,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 33 "/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/xc.h" 2 3
-# 3 "serial_rs232.c" 2
+# 3 "serial.c" 2
 
 # 1 "/opt/microchip/xc8/v2.32/pic/include/c99/stdint.h" 1 3
 # 22 "/opt/microchip/xc8/v2.32/pic/include/c99/stdint.h" 3
@@ -3889,10 +3889,10 @@ typedef int32_t int_fast32_t;
 typedef uint16_t uint_fast16_t;
 typedef uint32_t uint_fast32_t;
 # 145 "/opt/microchip/xc8/v2.32/pic/include/c99/stdint.h" 2 3
-# 4 "serial_rs232.c" 2
+# 4 "serial.c" 2
 
 # 1 "/opt/microchip/xc8/v2.32/pic/include/c99/stdbool.h" 1 3
-# 5 "serial_rs232.c" 2
+# 5 "serial.c" 2
 
 # 1 "/opt/microchip/xc8/v2.32/pic/include/c99/math.h" 1 3
 # 15 "/opt/microchip/xc8/v2.32/pic/include/c99/math.h" 3
@@ -4266,13 +4266,14 @@ double jn(int, double);
 double y0(double);
 double y1(double);
 double yn(int, double);
-# 6 "serial_rs232.c" 2
+# 6 "serial.c" 2
 
-# 1 "./serial_rs232.h" 1
-# 80 "./serial_rs232.h"
+# 1 "./serial.h" 1
+# 80 "./serial.h"
 void init_USART(void);
 void print_string(char strng[]);
-# 7 "serial_rs232.c" 2
+void print_char(char chr);
+# 7 "serial.c" 2
 
 
 
@@ -4285,7 +4286,7 @@ static double const desired_BaudRate = 9600;
 
 void init_USART(void)
 {
-# 33 "serial_rs232.c"
+# 33 "serial.c"
     SPBRG = roundf(((Fosc / desired_BaudRate)/16)-1);
 
  TXSTAbits.TX9=0;
@@ -4304,4 +4305,8 @@ void print_string(char strng[])
         while(!TXSTAbits.TRMT);
     }
 
+}
+void print_char(char chr){
+    TXREG=chr;
+    while(!TXSTAbits.TRMT);
 }

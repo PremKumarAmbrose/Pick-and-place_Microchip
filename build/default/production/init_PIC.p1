@@ -551,10 +551,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 250 `i `uc
 ]
 "18
-[; ;init_PIC.c: 18: static uint8_t new_TMR1L = 0x4D;
+[; ;init_PIC.c: 18: static uint8_t new_TMR1L = 0x24;
 [v _new_TMR1L `uc ~T0 @X0 1 s ]
 [i _new_TMR1L
--> -> 77 `i `uc
+-> -> 36 `i `uc
 ]
 "21
 [; ;init_PIC.c: 21: void init_PORTS(void)
@@ -647,8 +647,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;init_PIC.c: 63:  TMR1H = 0xFA;
 [e = _TMR1H -> -> 250 `i `uc ]
 "64
-[; ;init_PIC.c: 64:     TMR1L = 0x4D;
-[e = _TMR1L -> -> 77 `i `uc ]
+[; ;init_PIC.c: 64:     TMR1L = 0x24;
+[e = _TMR1L -> -> 36 `i `uc ]
 "66
 [; ;init_PIC.c: 66:     return;
 [e $UE 239  ]

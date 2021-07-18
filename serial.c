@@ -4,7 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <math.h>
-#include "serial_rs232.h"
+#include "serial.h"
 
 
 // Serial & Timing Parameters

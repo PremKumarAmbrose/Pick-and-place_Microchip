@@ -3903,7 +3903,7 @@ void init_Timers(void);
 # 7 "init_PIC.c" 2
 # 17 "init_PIC.c"
 static uint8_t new_TMR1H = 0xFA;
-static uint8_t new_TMR1L = 0x4D;
+static uint8_t new_TMR1L = 0x24;
 
 
 void init_PORTS(void)
@@ -3949,7 +3949,7 @@ void init_Timers(void){
 
 
  TMR1H = 0xFA;
-    TMR1L = 0x4D;
+    TMR1L = 0x24;
 
     return;
 

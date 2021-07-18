@@ -447,75 +447,75 @@ Version 4.0 HI-TECH Software Intermediate Code
 "5763
 [; ;/opt/microchip/mplabx/v5.45/packs/Microchip/PIC18Fxxxx_DFP/1.2.26/xc8/pic/include/proc/pic18f452.h: 5763: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
-"11 serial_rs232.c
-[; ;serial_rs232.c: 11: static double const Fosc = 4000000;
+"11 serial.c
+[; ;serial.c: 11: static double const Fosc = 4000000;
 [v _Fosc `Cd ~T0 @X0 1 s ]
 [i _Fosc
 -> -> 4000000 `l `d
 ]
 "12
-[; ;serial_rs232.c: 12: static double Tosc = 1/Fosc;
+[; ;serial.c: 12: static double Tosc = 1/Fosc;
 [v _Tosc `d ~T0 @X0 1 s ]
 [i _Tosc
 / -> -> 1 `i `d _Fosc
 ]
 "13
-[; ;serial_rs232.c: 13: static double const desired_BaudRate = 9600;
+[; ;serial.c: 13: static double const desired_BaudRate = 9600;
 [v _desired_BaudRate `Cd ~T0 @X0 1 s ]
 [i _desired_BaudRate
 -> -> 9600 `i `d
 ]
 "17
-[; ;serial_rs232.c: 17: void init_USART(void)
+[; ;serial.c: 17: void init_USART(void)
 [v _init_USART `(v ~T0 @X0 1 ef ]
 "18
-[; ;serial_rs232.c: 18: {
+[; ;serial.c: 18: {
 {
 [e :U _init_USART ]
 [f ]
 "33
-[; ;serial_rs232.c: 33:     SPBRG = roundf(((Fosc / desired_BaudRate)/16)-1);
+[; ;serial.c: 33:     SPBRG = roundf(((Fosc / desired_BaudRate)/16)-1);
 [e = _SPBRG -> ( _roundf (1 -> - / / _Fosc _desired_BaudRate -> -> 16 `i `d -> -> 1 `i `d `f `uc ]
 "35
-[; ;serial_rs232.c: 35:  TXSTAbits.TX9=0;
+[; ;serial.c: 35:  TXSTAbits.TX9=0;
 [e = . . _TXSTAbits 0 6 -> -> 0 `i `uc ]
 "36
-[; ;serial_rs232.c: 36:     TXSTAbits.TXEN=1;
+[; ;serial.c: 36:     TXSTAbits.TXEN=1;
 [e = . . _TXSTAbits 0 5 -> -> 1 `i `uc ]
 "37
-[; ;serial_rs232.c: 37:     TXSTAbits.SYNC=0;
+[; ;serial.c: 37:     TXSTAbits.SYNC=0;
 [e = . . _TXSTAbits 0 4 -> -> 0 `i `uc ]
 "38
-[; ;serial_rs232.c: 38:     TXSTAbits.BRGH=1;
+[; ;serial.c: 38:     TXSTAbits.BRGH=1;
 [e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
 "39
-[; ;serial_rs232.c: 39:     RCSTAbits.SPEN=1;
+[; ;serial.c: 39:     RCSTAbits.SPEN=1;
 [e = . . _RCSTAbits 0 7 -> -> 1 `i `uc ]
 "40
-[; ;serial_rs232.c: 40:     RCSTAbits.RX9=0;
+[; ;serial.c: 40:     RCSTAbits.RX9=0;
 [e = . . _RCSTAbits 0 6 -> -> 0 `i `uc ]
 "41
-[; ;serial_rs232.c: 41:     RCSTAbits.CREN=1;
+[; ;serial.c: 41:     RCSTAbits.CREN=1;
 [e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
 "42
-[; ;serial_rs232.c: 42: }
+[; ;serial.c: 42: }
 [e :UE 238 ]
 }
 "44
-[; ;serial_rs232.c: 44: void print_string(char strng[])
+[; ;serial.c: 44: void print_string(char strng[])
 [v _print_string `(v ~T0 @X0 1 ef1`*uc ]
 "45
-[; ;serial_rs232.c: 45: {
+[; ;serial.c: 45: {
 {
 [e :U _print_string ]
 "44
-[; ;serial_rs232.c: 44: void print_string(char strng[])
+[; ;serial.c: 44: void print_string(char strng[])
 [v _strng `*uc ~T0 @X0 1 r1 ]
 "45
-[; ;serial_rs232.c: 45: {
+[; ;serial.c: 45: {
 [f ]
 "46
-[; ;serial_rs232.c: 46:     for(int i=0; strng[i]!=((void*)0);i++){
+[; ;serial.c: 46:     for(int i=0; strng[i]!=((void*)0);i++){
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -523,17 +523,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 240 ]
 {
 "47
-[; ;serial_rs232.c: 47:         TXREG=strng[i];
+[; ;serial.c: 47:         TXREG=strng[i];
 [e = _TXREG -> *U + _strng * -> _i `x -> -> # *U _strng `i `x `uc ]
 "48
-[; ;serial_rs232.c: 48:         while(!TXSTAbits.TRMT);
+[; ;serial.c: 48:         while(!TXSTAbits.TRMT);
 [e $U 244  ]
 [e :U 245 ]
 [e :U 244 ]
 [e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 245  ]
 [e :U 246 ]
 "49
-[; ;serial_rs232.c: 49:     }
+[; ;serial.c: 49:     }
 }
 [e ++ _i -> 1 `i ]
 [e :U 243 ]
@@ -541,6 +541,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 241 ]
 }
 "51
-[; ;serial_rs232.c: 51: }
+[; ;serial.c: 51: }
 [e :UE 239 ]
+}
+"52
+[; ;serial.c: 52: void print_char(char chr){
+[v _print_char `(v ~T0 @X0 1 ef1`uc ]
+{
+[e :U _print_char ]
+[v _chr `uc ~T0 @X0 1 r1 ]
+[f ]
+"53
+[; ;serial.c: 53:     TXREG=chr;
+[e = _TXREG -> _chr `uc ]
+"54
+[; ;serial.c: 54:     while(!TXSTAbits.TRMT);
+[e $U 248  ]
+[e :U 249 ]
+[e :U 248 ]
+[e $ ! != -> . . _TXSTAbits 0 1 `i -> 0 `i 249  ]
+[e :U 250 ]
+"55
+[; ;serial.c: 55: }
+[e :UE 247 ]
 }
