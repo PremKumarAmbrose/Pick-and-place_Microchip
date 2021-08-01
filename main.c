@@ -112,7 +112,7 @@ char X_dir,  Y_dir,   Twist_dir;                                       //tempora
                                                                                 
 int  Steps, Step_X=0, Step_Y=0, Step_Z=0, Step_Angle=0;             //steps counter to keep track of the position of the stepper motors    
 
-int  steps_per_unit=1;                                              //to define the number of steps to be moved for a unit value of movement
+int  steps_per_unit=3;                                              //to define the number of steps to be moved for a unit value of movement
 
 
 
@@ -260,6 +260,7 @@ void start_up_menu(void){
                     break;
 
                 case '5':
+                    print_string("\n\nReturning to initial position..");
                     return_to_initial();            //to return to initial position
                     break;
             } 
@@ -403,31 +404,43 @@ void remove_component(void){
 
 
 
-//////////* This function will drive the stepper motor in X-axis in half-drive mode *///////////
+//////////* This function will drive the stepper motor in X-axis in wave-drive mode *///////////
 void X_axis (char direction){  
         if (direction == 0){         //anticlockwise
+            PORTA = 0b00000001;
+            ms_delay(speed);
             PORTA = 0b00000011;
+            ms_delay(speed);
+            PORTA = 0b00000010;
             ms_delay(speed);
             PORTA = 0b00000110;
             ms_delay(speed);
+            PORTA = 0b00000100;
+            ms_delay(speed);
             PORTA = 0b00001100;
             ms_delay(speed);
-            PORTA = 0b00001001;
+            PORTA = 0b00001000;
             ms_delay(speed);
-            PORTA = 0b00000011;
+            PORTA = 0b00001001;
             ms_delay(speed);
             Step_X--;               //Used to keep track of the position of stepper motor to return to the initial position
         }
         if (direction == 1){         //clockwise
             PORTA = 0b00001001;
             ms_delay(speed);
+            PORTA = 0b00001000;
+            ms_delay(speed);
             PORTA = 0b00001100;
+            ms_delay(speed); 
+            PORTA = 0b00000100;
             ms_delay(speed);
             PORTA = 0b00000110;
             ms_delay(speed);
+            PORTA = 0b00000010;
+            ms_delay(speed);
             PORTA = 0b00000011;
             ms_delay(speed);
-            PORTA = 0b00001001;
+            PORTA = 0b00000001;
             ms_delay(speed);
             Step_X++;               //Used to keep track of the position of stepper motor to return to the initial position
         }
@@ -437,28 +450,40 @@ void X_axis (char direction){
 ///////////* This function will drive the stepper motor in Y-axis in half-drive mode *///////////
 void Y_axis (char direction){
         if (direction == 0){        //anticlockwise
+            PORTB = 0b00010000;
+            ms_delay(speed);
             PORTB = 0b00110000;
+            ms_delay(speed);
+            PORTB = 0b00100000;
             ms_delay(speed);
             PORTB = 0b01100000;
             ms_delay(speed);
+            PORTB = 0b01000000;
+            ms_delay(speed);
             PORTB = 0b11000000;
             ms_delay(speed);
-            PORTB = 0b10010000;
+            PORTB = 0b10000000;
             ms_delay(speed);
-            PORTB = 0b00110000;
+            PORTB = 0b10010000;
             ms_delay(speed);
             Step_Y--;               //Used to keep track of the position of stepper motor to return to the initial position
         }
         if (direction == 1){        //clockwise
             PORTB = 0b10010000;
             ms_delay(speed);
+            PORTB = 0b10000000;
+            ms_delay(speed);
             PORTB = 0b11000000;
+            ms_delay(speed); 
+            PORTB = 0b01000000;
             ms_delay(speed);
             PORTB = 0b01100000;
             ms_delay(speed);
+            PORTB = 0b00100000;
+            ms_delay(speed);
             PORTB = 0b00110000;
             ms_delay(speed);
-            PORTB = 0b10010000;
+            PORTB = 0b00010000;
             ms_delay(speed);
             Step_Y++;               //Used to keep track of the position of stepper motor to return to the initial position
         }   
@@ -466,58 +491,85 @@ void Y_axis (char direction){
 
 ////////////* This function will drive the stepper motor in Z-axis in half-drive mode *////////////
 void Z_axis (char direction){
-        __delay_ms(500);
         if (direction == 0){        //anticlockwise
-            PORTD = 0b00000011;
-            ms_delay(10);
-            PORTD = 0b00000110;
-            ms_delay(10);
-            PORTD = 0b00001100;
-            ms_delay(10);
-            PORTD = 0b00001001;
-            ms_delay(10);
-            PORTD = 0b00000011;
-            ms_delay(10);
-            Step_Z--;               //Used to keep track of the position of stepper motor to return to the initial position
+            PORTD = 0b00010000;
+            ms_delay(speed);
+            PORTD = 0b00110000;
+            ms_delay(speed);
+            PORTD = 0b00100000;
+            ms_delay(speed);
+            PORTD = 0b01100000;
+            ms_delay(speed);
+            PORTD = 0b01000000;
+            ms_delay(speed);
+            PORTD = 0b11000000;
+            ms_delay(speed);
+            PORTD = 0b10000000;
+            ms_delay(speed);
+            PORTD = 0b10010000;
+            ms_delay(speed);
+            Step_Z--;           //Used to keep track of the position of stepper motor to return to the initial position
         }
         if (direction == 1){        //clockwise
-            PORTD = 0b00001001;
-            ms_delay(10);
-            PORTD = 0b00001100;
-            ms_delay(10);
-            PORTD = 0b00000110;
-            ms_delay(10);
-            PORTD = 0b00000011;
-            ms_delay(10);
-            PORTD = 0b00001001;
-            ms_delay(10);
-            Step_Z++;               //Used to keep track of the position of stepper motor to return to the initial position
+            PORTD = 0b10010000;
+            ms_delay(speed);
+            PORTD = 0b10000000;
+            ms_delay(speed);
+            PORTD = 0b11000000;
+            ms_delay(speed); 
+            PORTD = 0b01000000;
+            ms_delay(speed);
+            PORTD = 0b01100000;
+            ms_delay(speed);
+            PORTD = 0b00100000;
+            ms_delay(speed);
+            PORTD = 0b00110000;
+            ms_delay(speed);
+            PORTD = 0b00010000;
+            ms_delay(speed);
+            Step_Z++;           //Used to keep track of the position of stepper motor to return to the initial position
         }
 }
 
 /////////////* This function will drive the stepper motor for the orientation in half-drive mode *////////////
 void Twister (char direction){
         if (direction == 0){        //anticlockwise
-            PORTD = 0b00110000;
+            PORTD = 0b00000001;
             ms_delay(speed);
-            PORTD = 0b11000000;
+            PORTD = 0b00000011;
             ms_delay(speed);
-            PORTD = 0b10010000;
+            PORTD = 0b00000010;
             ms_delay(speed);
-            PORTD = 0b00110000;
+            PORTD = 0b00000110;
             ms_delay(speed);
-            Step_Angle--;           //Used to keep track of the position of stepper motor to return to the initial position
+            PORTD = 0b00000100;
+            ms_delay(speed);
+            PORTD = 0b00001100;
+            ms_delay(speed);
+            PORTD = 0b00001000;
+            ms_delay(speed);
+            PORTD = 0b00001001;
+            ms_delay(speed);
+            Step_Angle--;               //Used to keep track of the position of stepper motor to return to the initial position
         }
         if (direction == 1){        //clockwise
-            PORTD = 0b10010000;
+            PORTD = 0b00001001;
             ms_delay(speed);
-            PORTD = 0b01100000;
+            PORTD = 0b00001000;
             ms_delay(speed);
-            PORTD = 0b00110000;
+            PORTD = 0b00001100;
+            ms_delay(speed); 
+            PORTD = 0b00000100;
             ms_delay(speed);
-            PORTD = 0b10010000;
+            PORTD = 0b00000110;
             ms_delay(speed);
-            Step_Angle++;           //Used to keep track of the position of stepper motor to return to the initial position
+            PORTD = 0b00000010;
+            ms_delay(speed);
+            PORTD = 0b00000011;
+            ms_delay(speed);
+            PORTD = 0b00000001;
+            ms_delay(speed);
+            Step_Angle++;               //Used to keep track of the position of stepper motor to return to the initial position
         }
 }
 
@@ -703,6 +755,7 @@ int pick_and_place(char Componnt)
 void return_to_initial(void){   
     New_char_RX=false;
     stop=false;
+    
     Steps=Step_X;
     for(int i = 0; i<Steps; i++){X_axis(anti_clockwise);}
     
