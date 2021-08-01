@@ -1,4 +1,5 @@
 
 # Pick-and-place_Microchip
 
-![Screenshot at 2021-08-01 15-51-46](https://user-images.githubusercontent.com/26322085/127773419-67e5bc90-2732-4f9c-8867-f325bd9912cf.png)
+![Screenshot at 2021-08-01 15-55-07](https://user-images.githubusercontent.com/26322085/127773462-8209c729-b7ae-4fb0-8c42-df853d81cdfc.png)
+
