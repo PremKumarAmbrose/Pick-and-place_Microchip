@@ -53,7 +53,5 @@ void print_char(char chr){
     TXREG=chr;
     while(!TXSTAbits.TRMT);
 }
-//Add functions here 
 
-// eg. transmit or receive a string
 
