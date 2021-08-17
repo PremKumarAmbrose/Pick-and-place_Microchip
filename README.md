@@ -9,10 +9,14 @@
 ![Schematic](https://user-images.githubusercontent.com/26322085/129810334-9fc52325-3455-45ba-9fb0-9c15f6446541.png)
 
 **Flowdiagram**
-![Flowdiagram1](https://user-images.githubusercontent.com/26322085/129810359-8fedfcbc-d425-470a-827c-2df953061c5d.jpeg)
 
+_Start Menu_
 ![Flowdiagram2](https://user-images.githubusercontent.com/26322085/129810374-9625ccd7-bbd4-4589-9ca9-f0ef5e77e4c7.jpeg)
 
+_Pick and Place Loop_
+![Flowdiagram1](https://user-images.githubusercontent.com/26322085/129810359-8fedfcbc-d425-470a-827c-2df953061c5d.jpeg)
+
+_Adding new component_
 ![Flowdiagram3](https://user-images.githubusercontent.com/26322085/129810379-d03dcf8b-404b-4967-9795-cdc6409f8dcc.jpeg)
 
 **PICSimLab simulation**
