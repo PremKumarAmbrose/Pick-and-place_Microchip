@@ -2,6 +2,9 @@
 
 # Pick-and-place_Microchip
 
+This is PCB component Pick and Place robot with motor controls for XYZ axis, orientation and tweezer. This system is developed with a PIC microcontroller (PIC18F452). Three stepper motors are used for the XYZ axis, another stepper motor for the orientation. A servo motor is used for the Tweezers. The HMI is command line based. There are preset values of the component positions and orientations in the code. This can be changed, also the HMI gives the option to add or remove components and change of loop sequence.
+
+
 **PCB Layout**
 ![pcb](https://user-images.githubusercontent.com/26322085/129810261-117db7fe-0ec7-4696-a3af-e13b8d9fe9f2.png)
 
