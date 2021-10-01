@@ -1,13 +1,3 @@
-/*
-
- * * File:   main.c
- * Author: Sourav Gupta
- * By:- circuitdigest.com
- * Created on May 10, 2018, 1:26 PM
- * This program will drive a servo motor.
- */
- 
-// PIC16F877A Configuration Bit Settings
  
 // 'C' source line config statements
  
